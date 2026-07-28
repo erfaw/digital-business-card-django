@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> — AA Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #050A1F;
+      --dark: #0D1A3A;
+      --panel: #0F1D3A;
+      --cyan: #00D4FF;
+      --violet: #7B2FFF;
+      --blue: #1A6EFF;
+      --green: #00E5A0;
+      --white: #F0F8FF;
+      --dim: rgba(240, 248, 255, .55);
+      --dim2: rgba(240, 248, 255, .22);
+      --border: rgba(0, 212, 255, .18);
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* CURSOR */
+    #cursor {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      background: var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    }
+
+    #cursor-ring {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .18s, height .18s, border-color .18s;
+      opacity: .5;
+    }
+
+    body:has(a:hover) #cursor-ring,
+    body:has(button:hover) #cursor-ring {
+      width: 48px;
+      height: 48px;
+      border-color: var(--violet);
+    }
+
+    /* BACKGROUND CANVAS */
+    #bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* PAGE */
+    .page {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    /* ── CARD ── */
+    .card-scene {
+      perspective: 1200px;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      width: min(520px, 92vw);
+      aspect-ratio: 1.75;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+      cursor: none;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    /* ── FRONT FACE ── */
+    .card-front {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--panel) 60%, rgba(0, 212, 255, .06) 100%);
+      border: 1px solid rgba(0, 212, 255, .22);
+      box-shadow:
+        0 0 0 1px rgba(0, 212, 255, .08) inset,
+        0 40px 80px rgba(0, 0, 0, .6),
+        0 0 60px rgba(0, 212, 255, .08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.4rem, 4%, 2rem);
+    }
+
+    /* animated gradient border */
+    .card-front::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 21px;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(0, 212, 255, .5), rgba(123, 47, 255, .4), rgba(0, 212, 255, .1), rgba(26, 110, 255, .4));
+      background-size: 300% 300%;
+      animation: borderAnim 6s ease infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 1px;
+    }
+
+    @keyframes borderAnim {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* shimmer sweep */
+    .card-front::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, .04) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: shimmer 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+
+      0%,
+      100% {
+        background-position: 200% 0;
+      }
+
+      50% {
+        background-position: -200% 0;
+      }
+    }
+
+    .front-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .aa-logo-mark {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      letter-spacing: -.04em;
+      line-height: 1;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.45rem, .9vw, .6rem);
+      color: var(--dim);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    /* holographic chip */
+    .holo-chip {
+      width: clamp(28px, 6%, 40px);
+      height: clamp(20px, 4.5%, 30px);
+      border-radius: 4px;
+      background: linear-gradient(135deg, #c8a96e, #f0d090, #c8a96e, #a07040);
+      background-size: 200% 200%;
+      animation: goldShift 3s ease infinite;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .4);
+    }
+
+    .holo-chip::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 2px;
+      border: 1px solid rgba(255, 200, 100, .4);
+    }
+
+    .holo-chip::after {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 220, 150, .5);
+    }
+
+    @keyframes goldShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .front-mid {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+
+    .person-name {
+      font-weight: 700;
+      font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+
+    .person-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.52rem, 1.2vw, .72rem);
+      color: var(--cyan);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-top: .2rem;
+    }
+
+    .person-dept {
+      font-size: clamp(.6rem, 1.3vw, .78rem);
+      color: var(--dim);
+      margin-top: .1rem;
+      letter-spacing: .03em;
+    }
+
+    .front-bot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .contact-mini {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.44rem, .9vw, .6rem);
+      color: var(--dim);
+      letter-spacing: .04em;
+    }
+
+    .contact-row svg {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+      opacity: .7;
+    }
+
+    .flip-hint {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.42rem, .85vw, .58rem);
+      color: rgba(0, 212, 255, .4);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      animation: hintPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes hintPulse {
+
+      0%,
+      100% {
+        opacity: .3;
+      }
+
+      50% {
+        opacity: .8;
+      }
+    }
+
+    /* circuit lines decoration */
+    .circuit {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .06;
+    }
+
+    /* ── BACK FACE ── */
+    .card-back {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--dark) 100%);
+      border: 1px solid rgba(123, 47, 255, .22);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, .6);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(.6rem, 2%, 1rem);
+      padding: clamp(1.2rem, 4%, 2rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-back::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -40%;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123, 47, 255, .15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .card-back::after {
+      content: '';
+      position: absolute;
+      bottom: -40%;
+      left: -20%;
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 212, 255, .1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .back-logo {
+      font-weight: 700;
+      font-size: clamp(2rem, 7vw, 3rem);
+      letter-spacing: -.04em;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.5rem, 1vw, .65rem);
+      color: var(--dim);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .back-divider {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-url {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.55rem, 1.1vw, .72rem);
+      color: var(--cyan);
+      letter-spacing: .1em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .qr-box {
+      width: clamp(52px, 12%, 70px);
+      height: clamp(52px, 12%, 70px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .qr-box svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── FLIP BUTTON ── */
+    .flip-btn {
+      background: rgba(240, 248, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: .55rem 1.4rem;
+      font-family: 'Space Mono', monospace;
+      font-size: .72rem;
+      color: var(--dim);
+      cursor: none;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s, background .2s;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 2rem;
+    }
+
+    .flip-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 212, 255, .06);
+    }
+
+    .flip-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform .4s;
+    }
+
+    .flip-btn:hover svg {
+      transform: rotate(180deg);
+    }
+
+    /* ── EXPLANATION SECTION ── */
+    .explain {
+      width: min(620px, 92vw);
+      margin-top: 1rem;
+    }
+
+    .explain-header {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0, 212, 255, .1);
+    }
+
+    .explain-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: .68rem;
+      color: var(--cyan);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .explain-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .explain-item {
+      background: rgba(13, 26, 58, .6);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+    }
+
+    .ei-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      color: var(--cyan);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: .45rem;
+    }
+
+    .ei-val {
+      font-size: .88rem;
+      color: var(--white);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .ei-sub {
+      font-size: .75rem;
+      color: var(--dim);
+      margin-top: .15rem;
+    }
+
+    /* contact links */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .85rem 1.2rem;
+      background: rgba(13, 26, 58, .6);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: border-color .22s, background .22s, transform .22s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(0, 212, 255, .06) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform .5s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .contact-link:hover::before {
+      transform: translateX(100%);
+    }
+
+    .contact-link:hover {
+      border-color: rgba(0, 212, 255, .3);
+      background: rgba(0, 212, 255, .05);
+      transform: translateX(4px);
+    }
+
+    .cl-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .cl-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .cl-body {
+      flex: 1;
+    }
+
+    .cl-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem;
+      color: var(--dim);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+
+    .cl-val {
+      font-size: .88rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .cl-arrow {
+      font-size: .8rem;
+      color: var(--dim);
+      transition: color .2s, transform .2s;
+    }
+
+    .contact-link:hover .cl-arrow {
+      color: var(--cyan);
+      transform: translateX(3px);
+    }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle-wrap {
+      direction: ltr;
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      background: rgba(5, 10, 31, .7);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 3px;
+      backdrop-filter: blur(12px);
+      cursor: none;
+    }
+
+    .lang-btn {
+      position: relative;
+      z-index: 1;
+      padding: .28rem .65rem;
+      border-radius: 99px;
+      border: none;
+      background: transparent;
+      cursor: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: .74rem;
+      color: var(--dim);
+      transition: color .25s;
+    }
+
+    .lang-btn.active {
+      color: var(--navy);
+    }
+
+    .lang-slider {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      height: calc(100% - 6px);
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      border-radius: 99px;
+      transition: transform .3s cubic-bezier(.34, 1.2, .64, 1), width .3s;
+      pointer-events: none;
+    }
+
+    /* RTL */
+    html[dir="rtl"] body {
+      font-family: 'Vazirmatn', sans-serif;
+    }
+
+    html[dir="rtl"] .person-name,
+    .person-title,
+    .person-dept,
+    .explain-title,
+    .ei-val,
+    .cl-val {
+      font-family: 'Vazirmatn', sans-serif;
+      letter-spacing: 0;
+    }
+
+    html[dir="rtl"] .front-top,
+    .front-bot {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .contact-mini {
+      align-items: flex-end;
+    }
+
+    html[dir="rtl"] .contact-link:hover {
+      transform: translateX(-4px);
+    }
+
+    html[dir="rtl"] .contact-link {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .explain-header {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .explain-grid {
+      direction: rtl;
+    }
+
+    @media(max-width:480px) {
+      .explain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lang-toggle-wrap {
+        top: 1rem;
+        right: 1rem;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-scene {
+      animation: fadeUp .9s ease .1s both;
+    }
+
+    .flip-btn {
+      animation: fadeUp .9s ease .3s both;
+    }
+
+    .explain {
+      animation: fadeUp .9s ease .5s both;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="bg"></canvas>
+
+  <!-- LANG TOGGLE -->
+  <div class="lang-toggle-wrap" onclick="AA.toggleLang()">
+    <div class="lang-slider" id="langSlider"></div>
+    <button class="lang-btn" id="btnEN">EN</button>
+    <button class="lang-btn active" id="btnFA">فا</button>
+  </div>
+
+  <div class="page">
+
+    <!-- ── BUSINESS CARD ── -->
+    <div class="card-scene">
+      <div class="card" id="card">
+
+        <!-- FRONT -->
+        <div class="card-face card-front">
+          <!-- Circuit decoration SVG -->
+          <svg class="circuit" viewBox="0 0 520 297" fill="none" preserveAspectRatio="xMidYMid slice">
+            <path d="M0 80h60M60 80v40M60 120h80M140 120v-30M140 90h50" stroke="#00D4FF" stroke-width="1" />
+            <circle cx="60" cy="80" r="3" fill="#00D4FF" />
+            <circle cx="140" cy="120" r="3" fill="#00D4FF" />
+            <circle cx="190" cy="90" r="2" fill="#00D4FF" />
+            <path d="M520 200h-70M450 200v-50M450 150h-90M360 150v30M360 180h-40" stroke="#7B2FFF" stroke-width="1" />
+            <circle cx="450" cy="200" r="3" fill="#7B2FFF" />
+            <circle cx="360" cy="150" r="3" fill="#7B2FFF" />
+            <circle cx="320" cy="180" r="2" fill="#7B2FFF" />
+            <path d="M0 250h40v-30h60M100 220h30v30" stroke="#1A6EFF" stroke-width=".8" opacity=".6" />
+            <path d="M400 0v50h60M460 50h30v40" stroke="#00D4FF" stroke-width=".8" opacity=".5" />
+            <rect x="248" y="138" width="24" height="18" rx="2" stroke="#00D4FF" stroke-width=".6" opacity=".4" />
+          </svg>
+
+          <div class="front-top">
+            <div class="aa-logo-mark">
+              <span class="logo-text">AA</span>
+              <span class="logo-sub" data-i18n="card_company">Technology</span>
+            </div>
+            <div class="holo-chip"></div>
+          </div>
+
+          <div class="front-mid">
+            <div class="person-name" data-i18n="card_name">Ali Satarzade</div>
+            <div class="person-title" data-i18n="card_title">Founder & CEO</div>
+            <div class="person-dept" data-i18n="card_dept">Engineering · Product · Vision</div>
+          </div>
+
+          <div class="front-bot">
+            <div class="contact-mini">
+              <div class="contact-row">
+                <svg viewBox="0 0 10 10" fill="none" stroke="#00D4FF" stroke-width="1.4" stroke-linecap="round">
+                  <rect x="1" y="2" width="8" height="6" rx="1" />
+                  <path d="M1 3l4 3 4-3" />
+                </svg>
+                sodeep@aa-tech.io
+              </div>
+              <div class="contact-row">
+                <svg viewBox="0 0 10 10" fill="none" stroke="#00D4FF" stroke-width="1.4" stroke-linecap="round">
+                  <circle cx="5" cy="5" r="4" />
+                  <path d="M1 5h8" />
+                  <path d="M5 1c-1.5 1-2 2.5-2 4s.5 3 2 4M5 1c1.5 1 2 2.5 2 4s-.5 3-2 4" />
+                </svg>
+                aa-tech.io
+              </div>
+              <div class="contact-row">
+                <svg viewBox="0 0 10 10" fill="none" stroke="#00D4FF" stroke-width="1.4" stroke-linecap="round">
+                  <rect x="1" y="1.5" width="8" height="7" rx="1" />
+                  <path d="M1 4h8" />
+                  <path d="M3.5 1.5v2M6.5 1.5v2" />
+                  <rect x="2.5" y="5.5" width="1.5" height="1.5" rx=".2" />
+                  <rect x="6" y="5.5" width="1.5" height="1.5" rx=".2" />
+                </svg>
+                +49 30 1234 5678
+              </div>
+            </div>
+            <div class="flip-hint" data-i18n="flip_hint">flip →</div>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="card-face card-back">
+          <div class="back-logo">AA</div>
+          <div class="back-tagline" data-i18n="back_tagline">Perfection Is What We Present</div>
+          <div class="back-divider"></div>
+          <div class="back-url">aa-tech.io</div>
+          <!-- Minimal QR-style decorative mark -->
+          <div class="qr-box">
+            <svg viewBox="0 0 60 60" fill="none">
+              <rect x="2" y="2" width="22" height="22" rx="2" stroke="#00D4FF" stroke-width="1.5" />
+              <rect x="6" y="6" width="14" height="14" rx="1" fill="rgba(0,212,255,.15)" stroke="#00D4FF"
+                stroke-width="1" />
+              <rect x="9" y="9" width="8" height="8" rx=".5" fill="#00D4FF" />
+              <rect x="36" y="2" width="22" height="22" rx="2" stroke="#7B2FFF" stroke-width="1.5" />
+              <rect x="40" y="6" width="14" height="14" rx="1" fill="rgba(123,47,255,.15)" stroke="#7B2FFF"
+                stroke-width="1" />
+              <rect x="43" y="9" width="8" height="8" rx=".5" fill="#7B2FFF" />
+              <rect x="2" y="36" width="22" height="22" rx="2" stroke="#1A6EFF" stroke-width="1.5" />
+              <rect x="6" y="40" width="14" height="14" rx="1" fill="rgba(26,110,255,.15)" stroke="#1A6EFF"
+                stroke-width="1" />
+              <rect x="9" y="43" width="8" height="8" rx=".5" fill="#1A6EFF" />
+              <rect x="36" y="36" width="4" height="4" rx=".5" fill="#00D4FF" opacity=".7" />
+              <rect x="42" y="36" width="4" height="4" rx=".5" fill="#00D4FF" opacity=".4" />
+              <rect x="48" y="36" width="4" height="4" rx=".5" fill="#7B2FFF" opacity=".7" />
+              <rect x="36" y="42" width="4" height="4" rx=".5" fill="#7B2FFF" opacity=".4" />
+              <rect x="42" y="42" width="4" height="4" rx=".5" fill="#00E5A0" opacity=".7" />
+              <rect x="48" y="42" width="4" height="4" rx=".5" fill="#00D4FF" opacity=".5" />
+              <rect x="36" y="48" width="4" height="4" rx=".5" fill="#00D4FF" opacity=".5" />
+              <rect x="42" y="48" width="4" height="4" rx=".5" fill="#7B2FFF" opacity=".6" />
+              <rect x="48" y="48" width="4" height="4" rx=".5" fill="#00E5A0" opacity=".4" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FLIP BUTTON -->
+    <button class="flip-btn"
+      onclick="const c=document.getElementById('card');c.style.transform='';c.classList.toggle('flipped')">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M2 7a5 5 0 109.5-2M12 5V2M12 2H9" />
+      </svg>
+      <span data-i18n="btn_flip">Flip Card</span>
+    </button>
+
+    <!-- ── EXPLANATION ── -->
+    <div class="explain">
+      <div class="explain-header">
+        <span class="explain-tag" data-i18n="ex_tag">// Card Details</span>
+        <span class="explain-title" data-i18n="ex_title">About This Card & How to Reach Me</span>
+      </div>
+
+      <div class="explain-grid">
+        <div class="explain-item">
+          <div class="ei-label" data-i18n="ei1_l">Name</div>
+          <div class="ei-val" data-i18n="ei1_v">Ali Satarzade</div>
+          <div class="ei-sub" data-i18n="ei1_s">Founder & CEO, AA Technology</div>
+        </div>
+        <div class="explain-item">
+          <div class="ei-label" data-i18n="ei2_l">Company</div>
+          <div class="ei-val">AA Technology</div>
+          <div class="ei-sub" data-i18n="ei2_s">Engineering · AI · Mobile · Web</div>
+        </div>
+        <div class="explain-item">
+          <div class="ei-label" data-i18n="ei3_l">Location</div>
+          <div class="ei-val" data-i18n="ei3_v">tehran</div>
+          <div class="ei-sub" data-i18n="ei3_s">Available globally · Remote-first</div>
+        </div>
+        <div class="explain-item">
+          <div class="ei-label" data-i18n="ei4_l">Response Time</div>
+          <div class="ei-val" data-i18n="ei4_v">Within 24 hours</div>
+          <div class="ei-sub" data-i18n="ei4_s">Mon – Fri · Business hours CET</div>
+        </div>
+      </div>
+
+      <!-- CONTACT LINKS -->
+      <div class="contact-links">
+
+        <a class="contact-link" href="mailto:sodeep@aa-tech.io">
+          <div class="cl-icon" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);">
+            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clE)" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <defs>
+                <linearGradient id="clE" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00D4FF" />
+                  <stop offset="100%" stop-color="#1A6EFF" />
+                </linearGradient>
+              </defs>
+              <rect x="2" y="4" width="14" height="10" rx="2" />
+              <path d="M2 5.5l7 5.5 7-5.5" />
+            </svg>
+          </div>
+          <div class="cl-body">
+            <div class="cl-label" data-i18n="cl1_l">Email — Direct</div>
+            <div class="cl-val">sodeep@aa-tech.io</div>
+          </div>
+          <span class="cl-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="tel:+4930123456789">
+          <div class="cl-icon" style="background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.15);">
+            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clP)" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <defs>
+                <linearGradient id="clP" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00E5A0" />
+                  <stop offset="100%" stop-color="#00D4FF" />
+                </linearGradient>
+              </defs>
+              <rect x="5" y="2" width="8" height="14" rx="2" />
+              <path d="M8 14h2" />
+              <path d="M7 4.5h4" />
+            </svg>
+          </div>
+          <div class="cl-body">
+            <div class="cl-label" data-i18n="cl2_l">Phone</div>
+            <div class="cl-val">&lrm;0912 0144 182</div>
+          </div>
+          <span class="cl-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="https://aa-tech.io" target="_blank">
+          <div class="cl-icon" style="background:rgba(26,110,255,.1);border-color:rgba(26,110,255,.2);">
+            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clW)" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <defs>
+                <linearGradient id="clW" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1A6EFF" />
+                  <stop offset="100%" stop-color="#00D4FF" />
+                </linearGradient>
+              </defs>
+              <circle cx="9" cy="9" r="7" />
+              <path d="M2 9h14" />
+              <path d="M9 2c-2 1.5-3 4-3 7s1 5.5 3 7M9 2c2 1.5 3 4 3 7s-1 5.5-3 7" />
+            </svg>
+          </div>
+          <div class="cl-body">
+            <div class="cl-label" data-i18n="cl3_l">Website</div>
+            <div class="cl-val">aa-tech.io</div>
+          </div>
+          <span class="cl-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="https://linkedin.com/in/sodeep" target="_blank">
+          <div class="cl-icon" style="background:rgba(10,102,194,.12);border-color:rgba(10,102,194,.2);">
+            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clL)" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round">
+              <defs>
+                <linearGradient id="clL" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0A66C2" />
+                  <stop offset="100%" stop-color="#00D4FF" />
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="14" height="14" rx="2.5" />
+              <path d="M6 8v5M6 6v.5" />
+              <path d="M9 13V9.5c0-1 .8-1.5 1.5-1.5s1.5.5 1.5 1.5V13" />
+              <circle cx="6" cy="5.8" r=".6" fill="#00D4FF" stroke="none" />
+            </svg>
+          </div>
+          <div class="cl-body">
+            <div class="cl-label" data-i18n="cl4_l">LinkedIn</div>
+            <div class="cl-val">linkedin.com/in/sodeep</div>
+          </div>
+          <span class="cl-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /* CURSOR */
+    const cursor = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function a() { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; rx += (mx - rx) * .13; ry += (my - ry) * .13; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(a); })();
+
+    /* BG CANVAS */
+    const cv = document.getElementById('bg'), ctx = cv.getContext('2d');
+    let W, H, pts = [];
+    function resize() { W = cv.width = window.innerWidth; H = cv.height = window.innerHeight; }
+    function initPts() { pts = []; const n = Math.min(Math.floor(W * H / 10000), 80); for (let i = 0; i < n; i++)pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, r: Math.random() * 1.6 + .5, col: Math.random() > .5 ? '0,212,255' : '123,47,255', p: Math.random() * Math.PI * 2 }); }
+    function draw() { ctx.clearRect(0, 0, W, H); const t = Date.now() * .001; const g = ctx.createRadialGradient(W * .5, H * .5, 0, W * .5, H * .5, W * .6); g.addColorStop(0, 'rgba(123,47,255,.06)'); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); for (let i = 0; i < pts.length; i++) { const p = pts[i]; p.p += .01; p.x += p.vx; p.y += p.vy; if (p.x < 0) p.x = W; if (p.x > W) p.x = 0; if (p.y < 0) p.y = H; if (p.y > H) p.y = 0; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * (1 + .12 * Math.sin(p.p)), 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.col},${.2 + .15 * Math.sin(p.p)})`; ctx.fill(); } requestAnimationFrame(draw); }
+    window.addEventListener('resize', () => { resize(); initPts(); }); resize(); initPts(); draw();
+
+    /* 3D CARD TILT on mouse */
+    const card = document.getElementById('card');
+    card.addEventListener('mousemove', e => {
+      if (card.classList.contains('flipped')) return;
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `rotateY(${x * 18}deg) rotateX(${-y * 12}deg) scale(1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      if (card.classList.contains('flipped')) return;
+      card.style.transform = '';
+    });
+    card.addEventListener('click', () => {
+      card.style.transform = '';
+      card.classList.toggle('flipped');
+    });
+
+    /* LANG */
+    window.AA = window.AA || {};
+    AA.translations = {
+      en: {
+        card_company: 'Technology', card_name: 'Ali Satarzade', card_title: 'Founder & CEO',
+        card_dept: 'Engineering · Product · Vision',
+        back_tagline: 'Perfection Is What We Present',
+        flip_hint: 'flip →', btn_flip: 'Flip Card',
+        ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
+        ei1_l: 'Name', ei1_v: 'Ali Satarzade', ei1_s: 'Founder & CEO, AA Technology',
+        ei2_l: 'Company', ei2_s: 'Engineering · AI · Mobile · Web',
+        ei3_l: 'Location', ei3_v: 'tehran', ei3_s: 'Available globally · Remote-first',
+        ei4_l: 'Response Time', ei4_v: 'Within 24 hours', ei4_s: 'Mon – Fri · Business hours CET',
+        cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
+      },
+      fa: {
+        card_company: 'فناوری', card_name: 'علی ستارزاده', card_title: 'بنیان‌گذار و مدیرعامل',
+        card_dept: 'مهندسی · محصول · چشم‌انداز',
+        back_tagline: 'کمال آن چیزی‌ست که ارائه می‌دهیم',
+        flip_hint: '← برگردان', btn_flip: 'برگرداندن کارت',
+        ex_tag: '// جزئیات کارت', ex_title: 'درباره این کارت و چطور با من تماس بگیرید',
+        ei1_l: 'نام', ei1_v: 'علی ستارزاده', ei1_s: 'بنیان‌گذار و مدیرعامل، AA Technology',
+        ei2_l: 'شرکت', ei2_s: 'مهندسی · هوش مصنوعی · موبایل · وب',
+        ei3_l: 'مکان', ei3_v: 'تهران', ei3_s: 'در دسترس جهانی · دورکاری',
+        ei4_l: 'زمان پاسخ', ei4_v: 'ظرف ۲۴ ساعت', ei4_s: 'دوشنبه تا جمعه · ساعات اداری CET',
+        cl1_l: 'ایمیل — مستقیم', cl2_l: 'تلفن', cl3_l: 'وب‌سایت', cl4_l: 'لینکدین',
+      }
+    };
+    AA.currentLang = localStorage.getItem('aa_lang') || 'fa';
+    AA.applyLang = function (lang) {
+      AA.currentLang = lang; localStorage.setItem('aa_lang', lang);
+      const t = AA.translations[lang], html = document.documentElement;
+      html.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+      html.setAttribute('lang', lang === 'fa' ? 'fa' : 'en');
+      document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.innerHTML = t[k]; });
+      document.body.style.opacity = '0'; document.body.style.transition = 'opacity .2s';
+      requestAnimationFrame(() => { document.body.style.opacity = '1'; });
+      const btnEN = document.getElementById('btnEN'), btnFA = document.getElementById('btnFA'), slider = document.getElementById('langSlider');
+      if (lang === 'en') { btnEN.classList.add('active'); btnFA.classList.remove('active'); slider.style.transform = 'translateX(0)'; slider.style.width = btnEN.offsetWidth + 'px'; }
+      else { btnFA.classList.add('active'); btnEN.classList.remove('active'); slider.style.transform = `translateX(${btnEN.offsetWidth}px)`; slider.style.width = btnFA.offsetWidth + 'px'; }
+    };
+    AA.toggleLang = function () { AA.applyLang(AA.currentLang === 'en' ? 'fa' : 'en'); };
+    window.addEventListener('load', () => {
+      const btnEN = document.getElementById('btnEN'), slider = document.getElementById('langSlider');
+      if (btnEN && slider) slider.style.width = btnEN.offsetWidth + 'px';
+      AA.applyLang(AA.currentLang);
+    });
+  </script>
+</body>
+
+</html>
