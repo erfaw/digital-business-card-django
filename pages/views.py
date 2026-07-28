@@ -1,3 +1,13 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    """
+    Render actual digital business card.
+    """
+    return render(request, "index.html")
+
+def dashboard(request):
+    """
+    Render dashboard to manipulate details of card.
+    """
+    return render(request, "dashboard.html")
