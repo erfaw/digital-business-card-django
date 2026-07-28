@@ -571,7 +571,7 @@
 
       <!-- FORM SIDE -->
       <div>
-        <form method="POST" action="" >
+        <form method="POST" action="{% url 'dashboard' %}" > {% csrf_token %}
           <div class="panel">
             <div class="panel-title"><span class="panel-tag">// اطلاعات شخصی</span>
               <h2>نام و سمت</h2>
