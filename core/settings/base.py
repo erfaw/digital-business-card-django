@@ -5,12 +5,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DEBUG = True
 
 INSTALLED_APPS = [
+    # Built-in apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Inserted apps
+    "pages.apps.PagesConfig",
 ]
 
 MIDDLEWARE = [
@@ -28,7 +31,7 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR/'pages'/'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
