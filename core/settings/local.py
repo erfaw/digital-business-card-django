@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DEBUG = True
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
