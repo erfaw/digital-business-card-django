@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پنل مدیریت — AA Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #050A1F;
+      --dark: #0D1A3A;
+      --panel: #0F1D3A;
+      --cyan: #00D4FF;
+      --violet: #7B2FFF;
+      --blue: #1A6EFF;
+      --green: #00E5A0;
+      --white: #F0F8FF;
+      --dim: rgba(240, 248, 255, .55);
+      --dim2: rgba(240, 248, 255, .22);
+      --border: rgba(0, 212, 255, .18);
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Vazirmatn', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* subtle backdrop glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 15% 10%, rgba(123, 47, 255, .10), transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(0, 212, 255, .08), transparent 45%);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    /* HEADER */
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .brand-mark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -.04em;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: .68rem;
+      color: var(--dim);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .status-pill {
+      font-family: 'Space Mono', monospace;
+      font-size: .66rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .4rem .9rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--dim);
+      background: rgba(240, 248, 255, .03);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      transition: border-color .2s, color .2s;
+    }
+
+    .status-pill .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .status-pill.unsaved {
+      color: var(--cyan);
+      border-color: rgba(0, 212, 255, .4);
+    }
+
+    .status-pill.unsaved .dot {
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+    }
+
+    /* LAYOUT */
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    @media(max-width:900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PANEL / FORM CARD */
+    .panel {
+      background: rgba(13, 26, 58, .55);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .panel-title {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: .9rem;
+      border-bottom: 1px solid rgba(0, 212, 255, .1);
+    }
+
+    .panel-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: .62rem;
+      color: var(--cyan);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .panel-title h2 {
+      font-size: .98rem;
+      font-weight: 700;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media(max-width:480px) {
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+
+    .field.full {
+      grid-column: 1/-1;
+    }
+
+    .field label {
+      font-family: 'Space Mono', monospace;
+      font-size: .64rem;
+      color: var(--dim);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: .88rem;
+      color: var(--white);
+      background: rgba(5, 10, 31, .6);
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 10px;
+      padding: .65rem .8rem;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      direction: auto;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--cyan);
+      background: rgba(0, 212, 255, .04);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 60px;
+      font-family: 'Space Mono', monospace;
+      font-size: .78rem;
+    }
+
+    .hint {
+      font-size: .7rem;
+      color: var(--dim2);
+      margin-top: .15rem;
+    }
+
+    /* ACTIONS */
+    .actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      position: sticky;
+      bottom: 1rem;
+      z-index: 5;
+    }
+
+    .btn {
+      font-family: 'Space Mono', monospace;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-radius: 99px;
+      padding: .75rem 1.5rem;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: rgba(5, 10, 31, .85);
+      color: var(--white);
+      backdrop-filter: blur(10px);
+      transition: border-color .2s, background .2s, transform .15s;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: var(--navy);
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .btn.primary:hover {
+      box-shadow: 0 6px 24px rgba(0, 212, 255, .35);
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    .btn.danger:hover {
+      border-color: #ff4d6a;
+      color: #ff4d6a;
+    }
+
+    /* PREVIEW SIDE */
+    .preview-side {
+      position: sticky;
+      top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .preview-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .66rem;
+      color: var(--dim);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+
+    .card-scene {
+      perspective: 1200px;
+      width: 100%;
+    }
+
+    .card {
+      width: 100%;
+      aspect-ratio: 1.75;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+      cursor: pointer;
+    }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--panel) 60%, rgba(0, 212, 255, .06) 100%);
+      border: 1px solid rgba(0, 212, 255, .22);
+      box-shadow: 0 0 0 1px rgba(0, 212, 255, .08) inset, 0 30px 60px rgba(0, 0, 0, .55), 0 0 40px rgba(0, 212, 255, .08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.1rem, 4%, 1.6rem);
+    }
+
+    .front-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      letter-spacing: -.04em;
+      background: linear-gradient(90deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-sub {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.4rem, .9vw, .55rem);
+      color: var(--dim);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .holo-chip {
+      width: clamp(24px, 6%, 36px);
+      height: clamp(18px, 4.5%, 26px);
+      border-radius: 4px;
+      background: linear-gradient(135deg, #c8a96e, #f0d090, #c8a96e, #a07040);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .4);
+    }
+
+    .front-mid {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    .person-name {
+      font-weight: 700;
+      font-size: clamp(1rem, 3.5vw, 1.4rem);
+      letter-spacing: -.01em;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+
+    .person-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.5rem, 1.2vw, .68rem);
+      color: var(--cyan);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .person-dept {
+      font-size: clamp(.58rem, 1.3vw, .72rem);
+      color: var(--dim);
+    }
+
+    .front-bot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .contact-mini {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
+    .contact-row {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.42rem, .9vw, .56rem);
+      color: var(--dim);
+      letter-spacing: .02em;
+      word-break: break-all;
+    }
+
+    .flip-hint {
+      font-family: 'Space Mono', monospace;
+      font-size: .5rem;
+      color: rgba(0, 212, 255, .4);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .card-back {
+      background: linear-gradient(135deg, var(--panel) 0%, var(--dark) 100%);
+      border: 1px solid rgba(123, 47, 255, .22);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, .55);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .back-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 7vw, 2.4rem);
+      letter-spacing: -.04em;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .back-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.48rem, 1vw, .62rem);
+      color: var(--dim);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      max-width: 80%;
+    }
+
+    .back-divider {
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+
+    .back-url {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(.5rem, 1.1vw, .66rem);
+      color: var(--cyan);
+      letter-spacing: .08em;
+    }
+
+    .flip-note {
+      font-family: 'Space Mono', monospace;
+      font-size: .66rem;
+      color: var(--dim);
+      text-align: center;
+    }
+
+    /* CONTACT LIST PREVIEW */
+    .mini-links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .mini-link {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      background: rgba(13, 26, 58, .6);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 10px;
+      padding: .6rem .85rem;
+      font-size: .78rem;
+    }
+
+    .mini-link .dot2 {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .mini-link .ml-label {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      color: var(--dim);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .mini-link .ml-val {
+      color: var(--white);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: rgba(5, 10, 31, .95);
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-family: 'Space Mono', monospace;
+      font-size: .75rem;
+      letter-spacing: .06em;
+      padding: .7rem 1.4rem;
+      border-radius: 99px;
+      z-index: 99;
+      transition: transform .35s cubic-bezier(.22, 1, .36, 1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="top">
+      <div class="brand">
+        <span class="brand-mark">AA</span>
+        <div>
+          <div class="brand-sub">پنل مدیریت کارت ویزیت</div>
+        </div>
+      </div>
+      <div class="status-pill" id="statusPill"><span class="dot"></span><span id="statusText">همه چیز ذخیره شده</span>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <!-- FORM SIDE -->
+      <div>
+
+        <div class="panel">
+          <div class="panel-title"><span class="panel-tag">// اطلاعات شخصی</span>
+            <h2>نام و سمت</h2>
+          </div>
+          <div class="field-grid">
+            <div class="field"><label>نام</label><input type="text" id="f_name" placeholder="علی ستارزاده"></div>
+            <div class="field"><label>سمت شغلی</label><input type="text" id="f_title"
+                placeholder="بنیان‌گذار و مدیرعامل"></div>
+            <div class="field full"><label>توضیح تخصص</label><input type="text" id="f_dept"
+                placeholder="مهندسی · محصول · چشم‌انداز"></div>
+            <div class="field"><label>نام شرکت (زیرنویس لوگو)</label><input type="text" id="f_company"
+                placeholder="فناوری"></div>
+            <div class="field"><label>تگ‌لاین پشت کارت</label><input type="text" id="f_tagline"
+                placeholder="کمال آن چیزی‌ست که ارائه می‌دهیم"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title"><span class="panel-tag">// اطلاعات تماس</span>
+            <h2>راه‌های ارتباطی</h2>
+          </div>
+          <div class="field-grid">
+            <div class="field"><label>ایمیل</label><input type="email" id="f_email" placeholder="sodeep@aa-tech.io">
+            </div>
+            <div class="field"><label>شماره تلفن</label><input type="tel" id="f_phone" placeholder="0912 0144 182">
+            </div>
+            <div class="field"><label>وب‌سایت (نمایشی)</label><input type="text" id="f_website"
+                placeholder="aa-tech.io"></div>
+            <div class="field"><label>لینک وب‌سایت (URL)</label><input type="text" id="f_websiteUrl"
+                placeholder="https://aa-tech.io"></div>
+            <div class="field"><label>لینکدین (نمایشی)</label><input type="text" id="f_linkedin"
+                placeholder="linkedin.com/in/sodeep"></div>
+            <div class="field"><label>لینک لینکدین (URL)</label><input type="text" id="f_linkedinUrl"
+                placeholder="https://linkedin.com/in/sodeep"></div>
+            <div class="field"><label>مکان</label><input type="text" id="f_location" placeholder="تهران"></div>
+            <div class="field"><label>زمان پاسخ‌گویی</label><input type="text" id="f_response"
+                placeholder="ظرف ۲۴ ساعت"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title"><span class="panel-tag">// یادداشت</span>
+            <h2>راهنما</h2>
+          </div>
+          <div class="hint" style="font-size:.78rem;line-height:1.9;">
+            این پنل فقط سمت کاربر (فرانت‌اند) کار می‌کند و بدون هیچ سروری، مقادیر را در حافظهٔ محلی مرورگر
+            (localStorage) همین دستگاه ذخیره می‌کند.
+            با دکمهٔ «کپی کد جاسازی» می‌توانید مقادیر فعلی را به‌صورت یک قطعه کد جاوااسکریپت بگیرید و در ابتدای فایل
+            اصلی کارت ویزیت بچسبانید تا صفحهٔ عمومی هم همین اطلاعات را نشان دهد.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PREVIEW SIDE -->
+      <div class="preview-side">
+        <div class="preview-label">// پیش‌نمایش زنده</div>
+
+        <div class="card-scene">
+          <div class="card" id="previewCard">
+            <div class="card-face card-front">
+              <div class="front-top">
+                <div>
+                  <span class="logo-text">AA</span>
+                  <span class="logo-sub" id="p_company">فناوری</span>
+                </div>
+                <div class="holo-chip"></div>
+              </div>
+              <div class="front-mid">
+                <div class="person-name" id="p_name">علی ستارزاده</div>
+                <div class="person-title" id="p_title">بنیان‌گذار و مدیرعامل</div>
+                <div class="person-dept" id="p_dept">مهندسی · محصول · چشم‌انداز</div>
+              </div>
+              <div class="front-bot">
+                <div class="contact-mini">
+                  <div class="contact-row" id="p_email">sodeep@aa-tech.io</div>
+                  <div class="contact-row" id="p_website">aa-tech.io</div>
+                  <div class="contact-row" id="p_phone">+49 30 1234 5678</div>
+                </div>
+                <div class="flip-hint">flip →</div>
+              </div>
+            </div>
+            <div class="card-face card-back">
+              <div class="back-logo">AA</div>
+              <div class="back-tagline" id="p_tagline">کمال آن چیزی‌ست که ارائه می‌دهیم</div>
+              <div class="back-divider"></div>
+              <div class="back-url" id="p_website2">aa-tech.io</div>
+            </div>
+          </div>
+        </div>
+        <div class="flip-note">برای چرخاندن کارت کلیک کنید</div>
+
+        <div class="mini-links">
+          <div class="mini-link"><span class="dot2" style="background:var(--cyan);"></span>
+            <div><span class="ml-label">ایمیل</span><span class="ml-val" id="l_email">sodeep@aa-tech.io</span></div>
+          </div>
+          <div class="mini-link"><span class="dot2" style="background:var(--green);"></span>
+            <div><span class="ml-label">تلفن</span><span class="ml-val" id="l_phone">+49 30 1234 5678</span></div>
+          </div>
+          <div class="mini-link"><span class="dot2" style="background:var(--blue);"></span>
+            <div><span class="ml-label">وب‌سایت</span><span class="ml-val" id="l_website">aa-tech.io</span></div>
+          </div>
+          <div class="mini-link"><span class="dot2" style="background:#0A66C2;"></span>
+            <div><span class="ml-label">لینکدین</span><span class="ml-val" id="l_linkedin">linkedin.com/in/sodeep</span>
+            </div>
+          </div>
+          <div class="mini-link"><span class="dot2" style="background:var(--violet);"></span>
+            <div><span class="ml-label">مکان</span><span class="ml-val" id="l_location">برلین، آلمان</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" id="btnSave">ذخیره تغییرات</button>
+      <button class="btn ghost" id="btnCopy">کپی کد جاسازی</button>
+      <button class="btn ghost" id="btnExport">خروجی JSON</button>
+      <button class="btn danger" id="btnReset">بازگشت به پیش‌فرض</button>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DEFAULTS = {
+      name: 'علی ستارزاده', title: 'بنیان‌گذار و مدیرعامل', dept: 'مهندسی · محصول · چشم‌انداز',
+      company: 'فناوری', tagline: 'کمال آن چیزی‌ست که ارائه می‌دهیم',
+      email: 'sodeep@aa-tech.io', phone: '+49 30 1234 5678',
+      website: 'aa-tech.io', websiteUrl: 'https://aa-tech.io',
+      linkedin: 'linkedin.com/in/sodeep', linkedinUrl: 'https://linkedin.com/in/sodeep',
+      location: 'برلین، آلمان', response: 'ظرف ۲۴ ساعت'
+    };
+    const STORAGE_KEY = 'aa_card_data';
+    const fields = Object.keys(DEFAULTS);
+    let dirty = false;
+
+    function load() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? { ...DEFAULTS, ...JSON.parse(raw) } : { ...DEFAULTS };
+      } catch (e) { return { ...DEFAULTS }; }
+    }
+
+    function fillForm(data) {
+      fields.forEach(k => {
+        const el = document.getElementById('f_' + k);
+        if (el) el.value = data[k];
+      });
+    }
+
+    function updatePreview() {
+      const v = id => document.getElementById('f_' + id).value || DEFAULTS[id];
+      document.getElementById('p_name').textContent = v('name');
+      document.getElementById('p_title').textContent = v('title');
+      document.getElementById('p_dept').textContent = v('dept');
+      document.getElementById('p_company').textContent = v('company');
+      document.getElementById('p_tagline').textContent = v('tagline');
+      document.getElementById('p_email').textContent = v('email');
+      document.getElementById('p_website').textContent = v('website');
+      document.getElementById('p_website2').textContent = v('website');
+      document.getElementById('p_phone').textContent = v('phone');
+
+      document.getElementById('l_email').textContent = v('email');
+      document.getElementById('l_phone').textContent = v('phone');
+      document.getElementById('l_website').textContent = v('website');
+      document.getElementById('l_linkedin').textContent = v('linkedin');
+      document.getElementById('l_location').textContent = v('location');
+    }
+
+    function setDirty(state) {
+      dirty = state;
+      const pill = document.getElementById('statusPill'), text = document.getElementById('statusText');
+      if (state) { pill.classList.add('unsaved'); text.textContent = 'تغییرات ذخیره‌نشده'; }
+      else { pill.classList.remove('unsaved'); text.textContent = 'همه چیز ذخیره شده'; }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      clearTimeout(showToast._tm);
+      showToast._tm = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    function currentFormData() {
+      const data = {};
+      fields.forEach(k => { data[k] = document.getElementById('f_' + k).value.trim() || DEFAULTS[k]; });
+      return data;
+    }
+
+    function save() {
+      const data = currentFormData();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      setDirty(false);
+      showToast('ذخیره شد ✓');
+    }
+
+    function reset() {
+      if (!confirm('همهٔ مقادیر به حالت پیش‌فرض برگردانده شوند؟')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      fillForm(DEFAULTS);
+      updatePreview();
+      setDirty(false);
+      showToast('بازنشانی شد');
+    }
+
+    function exportJson() {
+      const data = currentFormData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'aa-card-data.json'; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function embedSnippet(data) {
+      return `<script>
+(function(){
+  var d=${JSON.stringify(data, null, 2)};
+  var m={
+    '[data-i18n="card_name"]':d.name,
+    '[data-i18n="card_title"]':d.title,
+    '[data-i18n="card_dept"]':d.dept,
+    '[data-i18n="card_company"]':d.company,
+    '[data-i18n="back_tagline"]':d.tagline,
+    '[data-i18n="ei1_v"]':d.name,
+    '[data-i18n="ei3_v"]':d.location,
+    '[data-i18n="ei4_v"]':d.response
+  };
+  Object.keys(m).forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){el.textContent=m[sel];});
+  });
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(el){
+    el.href='mailto:'+d.email;
+    var val=el.querySelector('.cl-val');if(val)val.textContent=d.email;
+  });
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.href='tel:'+d.phone.replace(/\\s+/g,'');
+    var val=el.querySelector('.cl-val');if(val)val.textContent=d.phone;
+  });
+  document.querySelectorAll('.contact-row').forEach(function(el){
+    if(el.textContent.indexOf('@')>-1)el.lastChild.textContent=' '+d.email;
+  });
+})();
+<\/script>`;
+    }
+
+    async function copyEmbed() {
+      const data = currentFormData();
+      const code = embedSnippet(data);
+      try {
+        await navigator.clipboard.writeText(code);
+        showToast('کد جاسازی کپی شد ✓');
+      } catch (e) {
+        prompt('کد را کپی کنید:', code);
+      }
+    }
+
+    document.addEventListener('input', e => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        updatePreview();
+        setDirty(true);
+      }
+    });
+
+    document.getElementById('previewCard').addEventListener('click', function () {
+      this.classList.toggle('flipped');
+    });
+
+    document.getElementById('btnSave').addEventListener('click', save);
+    document.getElementById('btnReset').addEventListener('click', reset);
+    document.getElementById('btnExport').addEventListener('click', exportJson);
+    document.getElementById('btnCopy').addEventListener('click', copyEmbed);
+
+    window.addEventListener('beforeunload', e => {
+      if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    });
+
+    (function init() {
+      const data = load();
+      fillForm(data);
+      updatePreview();
+      setDirty(false);
+    })();
+  </script>
+</body>
+
+</html>
