@@ -1047,18 +1047,18 @@
     window.AA = window.AA || {};
     AA.translations = {
       en: {
-        card_company: 'Technology', card_name: 'Ali Satarzade', card_title: 'Founder & CEO',
-        card_dept: 'Engineering · Product · Vision',
-        back_tagline: 'Perfection Is What We Present',
+        card_company: '{{ owner.logo_sub }}', card_name: '{{ owner.name }}', card_title: '{{ owner.role }}',
+        card_dept: '{{ owner.description }}',
+        back_tagline: '{{ owner.tag_behind }}',
         flip_hint: 'flip →', btn_flip: 'Flip Card',
         ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
-        ei1_l: 'Name', ei1_v: 'Ali Satarzade', ei1_s: 'Founder & CEO, AA Technology',
+        ei1_l: 'Name', ei1_v: '{{ owner.name }}', ei1_s: '{{ owner.role }}',
         ei2_l: 'Company', ei2_s: 'Engineering · AI · Mobile · Web',
-        ei3_l: 'Location', ei3_v: 'tehran', ei3_s: 'Available globally · Remote-first',
-        ei4_l: 'Response Time', ei4_v: 'Within 24 hours', ei4_s: 'Mon – Fri · Business hours CET',
+        ei3_l: 'Location', ei3_v: '{{ owner.location }}', ei3_s: 'Available globally · Remote-first',
+        ei4_l: 'Response Time', ei4_v: '{{ owner.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
         cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
       },
-      fa: {
+       /* fa: {
         card_company: 'فناوری', card_name: 'علی ستارزاده', card_title: 'بنیان‌گذار و مدیرعامل',
         card_dept: 'مهندسی · محصول · چشم‌انداز',
         back_tagline: 'کمال آن چیزی‌ست که ارائه می‌دهیم',
@@ -1069,9 +1069,22 @@
         ei3_l: 'مکان', ei3_v: 'تهران', ei3_s: 'در دسترس جهانی · دورکاری',
         ei4_l: 'زمان پاسخ', ei4_v: 'ظرف ۲۴ ساعت', ei4_s: 'دوشنبه تا جمعه · ساعات اداری CET',
         cl1_l: 'ایمیل — مستقیم', cl2_l: 'تلفن', cl3_l: 'وب‌سایت', cl4_l: 'لینکدین',
-      }
+      } */
+    //  <!-- TODO make translation for english fields. -->
+      fa: {
+        card_company: '{{ owner.logo_sub }}', card_name: '{{ owner.name }}', card_title: '{{ owner.role }}',
+        card_dept: '{{ owner.description }}',
+        back_tagline: '{{ owner.tag_behind }}',
+        flip_hint: 'flip →', btn_flip: 'Flip Card',
+        ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
+        ei1_l: 'Name', ei1_v: '{{ owner.name }}', ei1_s: '{{ owner.role }}',
+        ei2_l: 'Company', ei2_s: 'Engineering · AI · Mobile · Web',
+        ei3_l: 'Location', ei3_v: '{{ owner.location }}', ei3_s: 'Available globally · Remote-first',
+        ei4_l: 'Response Time', ei4_v: '{{ owner.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
+        cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
+      },
     };
-    AA.currentLang = localStorage.getItem('aa_lang') || 'fa';
+    AA.currentLang = localStorage.getItem('aa_lang') || 'en';
     AA.applyLang = function (lang) {
       AA.currentLang = lang; localStorage.setItem('aa_lang', lang);
       const t = AA.translations[lang], html = document.documentElement;
