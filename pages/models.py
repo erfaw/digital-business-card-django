@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import CharField, TextField, EmailField, URLField
+from datetime import datetime
 
 
 class OwnerInfoModel(models.Model): # TODO check end-to-end and modify if needed field constraints. i guess some of them need to be changed or need to has condition in html. 
@@ -22,4 +23,12 @@ class OwnerInfoModel(models.Model): # TODO check end-to-end and modify if needed
     def __str__(self):
         return self.name
 
-# TODO make a contact model to store data submited.
+
+class Contact(models.Model):
+    name= models.CharField(max_length= 200)
+    phone= models.CharField(max_length= 100)
+    message= models.TextField(blank= True)
+    contact_date= models.DateTimeField(default= datetime.now, blank= True)
+
+    def __str__(self):
+        return self.name
