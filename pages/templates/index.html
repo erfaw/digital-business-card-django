@@ -964,28 +964,30 @@
           <span class="cl-arrow">→</span>
         </a>
 
-        <a class="contact-link" href="https://aa-tech.io" target="_blank">
-          <div class="cl-icon" style="background:rgba(26,110,255,.1);border-color:rgba(26,110,255,.2);">
-            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clW)" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <defs>
-                <linearGradient id="clW" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#1A6EFF" />
-                  <stop offset="100%" stop-color="#00D4FF" />
-                </linearGradient>
-              </defs>
-              <circle cx="9" cy="9" r="7" />
-              <path d="M2 9h14" />
-              <path d="M9 2c-2 1.5-3 4-3 7s1 5.5 3 7M9 2c2 1.5 3 4 3 7s-1 5.5-3 7" />
-            </svg>
-          </div>
-          <div class="cl-body">
-            <div class="cl-label" data-i18n="cl3_l">Website</div>
-            <div class="cl-val">aa-tech.io</div>
-          </div>
-          <span class="cl-arrow">→</span>
-        </a>
-
+        {% if owner.website != "" %}
+          <a class="contact-link" href="{{ owner.website }}" target="_blank">
+            <div class="cl-icon" style="background:rgba(26,110,255,.1);border-color:rgba(26,110,255,.2);">
+              <svg viewBox="0 0 18 18" fill="none" stroke="url(#clW)" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <defs>
+                  <linearGradient id="clW" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1A6EFF" />
+                    <stop offset="100%" stop-color="#00D4FF" />
+                  </linearGradient>
+                </defs>
+                <circle cx="9" cy="9" r="7" />
+                <path d="M2 9h14" />
+                <path d="M9 2c-2 1.5-3 4-3 7s1 5.5 3 7M9 2c2 1.5 3 4 3 7s-1 5.5-3 7" />
+              </svg>
+            </div>
+            <div class="cl-body">
+              <div class="cl-label" data-i18n="cl3_l">Website</div>
+              <div class="cl-val">{{ owner.website_preview }}</div>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+        {% endif %}
+        
         <a class="contact-link" href="https://linkedin.com/in/sodeep" target="_blank">
           <div class="cl-icon" style="background:rgba(10,102,194,.12);border-color:rgba(10,102,194,.2);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clL)" stroke-width="1.6" stroke-linecap="round"
