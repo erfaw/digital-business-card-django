@@ -988,7 +988,7 @@
           </a>
         {% endif %}
         
-        <a class="contact-link" href="https://linkedin.com/in/sodeep" target="_blank">
+        <a class="contact-link" href="{{ owner.linkedin }}" target="_blank">
           <div class="cl-icon" style="background:rgba(10,102,194,.12);border-color:rgba(10,102,194,.2);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clL)" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1006,7 +1006,7 @@
           </div>
           <div class="cl-body">
             <div class="cl-label" data-i18n="cl4_l">LinkedIn</div>
-            <div class="cl-val">linkedin.com/in/sodeep</div>
+            <div class="cl-val">{{ owner.linkedin_preview }}</div>
           </div>
           <span class="cl-arrow">→</span>
         </a>
