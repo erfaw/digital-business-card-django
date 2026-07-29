@@ -13,6 +13,7 @@ def index(request):
             message=request.POST.get("message"),
         )
         new_contact.save()
+        # TODO send mail and any kind of notification to owner here.
         return redirect("index") # TODO investigate in html for a message to show with query params
 
     all_records = OwnerInfoModel.objects.all().order_by("id")
