@@ -20,3 +20,5 @@ class OwnerInfoModel(models.Model):
 
     def __str__(self):
         return self.name
+
+# TODO make a contact model to store data submited.
