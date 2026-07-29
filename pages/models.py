@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models import CharField, TextField, EmailField, URLField
 
 
-class OwnerInfoModel(models.Model):
+class OwnerInfoModel(models.Model): # TODO check end-to-end and modify if needed field constraints. i guess some of them need to be changed or need to has condition in html. 
     name = CharField(max_length=50)
     role = CharField(max_length=100)
     description = TextField()
