@@ -845,8 +845,10 @@
           <div class="back-logo">AA</div>
           <div class="back-tagline" data-i18n="back_tagline">Perfection Is What We Present</div>
           <div class="back-divider"></div>
-          <div class="back-url">aa-tech.io</div>
-          <!-- Minimal QR-style decorative mark -->
+          {% if owner.website != "" %}
+            <div class="back-url">aa-tech.io</div>
+          {% endif %}
+            <!-- Minimal QR-style decorative mark -->
           <div class="qr-box">
             <svg viewBox="0 0 60 60" fill="none">
               <rect x="2" y="2" width="22" height="22" rx="2" stroke="#00D4FF" stroke-width="1.5" />
