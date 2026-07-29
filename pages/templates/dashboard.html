@@ -714,6 +714,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
+    /*
     const DEFAULTS = {
       name: 'علی ستارزاده', title: 'بنیان‌گذار و مدیرعامل', dept: 'مهندسی · محصول · چشم‌انداز',
       company: 'فناوری', tagline: 'کمال آن چیزی‌ست که ارائه می‌دهیم',
@@ -721,6 +722,15 @@
       website: 'aa-tech.io', websiteUrl: 'https://aa-tech.io',
       linkedin: 'linkedin.com/in/sodeep', linkedinUrl: 'https://linkedin.com/in/sodeep',
       location: 'برلین، آلمان', response: 'ظرف ۲۴ ساعت'
+    };
+    */  
+    const DEFAULTS = {
+      name: '', title: '', dept: '',
+      company: '', tagline: '',
+      email: '', phone: '',
+      website: '', websiteUrl: '',
+      linkedin: '', linkedinUrl: '',
+      location: '', response: ''
     };
     const STORAGE_KEY = 'aa_card_data';
     const fields = Object.keys(DEFAULTS);
