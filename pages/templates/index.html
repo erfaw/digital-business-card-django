@@ -813,7 +813,7 @@
                   <rect x="1" y="2" width="8" height="6" rx="1" />
                   <path d="M1 3l4 3 4-3" />
                 </svg>
-                sodeep@aa-tech.io
+                {{ owner.email }}
               </div>
               <div class="contact-row">
                 <svg viewBox="0 0 10 10" fill="none" stroke="#00D4FF" stroke-width="1.4" stroke-linecap="round">
@@ -917,7 +917,7 @@
       <!-- CONTACT LINKS -->
       <div class="contact-links">
 
-        <a class="contact-link" href="mailto:sodeep@aa-tech.io">
+        <a class="contact-link" href="mailto:{{ owner.email }}">
           <div class="cl-icon" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clE)" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
@@ -933,7 +933,7 @@
           </div>
           <div class="cl-body">
             <div class="cl-label" data-i18n="cl1_l">Email — Direct</div>
-            <div class="cl-val">sodeep@aa-tech.io</div>
+            <div class="cl-val">{{ owner.email }}</div>
           </div>
           <span class="cl-arrow">→</span>
         </a>
