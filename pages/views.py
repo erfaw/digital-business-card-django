@@ -4,7 +4,7 @@ from pages.models import OwnerInfoModel
 
 def index(request):
     """
-    Render actual digital business card.
+    Render actual digital business card in GET. Create a record for Contact() in POST.
     """
     all_records = OwnerInfoModel.objects.all().order_by("id")
     last_record = all_records.last() # TODO get record of loggen in user.
@@ -14,7 +14,7 @@ def index(request):
 
 def dashboard(request):
     """
-    Render dashboard to manipulate details of card.
+    Render dashboard to manipulate details of card in GET. Create a record for OwnerInfoModel() in POST.
     """
     # TODO render dashboard with previous data (modifiable)
     # TODO use `reuquest.POST.get()` instead
