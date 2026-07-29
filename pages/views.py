@@ -1,11 +1,20 @@
 from django.shortcuts import render, redirect
-from pages.models import OwnerInfoModel
+from pages.models import OwnerInfoModel, Contact
 
 
 def index(request):
     """
     Render actual digital business card in GET. Create a record for Contact() in POST.
     """
+    if request.method == "POST":
+        new_contact = Contact.objects.create(
+            name=request.POST.get("name"),
+            mobile_number=request.POST.get("mobile_number"),
+            message=request.POST.get("message"),
+        )
+        new_contact.save()
+        return redirect("index") # TODO investigate in html for a message to show with query params
+
     all_records = OwnerInfoModel.objects.all().order_by("id")
     last_record = all_records.last() # TODO get record of loggen in user.
     context = {"owner": last_record}
