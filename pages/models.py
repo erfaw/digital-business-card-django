@@ -17,6 +17,7 @@ class OwnerInfoModel(models.Model): # TODO check end-to-end and modify if needed
     location = CharField(blank=True)
     response_time = CharField(blank=True)
     # TODO good to have an avatar field to get an image.
+    # TODO good to have a field for Instagram, Telegram, GitHub, Docker Hub and so on.
 
     def __str__(self):
         return self.name
