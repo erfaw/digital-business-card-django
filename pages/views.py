@@ -16,6 +16,8 @@ def dashboard(request):
     """
     Render dashboard to manipulate details of card.
     """
+    # TODO render dashboard with previous data (modifiable)
+    # TODO use `reuquest.POST.get()` instead
     if request.method == "POST":
         new_owner = OwnerInfoModel.objects.create(
             name=request.POST["name"],
