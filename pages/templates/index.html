@@ -1067,7 +1067,8 @@
             <span class="cf-title" data-i18n="cf_title">Contact Us</span>
           </div>
 
-          <form class="contact-form" id="contactForm">
+          <form method="post" action="{% url 'index' %}" class="contact-form" id="contactForm">
+            {% csrf_token %}
             <div class="cf-row">
               <div class="cf-field">
                 <label class="cf-label" for="cfName" data-i18n="cf_name_l">Full Name</label>
@@ -1075,12 +1076,12 @@
               </div>
               <div class="cf-field">
                 <label class="cf-label" for="cfPhone" data-i18n="cf_phone_l">Phone Number</label>
-                <input class="cf-input" type="tel" id="cfPhone" name="phone" data-i18n-ph="cf_phone_ph" placeholder="+98 912 000 0000" autocomplete="tel" required/>
+                <input class="cf-input" type="tel" id="cfPhone" name="mobile_number" data-i18n-ph="cf_phone_ph" placeholder="+98 912 000 0000" autocomplete="tel" required/>
               </div>
             </div>
             <div class="cf-field">
               <label class="cf-label" for="cfDesc" data-i18n="cf_desc_l">Message</label>
-              <textarea class="cf-input cf-textarea" id="cfDesc" name="description" rows="4" data-i18n-ph="cf_desc_ph" placeholder="Tell us about your project…"></textarea>
+              <textarea class="cf-input cf-textarea" id="cfDesc" name="message" rows="4" data-i18n-ph="cf_desc_ph" placeholder="Tell us about your project…"></textarea>
             </div>
             <button class="cf-submit" type="submit">
               <span data-i18n="cf_submit">Send Message</span>
