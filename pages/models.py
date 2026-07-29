@@ -26,7 +26,7 @@ class OwnerInfoModel(models.Model): # TODO check end-to-end and modify if needed
 
 class Contact(models.Model):
     name= models.CharField(max_length= 200)
-    phone= models.CharField(max_length= 100)
+    mobile_number= models.CharField(max_length= 100)
     message= models.TextField(blank= True)
     contact_date= models.DateTimeField(default= datetime.now, blank= True)
 
