@@ -833,7 +833,7 @@
                   <rect x="2.5" y="5.5" width="1.5" height="1.5" rx=".2" />
                   <rect x="6" y="5.5" width="1.5" height="1.5" rx=".2" />
                 </svg>
-                +49 30 1234 5678
+                {{ owner.mobile_number }}
               </div>
             </div>
             <div class="flip-hint" data-i18n="flip_hint">flip →</div>
@@ -942,7 +942,7 @@
           <span class="cl-arrow">→</span>
         </a>
 
-        <a class="contact-link" href="tel:+4930123456789">
+        <a class="contact-link" href="tel:{{ owner.mobile_number }}">
           <div class="cl-icon" style="background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.15);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clP)" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
@@ -959,7 +959,7 @@
           </div>
           <div class="cl-body">
             <div class="cl-label" data-i18n="cl2_l">Phone</div>
-            <div class="cl-val">&lrm;0912 0144 182</div>
+            <div class="cl-val">&lrm;{{ owner.mobile_number }}</div>
           </div>
           <span class="cl-arrow">→</span>
         </a>
