@@ -3,7 +3,7 @@ from pages.models import OwnerInfoModel, Contact
 
 
 def index(request):
-    return render(request, "index.html")
+    return render(request, "pages/index.html")
 
 
 def public_card(request):
