@@ -25,43 +25,47 @@
             <form method="post" action="{% url 'register' %}" class="register-form">
                 {% csrf_token %}
 
-                <label>Full Name</label>
-                <div class="input-group">
-
-                    <input name="full_name" type="text" placeholder="John Doe">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Full Name</label>
+                    <input class="cf-input" type="text" id="cfName" name="full_name" data-i18n-ph="cf_name_ph"  autocomplete="name" required/>
                 </div>
 
-                <label>Username</label>
-                <div class="input-group">
+                <br>
 
-                    <input name="username" type="text">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Username</label>
+                    <input class="cf-input" type="text" id="cfName" name="username" data-i18n-ph="cf_name_ph"  autocomplete="username" required/>
                 </div>
 
-                <label>Email</label>
-                <div class="input-group">
+                <br>
 
-                    <input name="email" type="email" placeholder="john@example.com">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Email</label>
+                    <input class="cf-input" type="email" id="cfName" name="email" data-i18n-ph="cf_name_ph" autocomplete="email" required/>
                 </div>
 
-                <label>Password</label>
-                <div class="input-group">
+                <br>
 
-                    <input name="password" type="password" placeholder="••••••••">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Password</label>
+                    <input class="cf-input" type="password" id="cfName" name="password" data-i18n-ph="cf_name_ph" autocomplete="new-password" required/>
                 </div>
 
-                <label>Confirm Password</label>
-                <div class="input-group">
+                <br>
 
-                    <input name="password2" type="password" placeholder="••••••••">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Confirm Password</label>
+                    <input class="cf-input" type="password" id="cfName" name="password2" data-i18n-ph="cf_name_ph" autocomplete="new-password" required/>
                 </div>
 
-                <button type="submit" class="btn btn-primary register-btn">
-                    Create Account
+                <br>
+
+                <button class="cf-submit" type="submit">
+                    <span data-i18n="cf_submit">Register</span>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M2 8h12M9 3l5 5-5 5" />
+                    </svg>
                 </button>
 
             </form>
