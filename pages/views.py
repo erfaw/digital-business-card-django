@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from pages.models import OwnerInfoModel, Contact
 
 
 def index(request):
-    return HttpResponse("<h1>Home Page Here</h1>")
+    return render(request, "index.html")
 
 
 def public_card(request):
