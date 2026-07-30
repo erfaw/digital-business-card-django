@@ -24,7 +24,7 @@ def public_card(request):
     all_records = OwnerInfoModel.objects.all().order_by("id")
     last_record = all_records.last() # TODO get record of loggen in user.
     context = {"owner": last_record}
-    return render(request, "index.html", context=context)
+    return render(request, "public_card.html", context=context)
 
 
 def dashboard(request):
