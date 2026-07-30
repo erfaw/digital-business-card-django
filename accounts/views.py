@@ -18,7 +18,7 @@ from django.contrib import auth
     # else: 
     #     return render(request, 'accounts/login.html') 
 
-# def register(request):
+def register(request):
     # if request.method == "POST":
     #     first_name= request.POST['first_name']
     #     last_name= request.POST['last_name']
@@ -51,6 +51,7 @@ from django.contrib import auth
     #         return redirect('register')
     # else: 
     #     return render(request, 'accounts/register.html') 
+    return render(request, 'accounts/register.html') 
 
 # def dashboard(request):
     # user = User.objects.get(pk= request.user.id)
