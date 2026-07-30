@@ -7,6 +7,7 @@ from core.settings import base as base_setting
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("pages.urls")),
+    path('accounts/', include('accounts.urls')),
 ]
 
 if base_setting.DEBUG:
