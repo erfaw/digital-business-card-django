@@ -13,19 +13,35 @@
         <ul class="nav-links">
 
             <li>
-                <a href="{% url 'index' %}" class="active">
+                <a
+                {% if request.path == '/' %}
+                    class="active"
+                {% endif %}
+                href="{% url 'index' %}">
                     Home
                 </a>
             </li>
 
             <li>
-                <a href="{% url 'register' %}">
+                <a
+                {% if 'register' in request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                    class="nav-item mr-3"
+                {% endif %}
+                href="{% url 'register' %}">
                     Register
                 </a>
             </li>
 
             <li>
-                <a href="{% url 'login' %}">
+                <a
+                {% if 'login' in request.path %}
+                    class="nav-item active mr-3"
+                {% else %}
+                    class="nav-item mr-3"
+                {% endif %}
+                href="{% url 'login' %}">
                     Login
                 </a>
             </li>
