@@ -22,37 +22,45 @@
                 Create your account and start your journey with us.
             </p>
 
-            <form class="register-form">
+            <form method="post" action="{% url 'register' %}" class="register-form">
+                {% csrf_token %}
 
                 <label>Full Name</label>
                 <div class="input-group">
 
-                    <input type="text" placeholder="John Doe">
+                    <input name="full_name" type="text" placeholder="John Doe">
+
+                </div>
+
+                <label>Username</label>
+                <div class="input-group">
+
+                    <input name="username" type="text">
 
                 </div>
 
                 <label>Email</label>
                 <div class="input-group">
 
-                    <input type="email" placeholder="john@example.com">
+                    <input name="email" type="email" placeholder="john@example.com">
 
                 </div>
 
                 <label>Password</label>
                 <div class="input-group">
 
-                    <input type="password" placeholder="••••••••">
+                    <input name="password" type="password" placeholder="••••••••">
 
                 </div>
 
                 <label>Confirm Password</label>
                 <div class="input-group">
 
-                    <input type="password" placeholder="••••••••">
+                    <input name="password2" type="password" placeholder="••••••••">
 
                 </div>
 
-                <button class="btn btn-primary register-btn">
+                <button type="submit" class="btn btn-primary register-btn">
                     Create Account
                 </button>
 
