@@ -6,27 +6,26 @@
 
     <nav class="navbar">
 
-        <a href="#" class="logo">
-            <span class="logo-aa">AA</span>
-            <span class="logo-text">Technology</span>
+        <a href="{% url 'index' %}" class="logo">
+            <span class="logo-aa">Digital Business Card</span>
         </a>
 
         <ul class="nav-links">
 
             <li>
-                <a href="#" class="active">
+                <a href="{% url 'index' %}" class="active">
                     Home
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="{% url 'register' %}">
                     Register
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="{% url 'login' %}">
                     Login
                 </a>
             </li>
