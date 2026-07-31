@@ -21,6 +21,8 @@
             <p>
                 Create your account and start your journey with us.
             </p>
+            
+            {% include 'partials/_alert.html' %}
 
             <form method="post" action="{% url 'register' %}" class="register-form">
                 {% csrf_token %}
