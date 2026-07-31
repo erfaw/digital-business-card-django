@@ -396,3 +396,24 @@ if(password){
     });
 
 }
+
+/* ==========================================================
+   DISMISS ALERT
+========================================================== */
+
+document.querySelectorAll(".close").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const alert = button.closest(".alert");
+
+        if (!alert) return;
+
+        alert.style.transition = "opacity .25s ease";
+        alert.style.opacity = "0";
+
+        setTimeout(() => alert.remove(), 250);
+
+    });
+
+});
