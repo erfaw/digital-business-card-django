@@ -26,6 +26,7 @@ def public_card(request):
     return render(request, "public_card.html", context=context)
 
 
+# TODO make dashboard login required
 def dashboard(request):
     """
     Render dashboard to manipulate details of card in GET. Create a record for OwnerInfoModel() in POST.
