@@ -3,7 +3,10 @@ from django.db.models import CharField, TextField, EmailField, URLField
 from datetime import datetime
 
 
-class OwnerInfoModel(models.Model): # TODO check end-to-end and modify if needed field constraints. i guess some of them need to be changed or need to has condition in html. 
+class OwnerInfoModel(models.Model):
+# TODO check end-to-end and modify if needed field constraints. i guess some of them need to be changed or need to has condition in html.
+# TODO change name of class to something like BusinessCard
+# TODO connect to user
     name = CharField(max_length=50)
     role = CharField(max_length=100)
     description = TextField()
@@ -29,6 +32,7 @@ class Contact(models.Model):
     mobile_number= models.CharField(max_length= 100)
     message= models.TextField(blank= True)
     contact_date= models.DateTimeField(default= datetime.now, blank= True)
+    # TODO connect to user
 
     def __str__(self):
         return self.name
