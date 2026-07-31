@@ -1,12 +1,12 @@
 from django.db import models
-from django.db.models import CharField, TextField, EmailField, URLField
+from django.db.models import CharField, TextField, EmailField, URLField, OneToOneField
+from django.contrib.auth.models import User
 from datetime import datetime
 
 
 class OwnerInfoModel(models.Model):
 # TODO check end-to-end and modify if needed field constraints. i guess some of them need to be changed or need to has condition in html.
 # TODO change name of class to something like BusinessCard
-# TODO connect to user
     name = CharField(max_length=50)
     role = CharField(max_length=100)
     description = TextField()
@@ -20,6 +20,7 @@ class OwnerInfoModel(models.Model):
     linkedin_preview = CharField(blank=True)
     location = CharField(blank=True)
     response_time = CharField(blank=True)
+    user = OneToOneField(User, on_delete=models.CASCADE, related_name="business_card")
     # TODO good to have an avatar field to get an image.
     # TODO good to have a field for Instagram, Telegram, GitHub, Docker Hub and so on.
 
