@@ -21,31 +21,57 @@
                     Home
                 </a>
             </li>
+            {% if user.is_authenticated %}
 
-            <li>
-                <a
-                {% if 'register' in request.path %}
-                    class="nav-item active mr-3"
-                {% else %}
-                    class="nav-item mr-3"
-                {% endif %}
-                href="{% url 'register' %}">
-                    Register
-                </a>
-            </li>
+                <li>
+                    <a
+                    {% if 'dashboard' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+                    href="{% url 'dashboard' %}">
+                        Dashboard - {{ user.username }}
+                    </a>
+                </li>
 
-            <li>
-                <a
-                {% if 'login' in request.path %}
-                    class="nav-item active mr-3"
-                {% else %}
-                    class="nav-item mr-3"
-                {% endif %}
-                href="{% url 'login' %}">
-                    Login
-                </a>
-            </li>
+                <li>
+                    <a
+                    {% if 'logout' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+                    href="">
+                        Logout
+                    </a>
+                </li>
 
+            {% else %}
+                <li>
+                    <a
+                    {% if 'register' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+                    href="{% url 'register' %}">
+                        Register
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                    {% if 'login' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+                    href="{% url 'login' %}">
+                        Login
+                    </a>
+                </li>
+            {% endif %}
         </ul>
 
     </nav>
