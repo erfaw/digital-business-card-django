@@ -42,9 +42,13 @@
                     {% else %}
                         class="nav-item mr-3"
                     {% endif %}
-                    href="">
+                    href="javascript:{document.getElementById('logout').submit()}"">
                         Logout
                     </a>
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                        {% csrf_token %}
+                        <input type="hidden">
+                    </form>
                 </li>
 
             {% else %}
