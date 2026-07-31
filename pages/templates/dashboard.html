@@ -584,23 +584,23 @@
             <div class="field-grid">
               <div class="field">
                 <label for="name" >نام</label>
-                <input name="name" type="text" id="f_name" placeholder="Your Name">
+                <input name="name" type="text" id="f_name" placeholder="{{ request.user.business_card.name }}">
               </div>
               <div class="field">
                 <label for="role">سمت شغلی</label>
-                <input name="role" type="text" id="f_title" placeholder="Your Role">
+                <input name="role" type="text" id="f_title" placeholder="{{ request.user.business_card.role }}">
               </div>
               <div class="field full">
                 <label for="description">توضیح تخصص</label>
-                <input name="description" type="text" id="f_dept" placeholder="Description">
+                <input name="description" type="text" id="f_dept" placeholder="{{ request.user.business_card.description }}">
               </div>
               <div class="field">
                 <label for="logo_sub">نام شرکت (زیرنویس لوگو)</label>
-                <input name="logo_sub" type="text" id="f_company" placeholder="Logo Subtitle">
+                <input name="logo_sub" type="text" id="f_company" placeholder="{{ request.user.business_card.logo_sub }}">
               </div>
               <div class="field">
                 <label for="tag_behind">تگ‌لاین پشت کارت</label>
-                <input name="tag_behind" type="text" id="f_tagline" placeholder="Some Catchy line">
+                <input name="tag_behind" type="text" id="f_tagline" placeholder="{{ request.user.business_card.tag_behind }}">
               </div>
             </div>
           </div>
@@ -612,35 +612,35 @@
             <div class="field-grid">
               <div class="field">
                 <label for="email">ایمیل</label>
-                <input name="email" type="email" id="f_email" placeholder="example@gamil.com">
+                <input name="email" type="email" id="f_email" placeholder="{{ request.user.business_card.email }}">
               </div>
               <div class="field">
                 <label for="mobile_number">شماره تلفن</label>
-                <input name="mobile_number" type="tel" id="f_phone" placeholder="09XX XXX XXXX">
+                <input name="mobile_number" type="tel" id="f_phone" placeholder="{{ request.user.business_card.mobile_number }}">
               </div>
               <div class="field">
                 <label for="website_preview">وب‌سایت (نمایشی)</label>
-                <input name="website_preview" type="text" id="f_website" placeholder="aa-tech.io">
+                <input name="website_preview" type="text" id="f_website" placeholder="{{ request.user.business_card.website_preview }}">
               </div>
               <div class="field">
                 <label for="website">لینک وب‌سایت (URL)</label>
-                <input name="website" type="text" id="f_websiteUrl" placeholder="https://aa-tech.io">
+                <input name="website" type="text" id="f_websiteUrl" placeholder="{{ request.user.business_card.website }}">
               </div>
               <div class="field">
                 <label for="linkedin_preview">لینکدین (نمایشی)</label>
-                <input name="linkedin_preview" type="text" id="f_linkedin" placeholder="linkedin.com/in/some">
+                <input name="linkedin_preview" type="text" id="f_linkedin" placeholder="{{ request.user.business_card.linkedin_preview }}">
               </div>
               <div class="field">
                 <label for="linkedin">لینک لینکدین (URL)</label>
-                <input name="linkedin" type="text" id="f_linkedinUrl" placeholder="https://linkedin.com/in/some">
+                <input name="linkedin" type="text" id="f_linkedinUrl" placeholder="{{ request.user.business_card.linkedin }}">
               </div>
               <div class="field">
                 <label for="location">مکان</label>
-                <input name="location" type="text" id="f_location" placeholder="Arak">
+                <input name="location" type="text" id="f_location" placeholder="{{ request.user.business_card.location }}">
               </div>
               <div class="field">
                 <label for="response_time">زمان پاسخ‌گویی</label>
-                <input name="response_time" type="text" id="f_response" placeholder="At most 24 hours">
+                <input name="response_time" type="text" id="f_response" placeholder="{{ request.user.business_card.response_time }}">
               </div>
             </div>
           </div>
