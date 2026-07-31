@@ -806,7 +806,7 @@
 
       <button type="submit" form="data-form" class="btn primary" id="btnSave">Submit Change</button>
       <!-- <button class="btn ghost" id="btnExport">خروجی JSON</button> -->
-      <button class="btn danger" id="btnReset">Rerverse to Default</button>
+      <button class="btn danger" id="btnReset">Empty all fields</button>
     </div>
 
   </div>
@@ -897,12 +897,12 @@
     }
 
     function reset() {
-      if (!confirm('همهٔ مقادیر به حالت پیش‌فرض برگردانده شوند؟')) return;
+      if (!confirm("All changes will be erased. continue?")) return;
       localStorage.removeItem(STORAGE_KEY);
       fillForm(DEFAULTS);
       updatePreview();
       setDirty(false);
-      showToast('بازنشانی شد');
+      showToast("Done!");
     }
 
     function exportJson() {
