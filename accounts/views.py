@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
+from pages.models import BusinessCard
 
 def login(request):
     if request.method == "POST":
@@ -41,8 +42,10 @@ def register(request):
                         password,
                         first_name= full_name,
                     )
-                    new_user.save() # TODO make a BusinessCard for user exactly here
+                    new_user.save()
                     messages.success(request, "You are successfully registered! can login now.")
+                    user_bc = BusinessCard.objects.create(user=new_user)
+                    user_bc.save()
                     return redirect('login')
         else:
             messages.error(request, "Passwords doesn't match!", 'danger')
