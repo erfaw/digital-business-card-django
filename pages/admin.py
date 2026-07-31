@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import OwnerInfoModel, Contact
+from .models import BusinessCard, Contact
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -9,5 +9,5 @@ class ContactAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 
-admin.site.register(OwnerInfoModel)
+admin.site.register(BusinessCard)
 admin.site.register(Contact, ContactAdmin)

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
-class OwnerInfoModel(models.Model):
+class BusinessCard(models.Model):
 # TODO check end-to-end and modify if needed field constraints. i guess some of them need to be changed or need to has condition in html.
 # TODO change name of class to something like BusinessCard
     name = CharField(max_length=50)

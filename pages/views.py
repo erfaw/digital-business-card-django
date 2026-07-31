@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from pages.models import OwnerInfoModel, Contact
+from pages.models import BusinessCard, Contact
 
 
 def index(request):
@@ -22,7 +22,7 @@ def public_card(request):
         # TODO send mail and any kind of notification to owner here.
         return redirect("public_card")
 
-    all_records = OwnerInfoModel.objects.all().order_by("id")
+    all_records = BusinessCard.objects.all().order_by("id")
     last_record = all_records.last() # TODO get record of loggen in user.
     context = {"owner": last_record}
     return render(request, "public_card.html", context=context)
@@ -31,12 +31,12 @@ def public_card(request):
 # TODO make dashboard login required
 def dashboard(request):
     """
-    Render dashboard to manipulate details of card in GET. Create a record for OwnerInfoModel() in POST.
+    Render dashboard to manipulate details of card in GET. Create a record for BusinessCard() in POST.
     """
     # TODO render dashboard with previous data (modifiable)
     # TODO use `reuquest.POST.get()` instead
     if request.method == "POST":
-        new_owner = OwnerInfoModel.objects.create(
+        new_owner = BusinessCard.objects.create(
             name=request.POST["name"],
             role=request.POST["role"],
             description=request.POST["description"],
