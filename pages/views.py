@@ -37,19 +37,19 @@ def dashboard(request):
     if request.method == "POST":
         user_bc = request.user.business_card
 
-        user_bc.name=request.POST["name"],
-        user_bc.role=request.POST["role"],
-        user_bc.description=request.POST["description"],
-        user_bc.logo_sub=request.POST["logo_sub"],
-        user_bc.tag_behind=request.POST["tag_behind"],
-        user_bc.email=request.POST["email"],
-        user_bc.mobile_number=request.POST["mobile_number"],
-        user_bc.website=request.POST["website"],
-        user_bc.website_preview=request.POST["website_preview"],
-        user_bc.linkedin=request.POST["linkedin"],
-        user_bc.linkedin_preview=request.POST["linkedin_preview"],
-        user_bc.location=request.POST["location"],
-        user_bc.response_time=request.POST["response_time"],
+        user_bc.name=request.POST.get("name")
+        user_bc.role=request.POST.get("role")
+        user_bc.description=request.POST.get("description")
+        user_bc.logo_sub=request.POST.get("logo_sub")
+        user_bc.tag_behind=request.POST.get("tag_behind")
+        user_bc.email=request.POST.get("email")
+        user_bc.mobile_number=request.POST.get("mobile_number")
+        user_bc.website=request.POST.get("website")
+        user_bc.website_preview=request.POST.get("website_preview")
+        user_bc.linkedin=request.POST.get("linkedin")
+        user_bc.linkedin_preview=request.POST.get("linkedin_preview")
+        user_bc.location=request.POST.get("location")
+        user_bc.response_time=request.POST.get("response_time")
 
         user_bc.save()
         messages.success(request, "Your card fields updated successfully.")
