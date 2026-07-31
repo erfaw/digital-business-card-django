@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from pages.models import BusinessCard, Contact
+from django.contrib.auth.models import User
+from pages.models import Contact
 
 
 def index(request):
     return render(request, "pages/index.html")
 
 
-def public_card(request):
+def public_card(request, username):
     """
     Render actual digital business card in GET. Create a record for Contact() in POST.
     """
@@ -22,10 +23,9 @@ def public_card(request):
         # TODO send mail and any kind of notification to owner here.
         return redirect("public_card")
 
-    all_records = BusinessCard.objects.all().order_by("id")
-    last_record = all_records.last() # TODO get record of loggen in user.
-    context = {"owner": last_record}
-    return render(request, "public_card.html", context=context)
+    user = get_object_or_404(User, username=username)
+    context = {"owner": user.business_card} # type: ignore
+    return render(request, "public_card.html", context)
 
 
 # TODO make dashboard login required
