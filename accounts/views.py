@@ -4,20 +4,19 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 
 def login(request):
-    # if request.method == 'POST':
-    #     username = request.POST['username']
-    #     password = request.POST['password']
-    #     user = auth.authenticate(request, username= username, password= password)
-    #     if user != None:
-    #         auth.login(request, user)
-    #         messages.success(request, 'You are Logged in')
-    #         return redirect('dashboard')
-    #     else: 
-    #         messages.error(request, "Invalid Credentials!", 'danger')
-    #         return redirect('login')
-    # else: 
-    #     return render(request, 'accounts/login.html') 
-    return render(request, 'accounts/login.html')
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = auth.authenticate(request, username=username, password=password)
+        if user:
+            auth.login(request, user)
+            messages.success(request, 'You are Logged in')
+            return redirect('index')
+        else: 
+            messages.error(request, "Invalid Credentials!", 'danger')
+            return redirect('login')
+    else: 
+        return render(request, 'accounts/login.html') 
 
 def register(request):
     if request.method == "POST":
@@ -52,15 +51,15 @@ def register(request):
         return render(request, 'accounts/register.html') 
 
 # def dashboard(request):
-    # user = User.objects.get(pk= request.user.id)
-    # user_contacts = user.contacts.order_by('-contact_date')
-    # context = {
-    #     'contacts': user_contacts,
-    # }
-    # return render(request, 'accounts/dashboard.html', context) 
+# user = User.objects.get(pk= request.user.id)
+# user_contacts = user.contacts.order_by('-contact_date')
+# context = {
+#     'contacts': user_contacts,
+# }
+# return render(request, 'accounts/dashboard.html', context)
 
 # def logout(request):
-    # if request.method == "POST":
-    #     auth.logout(request)
-    #     messages.info(request, 'User logged out.')
-    #     return redirect('login')
+# if request.method == "POST":
+#     auth.logout(request)
+#     messages.info(request, 'User logged out.')
+#     return redirect('login')
