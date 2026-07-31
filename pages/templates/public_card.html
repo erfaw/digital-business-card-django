@@ -954,16 +954,16 @@
                   <rect x="1" y="2" width="8" height="6" rx="1" />
                   <path d="M1 3l4 3 4-3" />
                 </svg>
-                {{ owner.email }}
+                {{ owner_card.email }}
               </div>
-              {% if owner.website != "" %}
+              {% if owner_card.website != "" %}
                 <div class="contact-row">
                   <svg viewBox="0 0 10 10" fill="none" stroke="#00D4FF" stroke-width="1.4" stroke-linecap="round">
                     <circle cx="5" cy="5" r="4" />
                     <path d="M1 5h8" />
                     <path d="M5 1c-1.5 1-2 2.5-2 4s.5 3 2 4M5 1c1.5 1 2 2.5 2 4s-.5 3-2 4" />
                   </svg>
-                  {{ owner.email }}
+                  {{ owner_card.email }}
                 </div>
               {% endif %}
               <div class="contact-row">
@@ -974,7 +974,7 @@
                   <rect x="2.5" y="5.5" width="1.5" height="1.5" rx=".2" />
                   <rect x="6" y="5.5" width="1.5" height="1.5" rx=".2" />
                 </svg>
-                {{ owner.mobile_number }}
+                {{ owner_card.mobile_number }}
               </div>
             </div>
             <div class="flip-hint" data-i18n="flip_hint">flip →</div>
@@ -986,7 +986,7 @@
           <div class="back-logo">AA</div>
           <div class="back-tagline" data-i18n="back_tagline">Perfection Is What We Present</div>
           <div class="back-divider"></div>
-          {% if owner.website != "" %}
+          {% if owner_card.website != "" %}
             <div class="back-url">aa-tech.io</div>
           {% endif %}
             <!-- Minimal QR-style decorative mark -->
@@ -1064,7 +1064,7 @@
       <!-- CONTACT LINKS -->
       <div class="contact-links">
 
-        <a class="contact-link" href="mailto:{{ owner.email }}">
+        <a class="contact-link" href="mailto:{{ owner_card.email }}">
           <div class="cl-icon" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clE)" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1080,12 +1080,12 @@
           </div>
           <div class="cl-body">
             <div class="cl-label" data-i18n="cl1_l">Email — Direct</div>
-            <div class="cl-val">{{ owner.email }}</div>
+            <div class="cl-val">{{ owner_card.email }}</div>
           </div>
           <span class="cl-arrow">→</span>
         </a>
 
-        <a class="contact-link" href="tel:{{ owner.mobile_number }}">
+        <a class="contact-link" href="tel:{{ owner_card.mobile_number }}">
           <div class="cl-icon" style="background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.15);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clP)" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1102,13 +1102,13 @@
           </div>
           <div class="cl-body">
             <div class="cl-label" data-i18n="cl2_l">Phone</div>
-            <div class="cl-val">&lrm;{{ owner.mobile_number }}</div>
+            <div class="cl-val">&lrm;{{ owner_card.mobile_number }}</div>
           </div>
           <span class="cl-arrow">→</span>
         </a>
 
-        {% if owner.website != "" %}
-          <a class="contact-link" href="{{ owner.website }}" target="_blank">
+        {% if owner_card.website != "" %}
+          <a class="contact-link" href="{{ owner_card.website }}" target="_blank">
             <div class="cl-icon" style="background:rgba(26,110,255,.1);border-color:rgba(26,110,255,.2);">
               <svg viewBox="0 0 18 18" fill="none" stroke="url(#clW)" stroke-width="1.6" stroke-linecap="round"
                 stroke-linejoin="round">
@@ -1125,13 +1125,13 @@
             </div>
             <div class="cl-body">
               <div class="cl-label" data-i18n="cl3_l">Website</div>
-              <div class="cl-val">{{ owner.website_preview }}</div>
+              <div class="cl-val">{{ owner_card.website_preview }}</div>
             </div>
             <span class="cl-arrow">→</span>
           </a>
         {% endif %}
         
-        <a class="contact-link" href="{{ owner.linkedin }}" target="_blank">
+        <a class="contact-link" href="{{ owner_card.linkedin }}" target="_blank">
           <div class="cl-icon" style="background:rgba(10,102,194,.12);border-color:rgba(10,102,194,.2);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clL)" stroke-width="1.6" stroke-linecap="round"
               stroke-linejoin="round">
@@ -1149,7 +1149,7 @@
           </div>
           <div class="cl-body">
             <div class="cl-label" data-i18n="cl4_l">LinkedIn</div>
-            <div class="cl-val">{{ owner.linkedin_preview }}</div>
+            <div class="cl-val">{{ owner_card.linkedin_preview }}</div>
           </div>
           <span class="cl-arrow">→</span>
         </a>
@@ -1160,7 +1160,7 @@
             <span class="cf-title" data-i18n="cf_title">Contact Us</span>
           </div>
 
-          <form method="post" action="{% url 'public_card' username=owner.user.username %}" class="contact-form" id="contactForm">
+          <form method="post" action="{% url 'public_card' username=owner_card.user.username %}" class="contact-form" id="contactForm">
             {% csrf_token %}
             <div class="cf-row">
               <div class="cf-field">
@@ -1229,15 +1229,15 @@
     window.AA = window.AA || {};
     AA.translations = {
       en: {
-        card_company: '{{ owner.logo_sub }}', card_name: '{{ owner.name }}', card_title: '{{ owner.role }}',
-        card_dept: '{{ owner.description }}',
-        back_tagline: '{{ owner.tag_behind }}',
+        card_company: '{{ owner_card.logo_sub }}', card_name: '{{ owner_card.name }}', card_title: '{{ owner_card.role }}',
+        card_dept: '{{ owner_card.description }}',
+        back_tagline: '{{ owner_card.tag_behind }}',
         flip_hint: 'flip →', btn_flip: 'Flip Card',
         ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
-        ei1_l: 'Name', ei1_v: '{{ owner.name }}', ei1_s: '{{ owner.role }}',
+        ei1_l: 'Name', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
         ei2_l: 'Company', ei2_s: 'Engineering · AI · Mobile · Web',
-        ei3_l: 'Location', ei3_v: '{{ owner.location }}', ei3_s: 'Available globally · Remote-first',
-        ei4_l: 'Response Time', ei4_v: '{{ owner.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
+        ei3_l: 'Location', ei3_v: '{{ owner_card.location }}', ei3_s: 'Available globally · Remote-first',
+        ei4_l: 'Response Time', ei4_v: '{{ owner_card.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
         cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
       },
        /* fa: {
@@ -1254,15 +1254,15 @@
       } */
     //  <!-- TODO make translation for english fields. -->
       fa: {
-        card_company: '{{ owner.logo_sub }}', card_name: '{{ owner.name }}', card_title: '{{ owner.role }}',
-        card_dept: '{{ owner.description }}',
-        back_tagline: '{{ owner.tag_behind }}',
+        card_company: '{{ owner_card.logo_sub }}', card_name: '{{ owner_card.name }}', card_title: '{{ owner_card.role }}',
+        card_dept: '{{ owner_card.description }}',
+        back_tagline: '{{ owner_card.tag_behind }}',
         flip_hint: 'flip →', btn_flip: 'Flip Card',
         ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
-        ei1_l: 'Name', ei1_v: '{{ owner.name }}', ei1_s: '{{ owner.role }}',
+        ei1_l: 'Name', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
         ei2_l: 'Company', ei2_s: 'Engineering · AI · Mobile · Web',
-        ei3_l: 'Location', ei3_v: '{{ owner.location }}', ei3_s: 'Available globally · Remote-first',
-        ei4_l: 'Response Time', ei4_v: '{{ owner.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
+        ei3_l: 'Location', ei3_v: '{{ owner_card.location }}', ei3_s: 'Available globally · Remote-first',
+        ei4_l: 'Response Time', ei4_v: '{{ owner_card.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
         cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
       },
     };

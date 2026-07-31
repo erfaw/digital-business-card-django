@@ -24,7 +24,7 @@ def public_card(request, username):
         return redirect("public_card")
 
     user = get_object_or_404(User, username=username)
-    context = {"owner": user.business_card} # type: ignore
+    context = {"owner_card": user.business_card} # type: ignore
     return render(request, "public_card.html", context)
 
 
