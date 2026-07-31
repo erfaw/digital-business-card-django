@@ -22,25 +22,31 @@
                 Welcome back!
             </p>
 
-            <form class="register-form">
+            {% include 'partials/_alert.html' %}
 
-                <label>Email</label>
-                <div class="input-group">
+            <form method="post" action="{% url 'login' %}" class="register-form">
+                {% csrf_token %}
 
-                    <input type="email" placeholder="john@example.com">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Username</label>
+                    <input class="cf-input" type="text" id="cfName" name="username" data-i18n-ph="cf_name_ph" autocomplete="username" required/>
                 </div>
 
-                <label>Password</label>
-                <div class="input-group">
+                <br>
 
-                    <input type="password" placeholder="••••••••">
-
+                <div class="cf-field">
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Password</label>
+                    <input class="cf-input" type="password" id="cfName" name="password" data-i18n-ph="cf_name_ph" autocomplete="current-password" required/>
                 </div>
 
+                <br>
 
-                <button class="btn btn-primary register-btn">
-                    Login
+                <button class="cf-submit" type="submit">
+                    <span data-i18n="cf_submit">Login</span>
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M2 8h12M9 3l5 5-5 5" />
+                    </svg>
                 </button>
 
             </form>
