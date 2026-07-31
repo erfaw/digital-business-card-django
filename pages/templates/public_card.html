@@ -946,7 +946,7 @@
             <div class="person-title" data-i18n="card_title">Founder & CEO</div>
             <div class="person-dept" data-i18n="card_dept">Engineering · Product · Vision</div>
           </div>
-
+          <!-- TODO Make condition for unnecessary fields (like website) -->
           <div class="front-bot">
             <div class="contact-mini">
               <div class="contact-row">
@@ -963,7 +963,7 @@
                     <path d="M1 5h8" />
                     <path d="M5 1c-1.5 1-2 2.5-2 4s.5 3 2 4M5 1c1.5 1 2 2.5 2 4s-.5 3-2 4" />
                   </svg>
-                  {{ owner_card.email }}
+                  {{ owner_card.website }}
                 </div>
               {% endif %}
               <div class="contact-row">
@@ -1040,12 +1040,14 @@
 
       <div class="explain-grid">
         <div class="explain-item">
+          <!-- TODO Remove basic/default value of tags like Ali Satarzade and so on -->
           <div class="ei-label" data-i18n="ei1_l">Name</div>
           <div class="ei-val" data-i18n="ei1_v">Ali Satarzade</div>
           <div class="ei-sub" data-i18n="ei1_s">Founder & CEO, AA Technology</div>
         </div>
         <div class="explain-item">
           <div class="ei-label" data-i18n="ei2_l">Company</div>
+          <!-- TODO Figure out something for COMPANY part or delete it -->
           <div class="ei-val">AA Technology</div>
           <div class="ei-sub" data-i18n="ei2_s">Engineering · AI · Mobile · Web</div>
         </div>
@@ -1191,6 +1193,8 @@
     <!-- TODO insert a btn to get client to dashboard -->
 
   </div>
+<!-- TODO if user was logged in, show a link to dashboard somewhere of page to easily navigate through app -->
+<!-- TODO add a box to tell "Dont have a card? make one!" -->
 
   <script>
     /* CURSOR */
