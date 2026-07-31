@@ -807,8 +807,8 @@
       <!-- TODO insert a btn to take client to index page -->
 
       <button type="submit" form="data-form" class="btn primary" id="btnSave">Submit Change</button>
-      <!-- <button class="btn ghost" id="btnExport">خروجی JSON</button> -->
       <button class="btn danger" id="btnReset">Empty all fields</button>
+      <button class="btn ghost" id="btnExport">JSON Export</button>
     </div>
 
   </div>
@@ -913,7 +913,7 @@
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url; a.download = 'aa-card-data.json'; a.click();
+      a.href = url; a.download = 'Digital-Business-Card.json'; a.click();
       URL.revokeObjectURL(url);
     }
 
