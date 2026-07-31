@@ -803,6 +803,97 @@
     .explain {
       animation: fadeUp .9s ease .5s both;
     }
+        /* ==========================================================
+      ALERTS
+    ========================================================== */
+
+    .container{
+        width:min(900px,92%);
+        margin:1rem auto;
+    }
+
+    .alert{
+        position:relative;
+
+        padding:1rem 3.2rem 1rem 1rem;
+
+        border:1px solid transparent;
+        border-radius:12px;
+
+        font-size:.95rem;
+        line-height:1.5;
+
+        animation:alertFade .25s ease;
+
+        box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .alert strong{
+        margin-right:.35rem;
+    }
+
+    .alert-success{
+        background:#d1fae5;
+        color:#065f46;
+        border-color:#6ee7b7;
+    }
+
+    .alert-error,
+    .alert-danger{
+        background:#fee2e2;
+        color:#991b1b;
+        border-color:#fca5a5;
+    }
+
+    .alert-warning{
+        background:#fef3c7;
+        color:#92400e;
+        border-color:#fcd34d;
+    }
+
+    .alert-info{
+        background:#dbeafe;
+        color:#1e3a8a;
+        border-color:#93c5fd;
+    }
+
+    .close{
+        position:absolute;
+
+        top:50%;
+        right:.8rem;
+
+        transform:translateY(-50%);
+
+        border:none;
+        background:none;
+
+        cursor:pointer;
+
+        font-size:1.5rem;
+        line-height:1;
+
+        color:inherit;
+        opacity:.7;
+    }
+
+    .close:hover{
+        opacity:1;
+    }
+
+    @keyframes alertFade{
+
+        from{
+            opacity:0;
+            transform:translateY(-10px);
+        }
+
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
   </style>
 </head>
 
@@ -1194,6 +1285,27 @@
       if (btnEN && slider) slider.style.width = btnEN.offsetWidth + 'px';
       AA.applyLang(AA.currentLang);
     });
+    /* ==========================================================
+      DISMISS ALERT
+    ========================================================== */
+
+    document.querySelectorAll(".close").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const alert = button.closest(".alert");
+
+            if (!alert) return;
+
+            alert.style.transition = "opacity .25s ease";
+            alert.style.opacity = "0";
+
+            setTimeout(() => alert.remove(), 250);
+
+        });
+
+    });
+
   </script>
 </body>
 
