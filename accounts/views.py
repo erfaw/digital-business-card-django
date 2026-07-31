@@ -41,7 +41,7 @@ def register(request):
                         password,
                         first_name= full_name,
                     )
-                    new_user.save()
+                    new_user.save() # TODO make a BusinessCard for user exactly here
                     messages.success(request, "You are successfully registered! can login now.")
                     return redirect('login')
         else:
