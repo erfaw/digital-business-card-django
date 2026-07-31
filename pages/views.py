@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from pages.models import BusinessCard, Contact
 
@@ -34,24 +34,25 @@ def dashboard(request):
     Render dashboard to manipulate details of card in GET. Create a record for BusinessCard() in POST.
     """
     # TODO render dashboard with previous data (modifiable)
-    # TODO use `reuquest.POST.get()` instead
     if request.method == "POST":
-        new_owner = BusinessCard.objects.create(
-            name=request.POST["name"],
-            role=request.POST["role"],
-            description=request.POST["description"],
-            logo_sub=request.POST["logo_sub"],
-            tag_behind=request.POST["tag_behind"],
-            email=request.POST["email"],
-            mobile_number=request.POST["mobile_number"],
-            website=request.POST["website"],
-            website_preview=request.POST["website_preview"],
-            linkedin=request.POST["linkedin"],
-            linkedin_preview=request.POST["linkedin_preview"],
-            location=request.POST["location"],
-            response_time=request.POST["response_time"],
-        )
-        new_owner.save()
-        return redirect("index")
+        user_bc = request.user.business_card
 
-    return render(request, "dashboard.html")
+        user_bc.name=request.POST["name"],
+        user_bc.role=request.POST["role"],
+        user_bc.description=request.POST["description"],
+        user_bc.logo_sub=request.POST["logo_sub"],
+        user_bc.tag_behind=request.POST["tag_behind"],
+        user_bc.email=request.POST["email"],
+        user_bc.mobile_number=request.POST["mobile_number"],
+        user_bc.website=request.POST["website"],
+        user_bc.website_preview=request.POST["website_preview"],
+        user_bc.linkedin=request.POST["linkedin"],
+        user_bc.linkedin_preview=request.POST["linkedin_preview"],
+        user_bc.location=request.POST["location"],
+        user_bc.response_time=request.POST["response_time"],
+
+        user_bc.save()
+        messages.success(request, "Your card fields updated successfully.")
+        return redirect("dashboard")
+
+    return render(request, "dashboard.html") # TODO render with existing data of logged in user
