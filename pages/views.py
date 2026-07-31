@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from pages.models import OwnerInfoModel, Contact
 
 
@@ -17,8 +18,9 @@ def public_card(request):
             message=request.POST.get("message"),
         )
         new_contact.save()
+        messages.success(request, "Thanks! We'll get back to you soon.")
         # TODO send mail and any kind of notification to owner here.
-        return redirect("index") # TODO investigate in html for a message to show with query params
+        return redirect("public_card")
 
     all_records = OwnerInfoModel.objects.all().order_by("id")
     last_record = all_records.last() # TODO get record of loggen in user.
