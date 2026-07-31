@@ -56,7 +56,7 @@ def logout(request):
         messages.info(request, 'User logged out.')
         return redirect('login')
 
-# def dashboard(request):
+# def dashboard(request): # TODO append this functionality to our dashboard or make a button for it
 # user = User.objects.get(pk= request.user.id)
 # user_contacts = user.contacts.order_by('-contact_date')
 # context = {
