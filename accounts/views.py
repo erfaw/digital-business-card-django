@@ -20,39 +20,36 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 def register(request):
-    # if request.method == "POST":
-    #     first_name= request.POST['first_name']
-    #     last_name= request.POST['last_name']
-    #     username= request.POST['username']
-    #     email= request.POST['email']
-    #     password= request.POST['password']
-    #     password2= request.POST['password2']
+    if request.method == "POST":
+        full_name= request.POST['full_name']
+        username= request.POST['username']
+        email= request.POST['email']
+        password= request.POST['password'] # TODO add password validation
+        password2= request.POST['password2']
 
-    #     if password == password2:
-    #         if User.objects.filter(email=email).exists():
-    #             messages.error(request, "This email was taken already!", 'danger')
-    #             return redirect('register')
-    #         else: 
-    #             if User.objects.filter(username=username).exists():
-    #                 messages.error(request, "This username was taken already!", 'danger')
-    #                 return redirect('register')
-    #             else: 
-    #                 new_user = User.objects.create_user(
-    #                     username,
-    #                     email,
-    #                     password,
-    #                     first_name= first_name,
-    #                     last_name= last_name
-    #                 )
-    #                 new_user.save()
-    #                 messages.success(request, "You are successfully registered! can login now.")
-    #                 return redirect('login')
-    #     else:
-    #         messages.error(request, "Passwords doesn't match!", 'danger')
-    #         return redirect('register')
-    # else: 
-    #     return render(request, 'accounts/register.html') 
-    return render(request, 'accounts/register.html') 
+        if password == password2:
+            if User.objects.filter(email=email).exists():
+                messages.error(request, "This email was taken already!", 'danger')
+                return redirect('register')
+            else: 
+                if User.objects.filter(username=username).exists():
+                    messages.error(request, "This username was taken already!", 'danger')
+                    return redirect('register')
+                else: 
+                    new_user = User.objects.create_user(
+                        username,
+                        email,
+                        password,
+                        first_name= full_name,
+                    )
+                    new_user.save()
+                    messages.success(request, "You are successfully registered! can login now.")
+                    return redirect('login')
+        else:
+            messages.error(request, "Passwords doesn't match!", 'danger')
+            return redirect('register')
+    else: 
+        return render(request, 'accounts/register.html') 
 
 # def dashboard(request):
     # user = User.objects.get(pk= request.user.id)
