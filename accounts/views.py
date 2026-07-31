@@ -50,6 +50,12 @@ def register(request):
     else: 
         return render(request, 'accounts/register.html') 
 
+def logout(request):
+    if request.method == "POST":
+        auth.logout(request)
+        messages.info(request, 'User logged out.')
+        return redirect('login')
+
 # def dashboard(request):
 # user = User.objects.get(pk= request.user.id)
 # user_contacts = user.contacts.order_by('-contact_date')
@@ -57,9 +63,3 @@ def register(request):
 #     'contacts': user_contacts,
 # }
 # return render(request, 'accounts/dashboard.html', context)
-
-# def logout(request):
-# if request.method == "POST":
-#     auth.logout(request)
-#     messages.info(request, 'User logged out.')
-#     return redirect('login')
