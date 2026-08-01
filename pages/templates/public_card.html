@@ -1014,7 +1014,7 @@
               <rect x="42" y="48" width="4" height="4" rx=".5" fill="#7B2FFF" opacity=".6" />
               <rect x="48" y="48" width="4" height="4" rx=".5" fill="#00E5A0" opacity=".4" />
             </svg> -->
-            <img width="100%" src="{% url 'qr' username=request.user.username %}" alt="QR Code">
+            <img width="100%" src="{% url 'qr' username=owner_card.user.username %}" alt="QR Code">
           </div>
         </div>
 
