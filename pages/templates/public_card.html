@@ -908,7 +908,7 @@
     <div class="lang-slider" id="langSlider"></div>
     <button class="lang-btn" id="btnEN">EN</button>
     <button class="lang-btn active" id="btnFA">فا</button>
-  </div>`
+  </div>
 
   <div class="page">
 
@@ -936,15 +936,15 @@
           <div class="front-top">
             <div class="aa-logo-mark">
               <span class="logo-text" style="font-size: 1rem;">Digital Business Card</span>
-              <span class="logo-sub" data-i18n="card_company">Technology</span>
+              <span class="logo-sub" data-i18n="card_company"></span>
             </div>
             <div class="holo-chip"></div>
           </div>
 
           <div class="front-mid">
-            <div class="person-name" data-i18n="card_name">Ali Satarzade</div>
-            <div class="person-title" data-i18n="card_title">Founder & CEO</div>
-            <div class="person-dept" data-i18n="card_dept">Engineering · Product · Vision</div>
+            <div class="person-name" data-i18n="card_name"></div>
+            <div class="person-title" data-i18n="card_title"></div>
+            <div class="person-dept" data-i18n="card_dept"></div>
           </div>
           
           <div class="front-bot">
@@ -992,7 +992,7 @@
         <!-- BACK -->
         <div class="card-face card-back">
           <div class="back-logo" style="font-size: 1.5rem; padding-top:50px;">Digital Business Card</div>
-          <div class="back-tagline" data-i18n="back_tagline">Perfection Is What We Present</div>
+          <div class="back-tagline" data-i18n="back_tagline"></div>
           <div class="back-divider"></div>
           {% if owner_card.website != "" %}
             <div class="back-url">{{ owner_card.website_preview }}</div>
@@ -1049,32 +1049,31 @@
 
       <div class="explain-grid">
         <div class="explain-item">
-          <!-- TODO Remove basic/default value of tags like Ali Satarzade and so on -->
           <div class="ei-label" data-i18n="ei1_l">Name</div>
-          <div class="ei-val" data-i18n="ei1_v">Ali Satarzade</div>
-          <div class="ei-sub" data-i18n="ei1_s">Founder & CEO, AA Technology</div>
+          <div class="ei-val" data-i18n="ei1_v"></div>
+          <div class="ei-sub" data-i18n="ei1_s"></div>
         </div>
         <div class="explain-item">
           <div class="ei-label" data-i18n="ei2_l">Company</div>
           <!-- TODO Figure out something for COMPANY part or delete it -->
-          <div class="ei-val">AA Technology</div>
-          <div class="ei-sub" data-i18n="ei2_s">Engineering · AI · Mobile · Web</div>
+          <div class="ei-val"></div>
+          <div class="ei-sub" data-i18n="ei2_s"></div>
         </div>
         <div class="explain-item">
           <div class="ei-label" data-i18n="ei3_l">Location</div>
-          <div class="ei-val" data-i18n="ei3_v">tehran</div>
-          <div class="ei-sub" data-i18n="ei3_s">Available globally · Remote-first</div>
+          <div class="ei-val" data-i18n="ei3_v"></div>
+          <div class="ei-sub" data-i18n="ei3_s"></div>
         </div>
         <div class="explain-item">
           <div class="ei-label" data-i18n="ei4_l">Response Time</div>
-          <div class="ei-val" data-i18n="ei4_v">Within 24 hours</div>
+          <div class="ei-val" data-i18n="ei4_v"></div>
           <div class="ei-sub" data-i18n="ei4_s">Mon – Fri · Business hours CET</div>
         </div>
       </div>
 
       <!-- CONTACT LINKS -->
       <div class="contact-links">
-
+<!-- TODO condition to not rendering unnecessary feilds. -->
         <a class="contact-link" href="mailto:{{ owner_card.email }}">
           <div class="cl-icon" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clE)" stroke-width="1.6" stroke-linecap="round"
