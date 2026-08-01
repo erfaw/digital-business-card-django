@@ -71,4 +71,4 @@ def qr(request, username):
     buffer = BytesIO()
     qr_code_image.save(buffer, "PNG")
 
-    return HttpResponse(buffer.getvalue(), content_type="image/png")
+    return HttpResponse(buffer.getvalue(), content_type="image/png") # TODO isn't need to use https?
