@@ -1059,6 +1059,10 @@ footer{
     z-index: 1;
 }
 
+.cf-submit.login {
+    background: linear-gradient(135deg, var(--white), var(--cyan));
+}
+
 .cf-submit:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 26px rgba(0, 212, 255, .28);
