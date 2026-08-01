@@ -27,8 +27,7 @@
             </p>
 
             <div class="hero-buttons">
-                <!-- TODO fix these two buttons link and style -->
-                <button class="cf-submit" type="submit">
+                <button onclick="location.href='{% url 'register' %}'" class="cf-submit" type="submit"> 
                     <span data-i18n="cf_submit">Register</span>
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -36,7 +35,7 @@
                     </svg>
                 </button>
 
-                <button class="cf-submit login" type="submit">
+                <button onclick="location.href='{% url 'login' %}'" class="cf-submit login" type="submit">
                     <span data-i18n="cf_submit">Login</span>
                 </button>
                 
