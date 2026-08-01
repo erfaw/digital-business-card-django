@@ -464,7 +464,7 @@
       display: flex;
       align-items: center;
       gap: .6rem;
-      margin-bottom: 2rem;
+      margin-bottom: .5rem;
     }
 
     .flip-btn:hover {
@@ -894,6 +894,16 @@
         }
     }
 
+    /* styles for flip card and dashboard in a row */
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 0px;
+      margin: 0px;
+    }
+
   </style>
 </head>
 
@@ -1030,9 +1040,9 @@
     </div>
 
     {% if user.is_authenticated %}
-    <div class="cf-row">
+    <div class="container">
       <!-- FLIP BUTTON -->
-      <button class="flip-btn cf-field"
+      <button class="flip-btn"
         onclick="const c=document.getElementById('card');c.style.transform='';c.classList.toggle('flipped')">
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <path d="M2 7a5 5 0 109.5-2M12 5V2M12 2H9" />
@@ -1040,7 +1050,7 @@
         <span data-i18n="btn_flip">Flip Card</span>
       </button>
 
-      <button onclick="location.href='{% url 'dashboard' %}'" class="cf-field btn flip-btn" type="submit"> 
+      <button onclick="location.href='{% url 'dashboard' %}'" class="flip-btn" type="submit"> 
             <span data-i18n="cf_submit">Dashboard</span>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                 stroke-linejoin="round">
