@@ -1073,7 +1073,6 @@
 
       <!-- CONTACT LINKS -->
       <div class="contact-links">
-<!-- TODO condition to not rendering unnecessary feilds. -->
         <a class="contact-link" href="mailto:{{ owner_card.email }}">
           <div class="cl-icon" style="background:rgba(0,212,255,.08);border-color:rgba(0,212,255,.15);">
             <svg viewBox="0 0 18 18" fill="none" stroke="url(#clE)" stroke-width="1.6" stroke-linecap="round"
@@ -1094,28 +1093,29 @@
           </div>
           <span class="cl-arrow">→</span>
         </a>
-
-        <a class="contact-link" href="tel:{{ owner_card.mobile_number }}">
-          <div class="cl-icon" style="background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.15);">
-            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clP)" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <defs>
-                <linearGradient id="clP" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#00E5A0" />
-                  <stop offset="100%" stop-color="#00D4FF" />
-                </linearGradient>
-              </defs>
-              <rect x="5" y="2" width="8" height="14" rx="2" />
-              <path d="M8 14h2" />
-              <path d="M7 4.5h4" />
-            </svg>
-          </div>
-          <div class="cl-body">
-            <div class="cl-label" data-i18n="cl2_l">Phone</div>
-            <div class="cl-val">&lrm;{{ owner_card.mobile_number }}</div>
-          </div>
-          <span class="cl-arrow">→</span>
-        </a>
+        {% if owner_card.mobile_number != "" %}
+          <a class="contact-link" href="tel:{{ owner_card.mobile_number }}">
+            <div class="cl-icon" style="background:rgba(0,229,160,.07);border-color:rgba(0,229,160,.15);">
+              <svg viewBox="0 0 18 18" fill="none" stroke="url(#clP)" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <defs>
+                  <linearGradient id="clP" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00E5A0" />
+                    <stop offset="100%" stop-color="#00D4FF" />
+                  </linearGradient>
+                </defs>
+                <rect x="5" y="2" width="8" height="14" rx="2" />
+                <path d="M8 14h2" />
+                <path d="M7 4.5h4" />
+              </svg>
+            </div>
+            <div class="cl-body">
+              <div class="cl-label" data-i18n="cl2_l">Phone</div>
+              <div class="cl-val">&lrm;{{ owner_card.mobile_number }}</div>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+        {% endif %}
 
         {% if owner_card.website != "" %}
           <a class="contact-link" href="{{ owner_card.website }}" target="_blank">
@@ -1140,29 +1140,32 @@
             <span class="cl-arrow">→</span>
           </a>
         {% endif %}
-        
-        <a class="contact-link" href="{{ owner_card.linkedin }}" target="_blank">
-          <div class="cl-icon" style="background:rgba(10,102,194,.12);border-color:rgba(10,102,194,.2);">
-            <svg viewBox="0 0 18 18" fill="none" stroke="url(#clL)" stroke-width="1.6" stroke-linecap="round"
-              stroke-linejoin="round">
-              <defs>
-                <linearGradient id="clL" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#0A66C2" />
-                  <stop offset="100%" stop-color="#00D4FF" />
-                </linearGradient>
-              </defs>
-              <rect x="2" y="2" width="14" height="14" rx="2.5" />
-              <path d="M6 8v5M6 6v.5" />
-              <path d="M9 13V9.5c0-1 .8-1.5 1.5-1.5s1.5.5 1.5 1.5V13" />
-              <circle cx="6" cy="5.8" r=".6" fill="#00D4FF" stroke="none" />
-            </svg>
-          </div>
-          <div class="cl-body">
-            <div class="cl-label" data-i18n="cl4_l">LinkedIn</div>
-            <div class="cl-val">{{ owner_card.linkedin_preview }}</div>
-          </div>
-          <span class="cl-arrow">→</span>
-        </a>
+
+        {% if owner_card.linkedin != "" %}
+          <a class="contact-link" href="{{ owner_card.linkedin }}" target="_blank">
+            <div class="cl-icon" style="background:rgba(10,102,194,.12);border-color:rgba(10,102,194,.2);">
+              <svg viewBox="0 0 18 18" fill="none" stroke="url(#clL)" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <defs>
+                  <linearGradient id="clL" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0A66C2" />
+                    <stop offset="100%" stop-color="#00D4FF" />
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="14" height="14" rx="2.5" />
+                <path d="M6 8v5M6 6v.5" />
+                <path d="M9 13V9.5c0-1 .8-1.5 1.5-1.5s1.5.5 1.5 1.5V13" />
+                <circle cx="6" cy="5.8" r=".6" fill="#00D4FF" stroke="none" />
+              </svg>
+            </div>
+            <div class="cl-body">
+              <div class="cl-label" data-i18n="cl4_l">LinkedIn</div>
+              <div class="cl-val">{{ owner_card.linkedin_preview }}</div>
+            </div>
+            <span class="cl-arrow">→</span>
+          </a>
+        {% endif %}
+
         <!-- ── CONTACT FORM ── -->
         <div class="contact-form-wrap">
           <div class="cf-header">
