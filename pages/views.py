@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+from qrcode import QRCode, constants
+from io import BytesIO
 from pages.models import Contact
 
 
@@ -54,5 +57,18 @@ def dashboard(request):
         user_bc.save()
         messages.success(request, "Your card fields updated successfully.")
         return redirect("dashboard")
+    return render(request, "dashboard.html")
 
-    return render(request, "dashboard.html") # TODO render with existing data of logged in user
+def qr(request, username):
+    url_to_card = request.build_absolute_uri(reverse("public_card", kwargs={"username": username}))
+
+    qr_code = QRCode(version=1, error_correction=constants.ERROR_CORRECT_L,  border=2)
+    qr_code.add_data(url_to_card)
+    qr_code.make(fit=True)
+
+    qr_code_image = qr_code.make_image(fill_color="white", back_color=(5, 17, 38))
+
+    buffer = BytesIO()
+    qr_code_image.save(buffer, "PNG")
+
+    return HttpResponse(buffer.getvalue(), content_type="image/png")
