@@ -36,7 +36,6 @@ def dashboard(request):
     """
     Render dashboard to manipulate details of card in GET. Create a record for BusinessCard() in POST.
     """
-    # TODO render dashboard with previous data (modifiable)
     if request.method == "POST":
         user_bc = request.user.business_card
 
