@@ -1208,6 +1208,6 @@ html[dir="rtl"] .cf-label {
 }
 
 /* Logout Color */
-.logout-color{
-    color: red;
+#btnLogout {
+    background:rgba(255, 0, 0, 0.409);
 }
