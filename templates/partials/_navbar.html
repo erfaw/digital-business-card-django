@@ -36,12 +36,11 @@
                 </li>
 
                 <li>
-                    <!-- TODO make logout somehow red or something to be different. main purpose is guide user. -->
                     <a
                     {% if 'logout' in request.path %}
-                        class="nav-item active mr-3"
+                        class="nav-item active mr-3 logout-color"
                     {% else %}
-                        class="nav-item mr-3"
+                        class="nav-item mr-3 logout-color"
                     {% endif %}
                     href="javascript:{document.getElementById('logout').submit()}"">
                         Logout

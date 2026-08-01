@@ -25,7 +25,7 @@
 
     --dim:rgba(240,248,255,.65);
     --border:rgba(0,212,255,.18);
-
+    --red:#ff0606;
 }
 
 html{
@@ -268,6 +268,20 @@ header{
 .nav-links a.active::after{
 
     width:100%;
+
+}
+
+/* Logout button */
+.nav-links a:hover.logout-color,
+.nav-links a.active.logout-color{
+
+    color:var(--red);
+
+}
+
+.nav-links a.logout-color::after{
+
+    background:var(--red);
 
 }
 
@@ -1187,4 +1201,9 @@ html[dir="rtl"] .cf-label {
         opacity:1;
         transform:translateY(0);
     }
+}
+
+/* Logout Color */
+.logout-color{
+    color: red;
 }
