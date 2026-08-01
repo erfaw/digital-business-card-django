@@ -6,3 +6,7 @@ Its a task project for my internship course in AA-Startup.
 
 ## Front-end
 Front end files has been given to us to work on it and currently is in [assets/front-end](./assets/front-end/). (Vibe coded by Front-end mentor)
+
+## Preview
+### v0.13.0
+![](./assets/preview/ezgif.com-video-to-gif-converter(1).gif)
