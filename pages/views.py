@@ -39,7 +39,7 @@ def dashboard(request):
     if request.method == "POST":
         user_bc = request.user.business_card
 
-        user_bc.name=request.POST.get("name")
+        user_bc.name=request.POST.get("name") # TODO try to do it dynamic, with getattr and for loop
         user_bc.role=request.POST.get("role")
         user_bc.description=request.POST.get("description")
         user_bc.logo_sub=request.POST.get("logo_sub")
