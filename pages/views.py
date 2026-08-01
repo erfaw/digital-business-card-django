@@ -15,6 +15,7 @@ def public_card(request, username):
     """
     Render actual digital business card in GET. Create a record for Contact() in POST.
     """
+    # TODO prepare view counts and show in card.
     if request.method == "POST":
         new_contact = Contact.objects.create(
             name=request.POST.get("name"),
