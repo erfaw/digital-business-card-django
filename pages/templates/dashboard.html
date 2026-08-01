@@ -646,6 +646,22 @@
         }
     }
 
+    .preview-side .qr-container{
+      padding-top: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .preview-side .qr-container a {
+      width: 50%;
+      border: 1px solid var(--cyan);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .preview-side .qr-container img {
+      width: 100%;
+    }
 
   </style>
 </head>
@@ -740,8 +756,12 @@
 
       <!-- PREVIEW SIDE -->
       <div class="preview-side">
-
-        <img width="50%" src="{% url 'qr' username=request.user.username %}" alt="QR Code">
+        <div class="flip-note">Click to redirect public card page</div>
+        <div class="qr-container"> 
+          <a href="{% url 'public_card' username=request.user.username %}">
+            <img src="{% url 'qr' username=request.user.username %}" alt="QR Code">
+          </a>
+        </div>
         
         <div class="preview-label">// Live Preview</div>
 
