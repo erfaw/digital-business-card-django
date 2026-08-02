@@ -29,7 +29,7 @@ def public_card(request, username):
 
     user = get_object_or_404(User, username=username)
     context = {"owner_card": user.business_card} # type: ignore
-    return render(request, "public_card.html", context)
+    return render(request, "pages/public_card.html", context)
 
 
 # TODO make dashboard login required
