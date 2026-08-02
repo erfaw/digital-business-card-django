@@ -48,7 +48,7 @@ def public_card(request, username):
         )
         new_contact.save()
         messages.success(request, "Thanks! We'll get back to you soon.")
-        # TODO (HIGH) send mail and any kind of notification to owner here.
+        # TODO (HIGH) (TARGET) send mail and any kind of notification to owner here.
         return redirect("public_card", username=username)
 
     user = get_object_or_404(User, username=username)
