@@ -1,11 +1,54 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
+
 {% block title %}
 Contacts
 {% endblock%}
 
 {% block content %}
 
-
+<section id="dashboard" class="py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Welcome {{ user.first_name|title }} {{ user.last_name|title }} ({{ user.username }})</h2>
+                <p>Here are Contact messages submitted for you.</p>
+                <table class="hero-card table contact-table  ">
+                    {% if contacts %}
+                        <thead class="bg-transparent">
+                            <tr class="bg-transparent">
+                                <th class="bg-transparent text-secondary" scope="col">#</th>
+                                <th class="bg-transparent text-secondary" scope="col">Name</th>
+                                <th class="bg-transparent text-secondary" scope="col">Phone</th>
+                                <th class="bg-transparent text-secondary" scope="col">Message</th>
+                                <th class="bg-transparent text-secondary" scope="col">Date</th>
+                                <th class="bg-transparent text-secondary"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-transparent">
+                            {% for contact in contacts %}
+                                <tr class="bg-transparent">
+                                    <td class="bg-transparent text-secondary">{{ contact.pk }}</td>
+                                    <td class="bg-transparent text-light">{{ contact.name }}</td>
+                                    <td class="bg-transparent text-primary">{{ contact.mobile_number }}</td>
+                                    <td class="bg-transparent text-info">{{ contact.message }}</td>
+                                    <td class="bg-transparent text-primary">{{ contact.contact_date }}</td>                               
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% else %}
+                        <h1>There is no inquiry submitted yet.</h1>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
+
+<!-- TODO good to have paging for rendering -->
+<!-- TODO good to have a btn to remove a contact -->
+<!-- TODO good to have a btn to change a filed in contact to like resolved -->
+<!-- TODO good to be able filter between them -->
