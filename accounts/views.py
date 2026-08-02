@@ -25,7 +25,7 @@ def register(request):
         full_name= request.POST['full_name']
         username= request.POST['username']
         email= request.POST['email']
-        password= request.POST['password'] # TODO add password validation
+        password= request.POST['password'] # (HIGH) TODO add password validation
         password2= request.POST['password2']
 
         if password == password2:

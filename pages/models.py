@@ -20,8 +20,8 @@ class BusinessCard(models.Model):
     response_time = CharField(blank=True)
     user = OneToOneField(User, on_delete=models.CASCADE, related_name="business_card")
     view_count = IntegerField(unique=False, blank=False, default=0)
-    # TODO good to have an avatar field to get an image.
-    # TODO good to have a field for Instagram, Telegram, GitHub, Docker Hub and so on.
+    # TODO (MID) good to have an avatar field to get an image.
+    # TODO (MID) good to have a field for Instagram, Telegram, GitHub, Docker Hub and so on.
 
     def __str__(self):
         return self.name

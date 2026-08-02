@@ -38,7 +38,7 @@ def public_card(request, username):
 
     if (
         request.method == "POST"
-    ):  # TODO make a separate view and endpoint for making contacts.
+    ):  # TODO (LOW) make a separate view and endpoint for making contacts.
         user = get_object_or_404(User, username=username)
         new_contact = Contact.objects.create(
             name=request.POST.get("name"),
@@ -48,7 +48,7 @@ def public_card(request, username):
         )
         new_contact.save()
         messages.success(request, "Thanks! We'll get back to you soon.")
-        # TODO send mail and any kind of notification to owner here.
+        # TODO (HIGH) send mail and any kind of notification to owner here.
         return redirect("public_card", username=username)
 
     user = get_object_or_404(User, username=username)
@@ -78,7 +78,7 @@ def dashboard(request):
 
         user_bc.name = request.POST.get(
             "name"
-        )  # TODO try to do it dynamic, with getattr and for loop
+        )  # TODO (LOW) try to do it dynamic, with getattr and for loop
         user_bc.role = request.POST.get("role")
         user_bc.description = request.POST.get("description")
         user_bc.logo_sub = request.POST.get("logo_sub")
