@@ -314,7 +314,7 @@ body::before {
   width: 100%;
 }
 
-.card {
+.card-preview {
   width: 100%;
   aspect-ratio: 1.75;
   position: relative;
