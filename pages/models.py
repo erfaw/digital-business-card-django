@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import CharField, TextField, EmailField, URLField, OneToOneField
+from django.db.models import CharField, TextField, EmailField, URLField, OneToOneField, IntegerField
 from django.contrib.auth.models import User
 from datetime import datetime
 
@@ -19,6 +19,7 @@ class BusinessCard(models.Model):
     location = CharField(blank=True)
     response_time = CharField(blank=True)
     user = OneToOneField(User, on_delete=models.CASCADE, related_name="business_card")
+    view_count = IntegerField(unique=False, blank=False, default=0)
     # TODO good to have an avatar field to get an image.
     # TODO good to have a field for Instagram, Telegram, GitHub, Docker Hub and so on.
 

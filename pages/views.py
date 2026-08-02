@@ -29,7 +29,10 @@ def public_card(request, username):
         return redirect("public_card", username=username)
 
     user = get_object_or_404(User, username=username)
-    context = {"owner_card": user.business_card} # type: ignore
+    bc = user.business_card # type: ignore
+    context = {"owner_card": bc} 
+    bc.view_count += 1 
+    bc.save()
     return render(request, "pages/public_card.html", context)
 
 
