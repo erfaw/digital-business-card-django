@@ -36,7 +36,9 @@ def public_card(request, username):
         - POST: HttpResponseRedirect
     """
 
-    if request.method == "POST": # TODO make a separate view and endpoint for making contacts.
+    if (
+        request.method == "POST"
+    ):  # TODO make a separate view and endpoint for making contacts.
         user = get_object_or_404(User, username=username)
         new_contact = Contact.objects.create(
             name=request.POST.get("name"),
@@ -50,9 +52,9 @@ def public_card(request, username):
         return redirect("public_card", username=username)
 
     user = get_object_or_404(User, username=username)
-    bc = user.business_card # type: ignore
-    context = {"owner_card": bc} 
-    bc.view_count += 1 
+    bc = user.business_card  # type: ignore
+    context = {"owner_card": bc}
+    bc.view_count += 1
     bc.save()
     return render(request, "pages/public_card.html", context)
 
@@ -61,7 +63,7 @@ def public_card(request, username):
 def dashboard(request):
     """
     Render dashboard. decorate with login_required.
-    
+
     - GET :
         Prepare form to manipulate details of card and make POST for modify it. form prepared by front-end.
     - POST :
@@ -74,24 +76,27 @@ def dashboard(request):
     if request.method == "POST":
         user_bc = request.user.business_card
 
-        user_bc.name=request.POST.get("name") # TODO try to do it dynamic, with getattr and for loop
-        user_bc.role=request.POST.get("role")
-        user_bc.description=request.POST.get("description")
-        user_bc.logo_sub=request.POST.get("logo_sub")
-        user_bc.tag_behind=request.POST.get("tag_behind")
-        user_bc.email=request.POST.get("email")
-        user_bc.mobile_number=request.POST.get("mobile_number")
-        user_bc.website=request.POST.get("website")
-        user_bc.website_preview=request.POST.get("website_preview")
-        user_bc.linkedin=request.POST.get("linkedin")
-        user_bc.linkedin_preview=request.POST.get("linkedin_preview")
-        user_bc.location=request.POST.get("location")
-        user_bc.response_time=request.POST.get("response_time")
+        user_bc.name = request.POST.get(
+            "name"
+        )  # TODO try to do it dynamic, with getattr and for loop
+        user_bc.role = request.POST.get("role")
+        user_bc.description = request.POST.get("description")
+        user_bc.logo_sub = request.POST.get("logo_sub")
+        user_bc.tag_behind = request.POST.get("tag_behind")
+        user_bc.email = request.POST.get("email")
+        user_bc.mobile_number = request.POST.get("mobile_number")
+        user_bc.website = request.POST.get("website")
+        user_bc.website_preview = request.POST.get("website_preview")
+        user_bc.linkedin = request.POST.get("linkedin")
+        user_bc.linkedin_preview = request.POST.get("linkedin_preview")
+        user_bc.location = request.POST.get("location")
+        user_bc.response_time = request.POST.get("response_time")
 
         user_bc.save()
         messages.success(request, "Your card fields updated successfully.")
         return redirect("dashboard")
     return render(request, "pages/dashboard.html")
+
 
 def qr(request, username):
     """
@@ -106,9 +111,11 @@ def qr(request, username):
     .. _qrcode: https://pypi.org/project/qrcode/
     """
 
-    url_to_card = request.build_absolute_uri(reverse("public_card", kwargs={"username": username}))
+    url_to_card = request.build_absolute_uri(
+        reverse("public_card", kwargs={"username": username})
+    )
 
-    qr_code = QRCode(version=1, error_correction=constants.ERROR_CORRECT_L,  border=2)
+    qr_code = QRCode(version=1, error_correction=constants.ERROR_CORRECT_L, border=2)
     qr_code.add_data(url_to_card)
     qr_code.make(fit=True)
 
