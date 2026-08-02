@@ -57,7 +57,7 @@ def dashboard(request):
         user_bc.save()
         messages.success(request, "Your card fields updated successfully.")
         return redirect("dashboard")
-    return render(request, "dashboard.html")
+    return render(request, "pages/dashboard.html")
 
 def qr(request, username):
     url_to_card = request.build_absolute_uri(reverse("public_card", kwargs={"username": username}))
