@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.urls import reverse
 from qrcode import QRCode, constants
 from io import BytesIO
 from pages.models import Contact
