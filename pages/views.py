@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from qrcode import QRCode, constants
 from io import BytesIO
@@ -32,7 +33,7 @@ def public_card(request, username):
     return render(request, "pages/public_card.html", context)
 
 
-# TODO make dashboard login required
+@login_required
 def dashboard(request):
     """
     Render dashboard to manipulate details of card in GET. Create a record for BusinessCard() in POST.

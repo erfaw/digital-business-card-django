@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from pages.models import BusinessCard
 
 def login(request):
@@ -53,6 +54,7 @@ def register(request):
     else: 
         return render(request, 'accounts/register.html') 
 
+@login_required
 def logout(request):
     if request.method == "POST":
         auth.logout(request)
