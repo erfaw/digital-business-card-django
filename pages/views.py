@@ -125,3 +125,11 @@ def qr(request, username):
     qr_code_image.save(buffer, "PNG")
 
     return HttpResponse(buffer.getvalue(), content_type="image/png")
+
+
+@login_required
+def contact(request):
+    auth_user = request.user
+    contacts = auth_user.contacts.all()
+    context = {"contacts": contacts,}
+    return render(request, "pages/contacts.html", context)
