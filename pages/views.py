@@ -9,13 +9,32 @@ from pages.models import Contact
 
 
 def index(request):
+    """
+    Render Home page as simple as it is.
+
+    Returns:
+        HttpResponse
+    """
     return render(request, "pages/index.html")
 
 
 def public_card(request, username):
     """
     Render actual digital business card in GET. Create a record for Contact() in POST.
+
+    - GET :
+        Get user by username from db then act on user.business_card. increase business_card.view_count by 1 each time.
+    - POST :
+        Get user by username from db then make a new Contact and attach to user. push a success message to render.
+
+    Args:
+        username(str): get automatically from url
+
+    Returns:
+        - GET: HttpResponse
+        - POST: HttpResponseRedirect
     """
+
     if request.method == "POST": # TODO make a separate view and endpoint for making contacts.
         user = get_object_or_404(User, username=username)
         new_contact = Contact.objects.create(
@@ -40,7 +59,16 @@ def public_card(request, username):
 @login_required
 def dashboard(request):
     """
-    Render dashboard to manipulate details of card in GET. Create a record for BusinessCard() in POST.
+    Render dashboard. decorate with login_required.
+    
+    - GET :
+        Prepare form to manipulate details of card and make POST for modify it. form prepared by front-end.
+    - POST :
+        Modify record for user.business_card from data submitted.
+
+    Returns:
+        - GET: HttpResponse
+        - POST: HttpResponseRedirect
     """
     if request.method == "POST":
         user_bc = request.user.business_card
@@ -65,6 +93,18 @@ def dashboard(request):
     return render(request, "pages/dashboard.html")
 
 def qr(request, username):
+    """
+    Makes a QR Code with `qrcode`_ library based on public_card endpoint for username. buffer and send it as result.
+
+    Args:
+        username(str): get automatically from url
+
+    Returns:
+        HttpResponse
+
+    .. _qrcode: https://pypi.org/project/qrcode/
+    """
+
     url_to_card = request.build_absolute_uri(reverse("public_card", kwargs={"username": username}))
 
     qr_code = QRCode(version=1, error_correction=constants.ERROR_CORRECT_L,  border=2)
