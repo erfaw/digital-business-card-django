@@ -323,7 +323,7 @@ body::before {
   cursor: pointer;
 }
 
-.card.flipped {
+.card-preview.flipped {
   transform: rotateY(180deg);
 }
 
