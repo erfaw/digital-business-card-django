@@ -17,10 +17,12 @@ def public_card(request, username):
     Render actual digital business card in GET. Create a record for Contact() in POST.
     """
     if request.method == "POST": # TODO make a separate view and endpoint for making contacts.
+        user = get_object_or_404(User, username=username)
         new_contact = Contact.objects.create(
             name=request.POST.get("name"),
             mobile_number=request.POST.get("mobile_number"),
             message=request.POST.get("message"),
+            user=user,
         )
         new_contact.save()
         messages.success(request, "Thanks! We'll get back to you soon.")
