@@ -37,6 +37,18 @@
 
                 <li>
                     <a
+                    {% if 'contact' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+                    href="{% url 'contact' %}">
+                        Contacts
+                    </a>
+                </li>
+
+                <li>
+                    <a
                     {% if 'logout' in request.path %}
                         class="nav-item active mr-3 logout-color"
                     {% else %}
