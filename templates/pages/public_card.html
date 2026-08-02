@@ -191,8 +191,10 @@
           <div class="ei-sub" data-i18n="ei1_s"></div>
         </div>
         <div class="explain-item">
-          <div class="ei-label" data-i18n="ei2_l"></div>
-          <div class="ei-val"></div>
+          <div class="ei-label views-str" data-i18n="ei2_l">Views</div>
+          <div class="ei2-v views-number-container">
+            <div class="views-number">{{ owner_card.view_count }}</div>
+          </div>
           <div class="ei-sub" data-i18n="ei2_s"></div>
         </div>
         <!-- TODO consider some field in dashboard and model to get company feild then enable it -->
@@ -389,7 +391,7 @@
         flip_hint: 'flip →', btn_flip: 'Flip Card',
         ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
         ei1_l: 'Name', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
-        ei2_l: 'Views', ei2_s: '{{ owner_card.view_count }}',
+        ei2_l: 'Views', ei2_s: '',
         ei3_l: 'Location', ei3_v: '{{ owner_card.location }}', ei3_s: 'Available globally · Remote-first',
         ei4_l: 'Response Time', ei4_v: '{{ owner_card.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
         cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',

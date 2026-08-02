@@ -1042,3 +1042,16 @@ html[dir="rtl"] .explain-grid {
   padding: 0px;
   margin: 0px;
 }
+
+.views-number-container{
+  position: relative;
+}
+.views-number {
+  position: absolute;
+  font-size: 2.5rem;
+  right: 10px;
+  top: -25px;
+}
+.views-str {
+  font-size: 20px;
+}
