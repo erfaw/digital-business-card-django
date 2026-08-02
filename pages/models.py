@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import CharField, TextField, EmailField, URLField, OneToOneField, IntegerField
+from django.db.models import CharField, TextField, EmailField, URLField, OneToOneField, IntegerField, ForeignKey
 from django.contrib.auth.models import User
 from datetime import datetime
 
@@ -32,7 +32,7 @@ class Contact(models.Model):
     mobile_number= models.CharField(max_length= 100)
     message= models.TextField(blank= True)
     contact_date= models.DateTimeField(default= datetime.now, blank= True)
-    # TODO connect to user
+    user = ForeignKey(User, on_delete=models.CASCADE, related_name="contacts")
 
     def __str__(self):
         return self.name
