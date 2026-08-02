@@ -54,7 +54,7 @@ def register(request):
     else: 
         return render(request, 'accounts/register.html') 
 
-@login_required
+@login_required # type: ignore
 def logout(request):
     if request.method == "POST":
         auth.logout(request)
