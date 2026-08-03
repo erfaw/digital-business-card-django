@@ -21,11 +21,11 @@ def login(request):
         return render(request, 'accounts/login.html') 
 
 def register(request):
-    if request.method == "POST":
+    if request.method == "POST": # TODO (HIGH) search for form validations, forms in django, best practices.
         full_name= request.POST['full_name']
         username= request.POST['username']
         email= request.POST['email']
-        password= request.POST['password'] # (HIGH) TODO add password validation
+        password= request.POST['password'] # TODO (HIGH) add password validation
         password2= request.POST['password2']
 
         if password == password2:
@@ -61,10 +61,4 @@ def logout(request):
         messages.info(request, 'User logged out.')
         return redirect('login')
 
-# def dashboard(request): # TODO append this functionality to our dashboard or make a button for it
-# user = User.objects.get(pk= request.user.id)
-# user_contacts = user.contacts.order_by('-contact_date')
-# context = {
-#     'contacts': user_contacts,
-# }
-# return render(request, 'accounts/dashboard.html', context)
+# TODO (MID) make a way to user reset password. likely must send mail a passcode and with that authenticate then reset password.

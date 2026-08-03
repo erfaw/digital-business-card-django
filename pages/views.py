@@ -52,7 +52,7 @@ def public_card(request, username):
 
         messages.success(request, "Thanks! We'll get back to you soon.")
 
-        send_mail(
+        send_mail( # TODO (LOW) make html mail, put link to user contacts. generally search for best practices.
             subject="Contact submitted for you!!",
             message=f"Full Name: '{new_contact.name}'\nMobile Number: '{new_contact.mobile_number}'\nMessage: '{new_contact.message}'\n===\nDigital-Business-Card <3",
             from_email=None,
