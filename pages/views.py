@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.urls import reverse
 from qrcode import QRCode, constants
@@ -40,6 +41,7 @@ def public_card(request, username):
         request.method == "POST"
     ):  # TODO (LOW) make a separate view and endpoint for making contacts.
         user = get_object_or_404(User, username=username)
+
         new_contact = Contact.objects.create(
             name=request.POST.get("name"),
             mobile_number=request.POST.get("mobile_number"),
@@ -47,8 +49,16 @@ def public_card(request, username):
             user=user,
         )
         new_contact.save()
+
         messages.success(request, "Thanks! We'll get back to you soon.")
-        # TODO (HIGH) (TARGET) send mail and any kind of notification to owner here.
+
+        send_mail(
+            subject="Contact submitted for you!!",
+            message=f"Full Name: '{new_contact.name}'\nMobile Number: '{new_contact.mobile_number}'\nMessage: '{new_contact.message}'\n===\nDigital-Business-Card <3",
+            from_email=None,
+            recipient_list=[user.email],
+        )
+
         return redirect("public_card", username=username)
 
     user = get_object_or_404(User, username=username)
