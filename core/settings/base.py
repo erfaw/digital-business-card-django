@@ -67,6 +67,10 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 
 USE_I18N = True
+LANGUAGES = [
+    ("en", "English"),
+    ("fa", "Persian"),
+]
 
 USE_TZ = True
 
