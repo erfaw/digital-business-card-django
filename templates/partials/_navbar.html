@@ -9,7 +9,7 @@
     <nav class="navbar">
 
         <a href="{% url 'index' %}" class="logo">
-            <span class="logo-aa">Digital Business Card</span>
+            <span class="logo-aa">{% trans "Digital Business Card" %}</span>
         </a>
 
         <ul class="nav-links">
@@ -20,7 +20,7 @@
                     class="active"
                 {% endif %}
                 href="{% url 'index' %}">
-                    Home
+                    {% trans "Home" %}
                 </a>
             </li>
             {% if user.is_authenticated %}
@@ -33,7 +33,7 @@
                         class="nav-item mr-3"
                     {% endif %}
                     href="{% url 'dashboard' %}">
-                        Dashboard - {{ user.username }}
+                        {% trans "Dashboard" %} - {{ user.username }}
                     </a>
                 </li>
 
@@ -45,7 +45,7 @@
                         class="nav-item mr-3"
                     {% endif %}
                     href="{% url 'contact' %}">
-                        Contacts
+                        {% trans "Contacts" %}
                     </a>
                 </li>
 
@@ -57,7 +57,7 @@
                         class="nav-item mr-3 logout-color"
                     {% endif %}
                     href="javascript:{document.getElementById('logout').submit()}"">
-                        Logout
+                        {% trans "Logout" %}
                     </a>
                     <form action="{% url 'logout' %}" method="POST" id="logout">
                         {% csrf_token %}
@@ -74,7 +74,7 @@
                         class="nav-item mr-3"
                     {% endif %}
                     href="{% url 'register' %}">
-                        Register
+                        {% trans "Register" %}
                     </a>
                 </li>
 
@@ -86,7 +86,7 @@
                         class="nav-item mr-3"
                     {% endif %}
                     href="{% url 'login' %}">
-                        Login
+                        {% trans "Login" %}
                     </a>
                 </li>
             {% endif %}

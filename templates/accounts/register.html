@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Register
+{% trans "Register" %}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@ Register
         <div class="hero-card register-card">
 
             <div class="card-tag">
-                // Create Account
+                // {% trans "Create Account" %}
             </div>
 
             <h1>
@@ -23,7 +23,7 @@ Register
             </h1>
 
             <p>
-                Create your account and start your journey with us.
+                {% trans "Create your account and start your journey with us." %}
             </p>
             
             {% include 'partials/_alert.html' %}
@@ -32,42 +32,42 @@ Register
                 {% csrf_token %}
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Full Name</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Full Name" %}</label>
                     <input class="cf-input" type="text" id="cfName" name="full_name" data-i18n-ph="cf_name_ph"  autocomplete="name" required/>
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Username</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Username" %}</label>
                     <input class="cf-input" type="text" id="cfName" name="username" data-i18n-ph="cf_name_ph"  autocomplete="username" required/>
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Email</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Email" %}</label>
                     <input class="cf-input" type="email" id="cfName" name="email" data-i18n-ph="cf_name_ph" autocomplete="email" required/>
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Password</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Password" %}</label>
                     <input class="cf-input" type="password" id="cfName" name="password" data-i18n-ph="cf_name_ph" autocomplete="new-password" required/>
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Confirm Password</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Confirm Password" %}</label>
                     <input class="cf-input" type="password" id="cfName" name="password2" data-i18n-ph="cf_name_ph" autocomplete="new-password" required/>
                 </div>
 
                 <br>
 
                 <button class="cf-submit" type="submit">
-                    <span data-i18n="cf_submit">Register</span>
+                    <span data-i18n="cf_submit">{% trans "Register" %}</span>
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M2 8h12M9 3l5 5-5 5" />

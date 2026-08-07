@@ -1,11 +1,11 @@
 {% extends 'base.html' %} 
 
-{% block title %}
-Dashboard
-{% endblock %}
-
 {% load static %}
 {% load i18n %}
+
+{% block title %}
+{% trans "Dashboard" %}
+{% endblock %}
 
 {% block content %}
 
@@ -15,7 +15,7 @@ Dashboard
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Dashboard | Digital Card</title>
+  <title> {% trans "Dashboard" %} | {% trans "Digital Card" %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
@@ -28,12 +28,12 @@ Dashboard
 
     <div class="top">
       <div class="brand">
-        <span class="brand-mark">AA</span>
+        <span class="brand-mark"></span>
         <div>
-          <div class="brand-sub">پنل مدیریت کارت ویزیت</div>
+          <div class="brand-sub"></div>
         </div>
       </div>
-      <div class="status-pill" id="statusPill"><span class="dot"></span><span id="statusText">همه چیز ذخیره شده</span>
+      <!-- <div class="status-pill" id="statusPill"><span class="dot"></span><span id="statusText">همه چیز ذخیره شده</span> -->
       </div>
     </div>
 
@@ -44,66 +44,66 @@ Dashboard
         <form id="data-form" method="POST" action="{% url 'dashboard' %}" > {% csrf_token %}
           {% include 'partials/_alert.html' %}
           <div class="panel">
-            <div class="panel-title"><span class="panel-tag">// Name and Role</span>
+            <div class="panel-title"><span class="panel-tag">// {% trans "Name and Role" %}</span>
             </div>
             <div class="field-grid">
               <div class="field">
-                <label for="name" >Name</label>
+                <label for="name" >{% trans "Name" %}</label>
                 <input name="name" type="text" id="f_name" placeholder="{{ request.user.business_card.name }}" value="{{ request.user.business_card.name }}">
               </div>
               <div class="field">
-                <label for="role">Role</label>
+                <label for="role">{% trans "Role" %}</label>
                 <input name="role" type="text" id="f_title" placeholder="{{ request.user.business_card.role }}" value="{{ request.user.business_card.role }}">
               </div>
               <div class="field full">
-                <label for="description">Description</label>
+                <label for="description">{% trans "Description" %}</label>
                 <input name="description" type="text" id="f_dept" placeholder="{{ request.user.business_card.description }}" value="{{ request.user.business_card.description }}">
               </div>
               <div class="field">
-                <label for="logo_sub">Logo Subtitle</label>
+                <label for="logo_sub">{% trans "Logo Subtitle" %}</label>
                 <input name="logo_sub" type="text" id="f_company" placeholder="{{ request.user.business_card.logo_sub }}" value="{{ request.user.business_card.logo_sub }}">
               </div>
               <div class="field">
-                <label for="tag_behind">Tag Behind Card</label>
+                <label for="tag_behind">{% trans "Tag Behind Card" %}</label>
                 <input name="tag_behind" type="text" id="f_tagline" placeholder="{{ request.user.business_card.tag_behind }}" value="{{ request.user.business_card.tag_behind }}">
               </div>
             </div>
           </div>
 
           <div class="panel">
-            <div class="panel-title"><span class="panel-tag">// Contact Info</span>
+            <div class="panel-title"><span class="panel-tag">// {% trans "Contact Info" %}</span>
             </div>
             <div class="field-grid">
               <div class="field">
-                <label for="email">Email</label>
+                <label for="email">{% trans "Email" %}</label>
                 <input name="email" type="email" id="f_email" placeholder="{{ request.user.business_card.email }}" value="{{ request.user.business_card.email }}">
               </div>
               <div class="field">
-                <label for="mobile_number">Mobile Number</label>
+                <label for="mobile_number">{% trans "Mobile Number" %}</label>
                 <input name="mobile_number" type="tel" id="f_phone" placeholder="{{ request.user.business_card.mobile_number }}" value="{{ request.user.business_card.mobile_number }}">
               </div>
               <div class="field">
-                <label for="website_preview">Website Preview</label>
+                <label for="website_preview">{% trans "Website Preview" %}</label>
                 <input name="website_preview" type="text" id="f_website" placeholder="{{ request.user.business_card.website_preview }}" value="{{ request.user.business_card.website_preview }}">
               </div>
               <div class="field">
-                <label for="website">Website (URL)</label>
+                <label for="website">{% trans "Website (URL)" %}</label>
                 <input name="website" type="text" id="f_websiteUrl" placeholder="{{ request.user.business_card.website }}" value="{{ request.user.business_card.website }}">
               </div>
               <div class="field">
-                <label for="linkedin_preview">Linkedin Preview</label>
+                <label for="linkedin_preview">{% trans "Linkedin Preview" %}</label>
                 <input name="linkedin_preview" type="text" id="f_linkedin" placeholder="{{ request.user.business_card.linkedin_preview }}" value="{{ request.user.business_card.linkedin_preview }}">
               </div>
               <div class="field">
-                <label for="linkedin">Linkedin (URL)</label>
+                <label for="linkedin">{% trans "Linkedin (URL)" %}</label>
                 <input name="linkedin" type="text" id="f_linkedinUrl" placeholder="{{ request.user.business_card.linkedin }}" value="{{ request.user.business_card.linkedin }}">
               </div>
               <div class="field">
-                <label for="location">Location</label>
+                <label for="location">{% trans "Location" %}</label>
                 <input name="location" type="text" id="f_location" placeholder="{{ request.user.business_card.location }}" value="{{ request.user.business_card.location }}">
               </div>
               <div class="field">
-                <label for="response_time">Response Time</label>
+                <label for="response_time">{% trans "Response Time" %}</label>
                 <input name="response_time" type="text" id="f_response" placeholder="{{ request.user.business_card.response_time }}" value="{{ request.user.business_card.response_time }}">
               </div>
             </div>
@@ -113,27 +113,27 @@ Dashboard
 
       <!-- PREVIEW SIDE -->
       <div class="preview-side">
-        <div class="flip-note">Click to redirect public card page</div>
+        <div class="flip-note">{% trans "Click to redirect public card page" %}</div>
         <div class="qr-container"> 
           <a href="{% url 'public_card' username=request.user.username %}">
-            <img src="{% url 'qr' username=request.user.username %}" alt="QR Code">
+            <img src="{% url 'qr' username=request.user.username %}" alt='{% trans "QR Code" %}'>
           </a>
         </div>
         
-        <div class="preview-label">// Live Preview</div>
+        <div class="preview-label">// {% trans "Live Preview" %}</div>
 
         <div class="card-scene">
           <div class="card-preview" id="previewCard">
             <div class="card-face card-front">
               <div class="front-top">
                 <div>
-                  <span class="logo-text" style="font-size: 1rem;">Digital Business Card</span>
+                  <span class="logo-text" style="font-size: 1rem;">{% trans "Digital Business Card" %}</span>
                   <span class="logo-sub" id="p_company"></span>
                 </div>
                 <div class="holo-chip"></div>
               </div>
               <div class="front-mid">
-                <div class="person-name" id="p_name">Insert something please</div>
+                <div class="person-name" id="p_name">{% trans "Insert something please" %}</div>
                 <div class="person-title" id="p_title">...</div>
                 <div class="person-dept" id="p_dept">...</div>
               </div>
@@ -143,35 +143,35 @@ Dashboard
                   <div class="contact-row" id="p_website">...</div>
                   <div class="contact-row" id="p_phone">...</div>
                 </div>
-                <div class="flip-hint">flip →</div>
+                <div class="flip-hint">{% trans "flip" %} →</div>
               </div>
             </div>
             <div class="card-face card-back">
-              <div class="back-logo" style="font-size: 1rem;">Digital Business Card</div>
+              <div class="back-logo" style="font-size: 1rem;">{% trans "Digital Business Card" %}</div>
               <div class="back-tagline" id="p_tagline">...</div>
               <div class="back-divider"></div>
               <div class="back-url" id="p_website2">...</div>
             </div>
           </div>
         </div>
-        <div class="flip-note">Click to flip card</div>
+        <div class="flip-note">{% trans "Click to flip card" %}</div>
 
         <div class="mini-links">
           <div class="mini-link"><span class="dot2" style="background:var(--cyan);"></span>
-            <div><span class="ml-label">Email</span><span class="ml-val" id="l_email">...</span></div>
+            <div><span class="ml-label">{% trans "Email" %}</span><span class="ml-val" id="l_email">...</span></div>
           </div>
           <div class="mini-link"><span class="dot2" style="background:var(--green);"></span>
-            <div><span class="ml-label">Phone</span><span class="ml-val" id="l_phone">...</span></div>
+            <div><span class="ml-label">{% trans "Phone" %}</span><span class="ml-val" id="l_phone">...</span></div>
           </div>
           <div class="mini-link"><span class="dot2" style="background:var(--blue);"></span>
-            <div><span class="ml-label">Website</span><span class="ml-val" id="l_website">...</span></div>
+            <div><span class="ml-label">{% trans "Website" %}</span><span class="ml-val" id="l_website">...</span></div>
           </div>
           <div class="mini-link"><span class="dot2" style="background:#0A66C2;"></span>
-            <div><span class="ml-label">Linkedin</span><span class="ml-val" id="l_linkedin">...</span>
+            <div><span class="ml-label">{% trans "Linkedin" %}</span><span class="ml-val" id="l_linkedin">...</span>
             </div>
           </div>
           <div class="mini-link"><span class="dot2" style="background:var(--violet);"></span>
-            <div><span class="ml-label">Location</span><span class="ml-val" id="l_location">...</span></div>
+            <div><span class="ml-label">{% trans "Location" %}</span><span class="ml-val" id="l_location">...</span></div>
           </div>
         </div>
 
@@ -180,10 +180,10 @@ Dashboard
     </div>
 
     <div class="actions">
-      <button type="submit" form="data-form" class="btn primary" id="btnSave">Submit Change</button>
-      <button class="btn danger" id="btnReset">Empty all fields</button>
-      <button class="btn ghost" id="btnExport">JSON Export</button>
-      <button class="btn ghost" id="btnExportQRCode">QR Code Export</button>
+      <button type="submit" form="data-form" class="btn primary" id="btnSave">{% trans "Submit Change" %}</button>
+      <button class="btn danger" id="btnReset">{% trans "Empty all fields" %}</button>
+      <button class="btn ghost" id="btnExport">{% trans "JSON Export" %}</button>
+      <button class="btn ghost" id="btnExportQRCode">{% trans "QR Code Export" %}</button>
     </div>
 
   </div>

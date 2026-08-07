@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block title %}
-Contacts
+{% trans "Contacts" %}
 {% endblock%}
 
 {% block content %}
@@ -13,17 +13,17 @@ Contacts
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Welcome {{ user.first_name|title }} {{ user.last_name|title }} ({{ user.username }})</h2>
-                <p>Here are Contact messages submitted for you.</p>
+                <h2>{% trans "Welcome" %} {{ user.first_name|title }} {{ user.last_name|title }} ({{ user.username }})</h2>
+                <p>{% trans "Here are Contact messages submitted for you." %}</p>
                 <table class="hero-card table contact-table  ">
                     {% if contacts %}
                         <thead class="bg-transparent">
                             <tr class="bg-transparent">
                                 <th class="bg-transparent text-secondary" scope="col">#</th>
-                                <th class="bg-transparent text-secondary" scope="col">Name</th>
-                                <th class="bg-transparent text-secondary" scope="col">Phone</th>
-                                <th class="bg-transparent text-secondary" scope="col">Message</th>
-                                <th class="bg-transparent text-secondary" scope="col">Date</th>
+                                <th class="bg-transparent text-secondary" scope="col">{% trans "Name" %}</th>
+                                <th class="bg-transparent text-secondary" scope="col">{% trans "Phone" %}</th>
+                                <th class="bg-transparent text-secondary" scope="col">{% trans "Message" %}</th>
+                                <th class="bg-transparent text-secondary" scope="col">{% trans "Date" %}</th>
                                 <th class="bg-transparent text-secondary"></th>
                             </tr>
                         </thead>
@@ -39,7 +39,7 @@ Contacts
                             {% endfor %}
                         </tbody>
                     {% else %}
-                        <h1>There is no inquiry submitted yet.</h1>
+                        <h1>{% trans "There is no inquiry submitted yet." %}</h1>
                     {% endif %}
                 </table>
             </div>

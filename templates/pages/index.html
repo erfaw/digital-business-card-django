@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}
-Home
+{% trans "Home" %}
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@ Home
             {% include 'partials/_alert.html' %}
             
             <div class="card-tag">
-                // Welcome
+                // {% trans "Welcome" %}
             </div>
 
             <h1>
@@ -29,14 +29,14 @@ Home
             </h1>
 
             <p>
-                Build your own business card and share with others!
+                {% trans "Build your own business card and share with others!" %}
             </p>
 
             <div class="hero-buttons">
                 {% if user.is_authenticated %}
 
                     <button onclick="location.href='{% url 'dashboard' %}'" class="cf-submit" type="submit"> 
-                        <span data-i18n="cf_submit">Dashboard</span>
+                        <span data-i18n="cf_submit">{% trans "Dashboard" %}</span>
                         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M2 8h12M9 3l5 5-5 5" />
@@ -52,7 +52,7 @@ Home
                     </button>
 
                     <button onclick="javascript:{document.getElementById('logout').submit()}" class="cf-submit logout-color" type="submit" id="btnLogout"> 
-                        <span data-i18n="cf_submit">Logout</span>
+                        <span data-i18n="cf_submit">{% trans "Logout" %}</span>
                     </button>
                     <form action="{% url 'logout' %}" method="POST" id="logout">
                         {% csrf_token %}
@@ -62,7 +62,7 @@ Home
                 {% else %}
 
                     <button onclick="location.href='{% url 'register' %}'" class="cf-submit" type="submit"> 
-                        <span data-i18n="cf_submit">Register</span>
+                        <span data-i18n="cf_submit">{% trans "Register" %}</span>
                         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M2 8h12M9 3l5 5-5 5" />
@@ -70,7 +70,7 @@ Home
                     </button>
 
                     <button onclick="location.href='{% url 'login' %}'" class="cf-submit login" type="submit"> 
-                        <span data-i18n="cf_submit">Login</span>
+                        <span data-i18n="cf_submit">{% trans "Login" %}</span>
                     </button>
 
                 {% endif %}

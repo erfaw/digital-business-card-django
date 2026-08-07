@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Login
+{% trans "Login" %}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@ Login
         <div class="hero-card register-card">
 
             <div class="card-tag">
-                // Signin Account
+                // {% trans "Signin Account" %}
             </div>
 
             <h1>
@@ -23,7 +23,7 @@ Login
             </h1>
 
             <p>
-                Welcome back!
+                {% trans "Welcome back!" %}
             </p>
 
             {% include 'partials/_alert.html' %}
@@ -32,21 +32,21 @@ Login
                 {% csrf_token %}
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Username</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Username" %}</label>
                     <input class="cf-input" type="text" id="cfName" name="username" data-i18n-ph="cf_name_ph" autocomplete="username" required/>
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">Password</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Password" %}</label>
                     <input class="cf-input" type="password" id="cfName" name="password" data-i18n-ph="cf_name_ph" autocomplete="current-password" required/>
                 </div>
 
                 <br>
 
                 <button class="cf-submit" type="submit">
-                    <span data-i18n="cf_submit">Login</span>
+                    <span data-i18n="cf_submit">{% trans "Login" %}</span>
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M2 8h12M9 3l5 5-5 5" />
