@@ -7,7 +7,8 @@ from core.settings import base as base_setting
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("pages.urls")),
-    path('accounts/', include('accounts.urls')),
+    path("accounts/", include("accounts.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
 ]
 
 if base_setting.DEBUG:
