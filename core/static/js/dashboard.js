@@ -189,32 +189,3 @@ document.querySelectorAll(".close").forEach(button => {
     });
 
 });
-
-/* ==========================================================
-   LANG TOGGLE
-========================================================== */
-window.AA = window.AA || {};
-AA.translations = {
-    en: {},
-    fa: {},
-};
-AA.currentLang = localStorage.getItem('aa_lang') || 'en';
-AA.applyLang = function (lang) {
-    AA.currentLang = lang; localStorage.setItem('aa_lang', lang);
-    const t = AA.translations[lang], html = document.documentElement;
-    html.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
-    html.setAttribute('lang', lang === 'fa' ? 'fa' : 'en');
-    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (t[k] !== undefined) el.innerHTML = t[k]; });
-    document.body.style.opacity = '0'; document.body.style.transition = 'opacity .2s';
-    requestAnimationFrame(() => { document.body.style.opacity = '1'; });
-    const btnEN = document.getElementById('btnEN'), btnFA = document.getElementById('btnFA'), slider = document.getElementById('langSlider');
-    if (lang === 'en') { btnEN.classList.add('active'); btnFA.classList.remove('active'); slider.style.transform = 'translateX(0)'; slider.style.width = btnEN.offsetWidth + 'px'; }
-    else { btnFA.classList.add('active'); btnEN.classList.remove('active'); slider.style.transform = `translateX(${btnEN.offsetWidth}px)`; slider.style.width = btnFA.offsetWidth + 'px'; }
-};
-AA.toggleLang = function () { AA.applyLang(AA.currentLang === 'en' ? 'fa' : 'en'); };
-window.addEventListener('load', () => {
-    const btnEN = document.getElementById('btnEN'), slider = document.getElementById('langSlider');
-    if (btnEN && slider) slider.style.width = btnEN.offsetWidth + 'px';
-    AA.applyLang(AA.currentLang);
-});
-
