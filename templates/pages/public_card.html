@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> {{ owner_card.name}} | Digital Card</title>
+  <title> {{ owner_card.name}} | {% trans "Digital Card" %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
@@ -56,7 +56,7 @@
 
           <div class="front-top">
             <div class="aa-logo-mark">
-              <span class="logo-text" style="font-size: 1rem;">Digital Business Card</span>
+              <span class="logo-text" style="font-size: 1rem;">{% trans "Digital Business Card" %}</span>
               <span class="logo-sub" data-i18n="card_company"></span>
             </div>
             <div class="holo-chip"></div>
@@ -106,13 +106,13 @@
               {% endif %}
 
             </div>
-            <div class="flip-hint" data-i18n="flip_hint">flip →</div>
+            <div class="flip-hint" data-i18n="flip_hint"> {% trans "flip" %} →</div>
           </div>
         </div>
 
         <!-- BACK -->
         <div class="card-face card-back">
-          <div class="back-logo" style="font-size: 1.5rem; padding-top:50px;">Digital Business Card</div>
+          <div class="back-logo" style="font-size: 1.5rem; padding-top:50px;">{% trans "Digital Business Card" %}</div>
           <div class="back-tagline" data-i18n="back_tagline"></div>
           <div class="back-divider"></div>
           {% if owner_card.website != "" %}
@@ -143,7 +143,7 @@
               <rect x="42" y="48" width="4" height="4" rx=".5" fill="#7B2FFF" opacity=".6" />
               <rect x="48" y="48" width="4" height="4" rx=".5" fill="#00E5A0" opacity=".4" />
             </svg> -->
-            <img width="100%" src="{% url 'qr' username=owner_card.user.username %}" alt="QR Code">
+            <img width="100%" src="{% url 'qr' username=owner_card.user.username %}" alt='{% trans "QR Code" %}'>
           </div>
         </div>
 
@@ -158,11 +158,11 @@
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <path d="M2 7a5 5 0 109.5-2M12 5V2M12 2H9" />
         </svg>
-        <span data-i18n="btn_flip">Flip Card</span>
+        <span data-i18n="btn_flip">{% trans "Flip Card" %}</span>
       </button>
 
       <button onclick="location.href='{% url 'dashboard' %}'" class="flip-btn" type="submit"> 
-            <span data-i18n="cf_submit">Dashboard</span>
+            <span data-i18n="cf_submit">{% trans "Dashboard" %}</span>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path d="M2 8h12M9 3l5 5-5 5" />
@@ -175,7 +175,7 @@
         <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <path d="M2 7a5 5 0 109.5-2M12 5V2M12 2H9" />
         </svg>
-        <span data-i18n="btn_flip">Flip Card</span>
+        <span data-i18n="btn_flip">{% trans "Flip Card" %}</span>
       </button>
     {% endif %}
 
@@ -184,18 +184,18 @@
     <!-- ── EXPLANATION ── -->
     <div class="explain">
       <div class="explain-header">
-        <span class="explain-tag" data-i18n="ex_tag">// Card Details</span>
-        <span class="explain-title" data-i18n="ex_title">About This Card & How to Reach Me</span>
+        <span class="explain-tag" data-i18n="ex_tag">// {% trans "Card Details" %}</span>
+        <span class="explain-title" data-i18n="ex_title">{% trans "About This Card & How to Reach Me" %}</span>
       </div>
 
       <div class="explain-grid">
         <div class="explain-item">
-          <div class="ei-label" data-i18n="ei1_l">Name</div>
+          <div class="ei-label" data-i18n="ei1_l">{% trans "Name" %}</div>
           <div class="ei-val" data-i18n="ei1_v"></div>
           <div class="ei-sub" data-i18n="ei1_s"></div>
         </div>
         <div class="explain-item">
-          <div class="ei-label views-str" data-i18n="ei2_l">Views</div>
+          <div class="ei-label views-str" data-i18n="ei2_l">{% trans "Views" %}</div>
           <div class="ei2-v views-number-container">
             <div class="views-number">{{ owner_card.view_count }}</div>
           </div>
@@ -208,14 +208,14 @@
           <div class="ei-sub" data-i18n="ei2_s"></div>
         </div> -->
         <div class="explain-item">
-          <div class="ei-label" data-i18n="ei3_l">Location</div>
+          <div class="ei-label" data-i18n="ei3_l">{% trans "Location" %}</div>
           <div class="ei-val" data-i18n="ei3_v"></div>
           <div class="ei-sub" data-i18n="ei3_s"></div>
         </div>
         <div class="explain-item">
-          <div class="ei-label" data-i18n="ei4_l">Response Time</div>
+          <div class="ei-label" data-i18n="ei4_l">{% trans "Response Time" %}</div>
           <div class="ei-val" data-i18n="ei4_v"></div>
-          <div class="ei-sub" data-i18n="ei4_s">Mon – Fri · Business hours CET</div>
+          <div class="ei-sub" data-i18n="ei4_s">{% trans "Mon – Fri · Business hours" %}</div>
         </div>
       </div>
 
@@ -236,7 +236,7 @@
             </svg>
           </div>
           <div class="cl-body">
-            <div class="cl-label" data-i18n="cl1_l">Email — Direct</div>
+            <div class="cl-label" data-i18n="cl1_l">{% trans "Email" %}</div>
             <div class="cl-val">{{ owner_card.email }}</div>
           </div>
           <span class="cl-arrow">→</span>
@@ -258,7 +258,7 @@
               </svg>
             </div>
             <div class="cl-body">
-              <div class="cl-label" data-i18n="cl2_l">Phone</div>
+              <div class="cl-label" data-i18n="cl2_l">{% trans "Phone" %}</div>
               <div class="cl-val">&lrm;{{ owner_card.mobile_number }}</div>
             </div>
             <span class="cl-arrow">→</span>
@@ -282,7 +282,7 @@
               </svg>
             </div>
             <div class="cl-body">
-              <div class="cl-label" data-i18n="cl3_l">Website</div>
+              <div class="cl-label" data-i18n="cl3_l">{% trans "Website" %}</div>
               <div class="cl-val">{{ owner_card.website_preview }}</div>
             </div>
             <span class="cl-arrow">→</span>
@@ -307,7 +307,7 @@
               </svg>
             </div>
             <div class="cl-body">
-              <div class="cl-label" data-i18n="cl4_l">LinkedIn</div>
+              <div class="cl-label" data-i18n="cl4_l">{% trans "LinkedIn" %}</div>
               <div class="cl-val">{{ owner_card.linkedin_preview }}</div>
             </div>
             <span class="cl-arrow">→</span>
@@ -317,28 +317,28 @@
         <!-- ── CONTACT FORM ── -->
         <div class="contact-form-wrap">
           <div class="cf-header">
-            <span class="cf-tag" data-i18n="cf_tag">// Get In Touch</span>
-            <span class="cf-title" data-i18n="cf_title">Contact Us</span>
+            <span class="cf-tag" data-i18n="cf_tag">// {% trans "Get In Touch" %}</span>
+            <span class="cf-title" data-i18n="cf_title">{% trans "Contact Us" %}</span>
           </div>
 
           <form method="post" action="{% url 'public_card' username=owner_card.user.username %}" class="contact-form" id="contactForm">
             {% csrf_token %}
             <div class="cf-row">
               <div class="cf-field">
-                <label class="cf-label" for="cfName" data-i18n="cf_name_l">Full Name</label>
-                <input class="cf-input" type="text" id="cfName" name="name" data-i18n-ph="cf_name_ph" placeholder="Your name" autocomplete="name" required/>
+                <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Full Name" %}</label>
+                <input class="cf-input" type="text" id="cfName" name="name" data-i18n-ph="cf_name_ph" placeholder="{% trans "Your name" %}" autocomplete="name" required/>
               </div>
               <div class="cf-field">
-                <label class="cf-label" for="cfPhone" data-i18n="cf_phone_l">Phone Number</label>
-                <input class="cf-input" type="tel" id="cfPhone" name="mobile_number" data-i18n-ph="cf_phone_ph" placeholder="+98 912 000 0000" autocomplete="tel" required/>
+                <label class="cf-label" for="cfPhone" data-i18n="cf_phone_l">{% trans "Phone Number" %}</label>
+                <input class="cf-input" type="tel" id="cfPhone" name="mobile_number" data-i18n-ph="cf_phone_ph" placeholder="+989120000000" autocomplete="tel" required/>
               </div>
             </div>
             <div class="cf-field">
-              <label class="cf-label" for="cfDesc" data-i18n="cf_desc_l">Message</label>
-              <textarea class="cf-input cf-textarea" id="cfDesc" name="message" rows="4" data-i18n-ph="cf_desc_ph" placeholder="Tell us about your project…"></textarea>
+              <label class="cf-label" for="cfDesc" data-i18n="cf_desc_l">{% trans "Message" %}</label>
+              <textarea class="cf-input cf-textarea" id="cfDesc" name="message" rows="4" data-i18n-ph="cf_desc_ph" placeholder="{% trans "Tell us about your project…" %}"></textarea>
             </div>
             <button class="cf-submit" type="submit">
-              <span data-i18n="cf_submit">Send Message</span>
+              <span data-i18n="cf_submit">{% trans "Send" %} {% trans "Message" %}</span>
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 8h12M9 3l5 5-5 5"/>
               </svg>
@@ -392,38 +392,25 @@
         card_company: '{{ owner_card.logo_sub }}', card_name: '{{ owner_card.name }}', card_title: '{{ owner_card.role }}',
         card_dept: '{{ owner_card.description }}',
         back_tagline: '{{ owner_card.tag_behind }}',
-        flip_hint: 'flip →', btn_flip: 'Flip Card',
-        ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
-        ei1_l: 'Name', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
-        ei2_l: 'Views', ei2_s: '',
-        ei3_l: 'Location', ei3_v: '{{ owner_card.location }}', ei3_s: 'Available globally · Remote-first',
-        ei4_l: 'Response Time', ei4_v: '{{ owner_card.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
-        cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
+        flip_hint: '{% trans "flip" %} →', btn_flip: '{% trans "Flip Card" %}',
+        ex_tag: '// {% trans "Card Details" %}', ex_title: '{% trans "About This Card & How to Reach Me" %}',
+        ei1_l: '{% trans "Name" %}', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
+        ei2_l: '{% trans "Views" %}', ei2_s: '',
+        ei3_l: '{% trans "Location" %}', ei3_v: '{{ owner_card.location }}', ei3_s: '{% trans "Available globally · Remote-first" %}',
+        ei4_l: '{% trans "Response Time" %}', ei4_v: '{{ owner_card.response_time }}', ei4_s: '{% trans "Mon – Fri · Business hours" %}',
+        cl1_l: '{% trans "Email" %}', cl2_l: '{% trans "Phone" %}', cl3_l: '{% trans "Website" %}', cl4_l: '{% trans "LinkedIn" %}',
       },
-       /* fa: {
-        card_company: 'فناوری', card_name: 'علی ستارزاده', card_title: 'بنیان‌گذار و مدیرعامل',
-        card_dept: 'مهندسی · محصول · چشم‌انداز',
-        back_tagline: 'کمال آن چیزی‌ست که ارائه می‌دهیم',
-        flip_hint: '← برگردان', btn_flip: 'برگرداندن کارت',
-        ex_tag: '// جزئیات کارت', ex_title: 'درباره این کارت و چطور با من تماس بگیرید',
-        ei1_l: 'نام', ei1_v: 'علی ستارزاده', ei1_s: 'بنیان‌گذار و مدیرعامل، AA Technology',
-        ei2_l: 'شرکت', ei2_s: 'مهندسی · هوش مصنوعی · موبایل · وب',
-        ei3_l: 'مکان', ei3_v: 'تهران', ei3_s: 'در دسترس جهانی · دورکاری',
-        ei4_l: 'زمان پاسخ', ei4_v: 'ظرف ۲۴ ساعت', ei4_s: 'دوشنبه تا جمعه · ساعات اداری CET',
-        cl1_l: 'ایمیل — مستقیم', cl2_l: 'تلفن', cl3_l: 'وب‌سایت', cl4_l: 'لینکدین',
-      } */
-    //  <!-- TODO (HIGH) make translation for english fields. -->
       fa: {
         card_company: '{{ owner_card.logo_sub }}', card_name: '{{ owner_card.name }}', card_title: '{{ owner_card.role }}',
         card_dept: '{{ owner_card.description }}',
         back_tagline: '{{ owner_card.tag_behind }}',
-        flip_hint: 'flip →', btn_flip: 'Flip Card',
-        ex_tag: '// Card Details', ex_title: 'About This Card & How to Reach Me',
-        ei1_l: 'Name', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
-        ei2_l: 'Company', ei2_s: 'Engineering · AI · Mobile · Web',
-        ei3_l: 'Location', ei3_v: '{{ owner_card.location }}', ei3_s: 'Available globally · Remote-first',
-        ei4_l: 'Response Time', ei4_v: '{{ owner_card.response_time }}', ei4_s: 'Mon – Fri · Business hours CET',
-        cl1_l: 'Email — Direct', cl2_l: 'Phone', cl3_l: 'Website', cl4_l: 'LinkedIn',
+        flip_hint: '{% trans "flip" %} →', btn_flip: '{% trans "Flip Card" %}',
+        ex_tag: '// {% trans "Card Details" %}', ex_title: '{% trans "About This Card & How to Reach Me" %}',
+        ei1_l: '{% trans "Name" %}', ei1_v: '{{ owner_card.name }}', ei1_s: '{{ owner_card.role }}',
+        ei2_l: '{% trans "Views" %}', ei2_s: '',
+        ei3_l: '{% trans "Location" %}', ei3_v: '{{ owner_card.location }}', ei3_s: '{% trans "Available globally · Remote-first" %}',
+        ei4_l: '{% trans "Response Time" %}', ei4_v: '{{ owner_card.response_time }}', ei4_s: '{% trans "Mon – Fri · Business hours" %}',
+        cl1_l: '{% trans "Email" %}', cl2_l: '{% trans "Phone" %}', cl3_l: '{% trans "Website" %}', cl4_l: '{% trans "LinkedIn" %}',
       },
     };
     AA.currentLang = localStorage.getItem('aa_lang') || 'en';

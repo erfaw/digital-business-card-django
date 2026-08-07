@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-06 23:53+0000\n"
+"POT-Creation-Date: 2026-08-07 04:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: core/settings/base.py:73
 msgid "English"
 msgstr "انگلیسی"
@@ -25,6 +26,124 @@ msgstr "انگلیسی"
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/pages/public_card.html:20
-msgid "Hello"
-msgstr "سلام"
+#: templates/pages/public_card.html:10
+msgid "Digital Card"
+msgstr "کارت دیجیتال"
+
+#: templates/pages/public_card.html:59 templates/pages/public_card.html:115
+#, fuzzy
+#| msgid "Digital Card"
+msgid "Digital Business Card"
+msgstr "کارت دیجیتال"
+
+#: templates/pages/public_card.html:109 templates/pages/public_card.html:395
+#: templates/pages/public_card.html:407
+msgid "flip"
+msgstr "چرخاندن"
+
+#: templates/pages/public_card.html:146
+msgid "QR Code"
+msgstr "کد QR"
+
+#: templates/pages/public_card.html:161 templates/pages/public_card.html:178
+#: templates/pages/public_card.html:395 templates/pages/public_card.html:407
+msgid "Flip Card"
+msgstr "چرخاندنِ کارت"
+
+#: templates/pages/public_card.html:165
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: templates/pages/public_card.html:187 templates/pages/public_card.html:396
+#: templates/pages/public_card.html:408
+msgid "Card Details"
+msgstr "اطلاعات کارت"
+
+#: templates/pages/public_card.html:188 templates/pages/public_card.html:396
+#: templates/pages/public_card.html:408
+msgid "About This Card & How to Reach Me"
+msgstr "درمورد این کارت و ارتباط با من"
+
+#: templates/pages/public_card.html:193 templates/pages/public_card.html:397
+#: templates/pages/public_card.html:409
+msgid "Name"
+msgstr "نام"
+
+#: templates/pages/public_card.html:198 templates/pages/public_card.html:398
+#: templates/pages/public_card.html:410
+msgid "Views"
+msgstr "بازدیدها"
+
+#: templates/pages/public_card.html:211 templates/pages/public_card.html:399
+#: templates/pages/public_card.html:411
+msgid "Location"
+msgstr "موقعیت"
+
+#: templates/pages/public_card.html:216 templates/pages/public_card.html:400
+#: templates/pages/public_card.html:412
+msgid "Response Time"
+msgstr "تاخیر پاسخگویی"
+
+#: templates/pages/public_card.html:218 templates/pages/public_card.html:400
+#: templates/pages/public_card.html:412
+msgid "Mon – Fri · Business hours"
+msgstr "شنبه - پنجشنبه · وقت اداری"
+
+#: templates/pages/public_card.html:239 templates/pages/public_card.html:401
+#: templates/pages/public_card.html:413
+msgid "Email"
+msgstr "ایمیل"
+
+#: templates/pages/public_card.html:261 templates/pages/public_card.html:401
+#: templates/pages/public_card.html:413
+msgid "Phone"
+msgstr "شماره همراه"
+
+#: templates/pages/public_card.html:285 templates/pages/public_card.html:401
+#: templates/pages/public_card.html:413
+msgid "Website"
+msgstr "وبسایت"
+
+#: templates/pages/public_card.html:310 templates/pages/public_card.html:401
+#: templates/pages/public_card.html:413
+msgid "LinkedIn"
+msgstr "لینکدین"
+
+#: templates/pages/public_card.html:320
+msgid "Get In Touch"
+msgstr "ارتباط"
+
+#: templates/pages/public_card.html:321
+msgid "Contact Us"
+msgstr "با ما تماس بگیرید"
+
+#: templates/pages/public_card.html:328
+msgid "Full Name"
+msgstr "نام کامل"
+
+#: templates/pages/public_card.html:329
+msgid "Your name"
+msgstr "نام کامل شما"
+
+#: templates/pages/public_card.html:332
+msgid "Phone Number"
+msgstr "شماره همراه"
+
+#: templates/pages/public_card.html:337 templates/pages/public_card.html:341
+msgid "Message"
+msgstr "پیام"
+
+#: templates/pages/public_card.html:338
+msgid "Tell us about your project…"
+msgstr "به ما درمورد پروژه تون بگید..."
+
+#: templates/pages/public_card.html:341
+msgid "Send"
+msgstr "ارسال"
+
+#: templates/pages/public_card.html:399 templates/pages/public_card.html:411
+msgid "Available globally · Remote-first"
+msgstr "دردسترس بطور کلی، دورکاری در اولیت"
+
+#~ msgid "Hello"
+#~ msgstr "سلام"
