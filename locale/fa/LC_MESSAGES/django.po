@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-07 06:16+0000\n"
+"POT-Creation-Date: 2026-08-07 20:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,51 +26,51 @@ msgstr "انگلیسی"
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/accounts/login.html:4 templates/accounts/login.html:49
+#: templates/accounts/login.html:6 templates/accounts/login.html:51
 #: templates/pages/index.html:73 templates/partials/_navbar.html:89
 msgid "Login"
 msgstr "ورود"
 
-#: templates/accounts/login.html:17
+#: templates/accounts/login.html:19
 msgid "Signin Account"
 msgstr "ورود به حساب"
 
-#: templates/accounts/login.html:26
+#: templates/accounts/login.html:28
 msgid "Welcome back!"
 msgstr "خوش برگشتید!"
 
-#: templates/accounts/login.html:35 templates/accounts/register.html:42
+#: templates/accounts/login.html:37 templates/accounts/register.html:44
 msgid "Username"
 msgstr "نام کاربری"
 
-#: templates/accounts/login.html:42 templates/accounts/register.html:56
+#: templates/accounts/login.html:44 templates/accounts/register.html:58
 msgid "Password"
 msgstr "رمزعبور"
 
-#: templates/accounts/register.html:4 templates/accounts/register.html:70
+#: templates/accounts/register.html:6 templates/accounts/register.html:72
 #: templates/pages/index.html:65 templates/partials/_navbar.html:77
 msgid "Register"
 msgstr "ثبت نام"
 
-#: templates/accounts/register.html:17
+#: templates/accounts/register.html:19
 msgid "Create Account"
 msgstr "ایجادِ حسابِ جدید"
 
-#: templates/accounts/register.html:26
+#: templates/accounts/register.html:28
 msgid "Create your account and start your journey with us."
 msgstr "حساب خود را ایجاد کنید و مسیرتان را با ما شروع کنید."
 
-#: templates/accounts/register.html:35 templates/pages/public_card.html:328
+#: templates/accounts/register.html:37 templates/pages/public_card.html:328
 msgid "Full Name"
 msgstr "نام کامل"
 
-#: templates/accounts/register.html:49 templates/pages/dashboard.html:78
+#: templates/accounts/register.html:51 templates/pages/dashboard.html:78
 #: templates/pages/dashboard.html:161 templates/pages/public_card.html:239
 #: templates/pages/public_card.html:401 templates/pages/public_card.html:413
 msgid "Email"
 msgstr "ایمیل"
 
-#: templates/accounts/register.html:63
+#: templates/accounts/register.html:65
 msgid "Confirm Password"
 msgstr "تایید رمزعبور"
 
@@ -83,7 +83,7 @@ msgstr "تایید رمزعبور"
 msgid "Digital Business Card"
 msgstr "کارت دیجیتال"
 
-#: templates/pages/contacts.html:7 templates/partials/_navbar.html:48
+#: templates/pages/contacts.html:7
 #, fuzzy
 #| msgid "Contact Us"
 msgid "Contacts"
@@ -332,6 +332,12 @@ msgstr "خود را با بهترین ابزار معرفی کنید"
 #: templates/partials/_footer.html:26
 msgid "Design by"
 msgstr "طراحی شده توسطِ "
+
+#: templates/partials/_navbar.html:48
+#| msgid "Contact Us"
+msgctxt "navbar"
+msgid "Contacts"
+msgstr "پیام&nbsp;ها"
 
 #~ msgid "Hello"
 #~ msgstr "سلام"
