@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-07 04:44+0000\n"
+"POT-Creation-Date: 2026-08-07 06:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,33 +26,247 @@ msgstr "انگلیسی"
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/pages/public_card.html:10
-msgid "Digital Card"
-msgstr "کارت دیجیتال"
+#: templates/accounts/login.html:4 templates/accounts/login.html:49
+#: templates/pages/index.html:73 templates/partials/_navbar.html:89
+msgid "Login"
+msgstr "ورود"
 
-#: templates/pages/public_card.html:59 templates/pages/public_card.html:115
+#: templates/accounts/login.html:17
+msgid "Signin Account"
+msgstr "ورود به حساب"
+
+#: templates/accounts/login.html:26
+msgid "Welcome back!"
+msgstr "خوش برگشتید!"
+
+#: templates/accounts/login.html:35 templates/accounts/register.html:42
+msgid "Username"
+msgstr "نام کاربری"
+
+#: templates/accounts/login.html:42 templates/accounts/register.html:56
+msgid "Password"
+msgstr "رمزعبور"
+
+#: templates/accounts/register.html:4 templates/accounts/register.html:70
+#: templates/pages/index.html:65 templates/partials/_navbar.html:77
+msgid "Register"
+msgstr "ثبت نام"
+
+#: templates/accounts/register.html:17
+msgid "Create Account"
+msgstr "ایجادِ حسابِ جدید"
+
+#: templates/accounts/register.html:26
+msgid "Create your account and start your journey with us."
+msgstr "حساب خود را ایجاد کنید و مسیرتان را با ما شروع کنید."
+
+#: templates/accounts/register.html:35 templates/pages/public_card.html:328
+msgid "Full Name"
+msgstr "نام کامل"
+
+#: templates/accounts/register.html:49 templates/pages/dashboard.html:78
+#: templates/pages/dashboard.html:161 templates/pages/public_card.html:239
+#: templates/pages/public_card.html:401 templates/pages/public_card.html:413
+msgid "Email"
+msgstr "ایمیل"
+
+#: templates/accounts/register.html:63
+msgid "Confirm Password"
+msgstr "تایید رمزعبور"
+
+#: templates/base.html:11 templates/pages/dashboard.html:130
+#: templates/pages/dashboard.html:150 templates/pages/public_card.html:59
+#: templates/pages/public_card.html:115 templates/partials/_footer.html:14
+#: templates/partials/_footer.html:26 templates/partials/_navbar.html:12
 #, fuzzy
 #| msgid "Digital Card"
 msgid "Digital Business Card"
 msgstr "کارت دیجیتال"
 
-#: templates/pages/public_card.html:109 templates/pages/public_card.html:395
-#: templates/pages/public_card.html:407
+#: templates/pages/contacts.html:7 templates/partials/_navbar.html:48
+#, fuzzy
+#| msgid "Contact Us"
+msgid "Contacts"
+msgstr "با ما تماس بگیرید"
+
+#: templates/pages/contacts.html:16 templates/pages/index.html:23
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+#: templates/pages/contacts.html:17
+msgid "Here are Contact messages submitted for you."
+msgstr "اینجا لیست پیام های ثبت شده برای شما قابل مشاهده است"
+
+#: templates/pages/contacts.html:23 templates/pages/dashboard.html:51
+#: templates/pages/public_card.html:193 templates/pages/public_card.html:397
+#: templates/pages/public_card.html:409
+msgid "Name"
+msgstr "نام"
+
+#: templates/pages/contacts.html:24 templates/pages/dashboard.html:164
+#: templates/pages/public_card.html:261 templates/pages/public_card.html:401
+#: templates/pages/public_card.html:413
+msgid "Phone"
+msgstr "شماره همراه"
+
+#: templates/pages/contacts.html:25 templates/pages/public_card.html:337
+#: templates/pages/public_card.html:341
+msgid "Message"
+msgstr "پیام"
+
+#: templates/pages/contacts.html:26
+msgid "Date"
+msgstr "تاریخ"
+
+#: templates/pages/contacts.html:42
+msgid "There is no inquiry submitted yet."
+msgstr "هنوز هیچ پیامی ندارید"
+
+#: templates/pages/dashboard.html:7 templates/pages/dashboard.html:18
+#: templates/pages/index.html:39 templates/pages/public_card.html:165
+#: templates/partials/_navbar.html:36
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: templates/pages/dashboard.html:18 templates/pages/public_card.html:10
+msgid "Digital Card"
+msgstr "کارت دیجیتال"
+
+#: templates/pages/dashboard.html:47
+msgid "Name and Role"
+msgstr "نام و نقش"
+
+#: templates/pages/dashboard.html:55
+msgid "Role"
+msgstr "نقش"
+
+#: templates/pages/dashboard.html:59
+msgid "Description"
+msgstr "توضیحات"
+
+#: templates/pages/dashboard.html:63
+msgid "Logo Subtitle"
+msgstr "زیرنویسِ لوگو"
+
+#: templates/pages/dashboard.html:67
+msgid "Tag Behind Card"
+msgstr "نوشتۀ پشتِ کارت"
+
+#: templates/pages/dashboard.html:74
+#, fuzzy
+#| msgid "Contact Us"
+msgid "Contact Info"
+msgstr "با ما تماس بگیرید"
+
+#: templates/pages/dashboard.html:82
+#, fuzzy
+#| msgid "Phone Number"
+msgid "Mobile Number"
+msgstr "شماره همراه"
+
+#: templates/pages/dashboard.html:86
+#, fuzzy
+#| msgid "Website"
+msgid "Website Preview"
+msgstr "وبسایت"
+
+#: templates/pages/dashboard.html:90
+#, fuzzy
+#| msgid "Website"
+msgid "Website (URL)"
+msgstr "وبسایت"
+
+#: templates/pages/dashboard.html:94
+msgid "Linkedin Preview"
+msgstr "پیش نمایش لینکدین"
+
+#: templates/pages/dashboard.html:98
+#, fuzzy
+#| msgid "LinkedIn"
+msgid "Linkedin (URL)"
+msgstr "لینکدین URL"
+
+#: templates/pages/dashboard.html:102 templates/pages/dashboard.html:174
+#: templates/pages/public_card.html:211 templates/pages/public_card.html:399
+#: templates/pages/public_card.html:411
+msgid "Location"
+msgstr "موقعیت"
+
+#: templates/pages/dashboard.html:106 templates/pages/public_card.html:216
+#: templates/pages/public_card.html:400 templates/pages/public_card.html:412
+msgid "Response Time"
+msgstr "تاخیر پاسخگویی"
+
+#: templates/pages/dashboard.html:116
+msgid "Click to redirect public card page"
+msgstr "برای هدایت به صفحۀ کارت عمومی کلیک کنید"
+
+#: templates/pages/dashboard.html:119 templates/pages/public_card.html:146
+msgid "QR Code"
+msgstr "کد QR"
+
+#: templates/pages/dashboard.html:123
+msgid "Live Preview"
+msgstr "پیش نمایش زنده"
+
+#: templates/pages/dashboard.html:136
+msgid "Insert something please"
+msgstr "لطفا مقدار وارد کنید"
+
+#: templates/pages/dashboard.html:146 templates/pages/public_card.html:109
+#: templates/pages/public_card.html:395 templates/pages/public_card.html:407
 msgid "flip"
 msgstr "چرخاندن"
 
-#: templates/pages/public_card.html:146
-msgid "QR Code"
+#: templates/pages/dashboard.html:157
+msgid "Click to flip card"
+msgstr "برای چرخاندن کارت کلیک کنید"
+
+#: templates/pages/dashboard.html:167 templates/pages/public_card.html:285
+#: templates/pages/public_card.html:401 templates/pages/public_card.html:413
+msgid "Website"
+msgstr "وبسایت"
+
+#: templates/pages/dashboard.html:170
+#, fuzzy
+#| msgid "LinkedIn"
+msgid "Linkedin"
+msgstr "لینکدین"
+
+#: templates/pages/dashboard.html:183
+msgid "Submit Change"
+msgstr "ذخیرۀ تغییرات"
+
+#: templates/pages/dashboard.html:184
+msgid "Empty all fields"
+msgstr "خالی کردنِ همۀ فیلدها"
+
+#: templates/pages/dashboard.html:185
+msgid "JSON Export"
+msgstr "خروجی JSON"
+
+#: templates/pages/dashboard.html:186
+#, fuzzy
+#| msgid "QR Code"
+msgid "QR Code Export"
 msgstr "کد QR"
+
+#: templates/pages/index.html:6 templates/partials/_navbar.html:23
+msgid "Home"
+msgstr "خانه"
+
+#: templates/pages/index.html:32
+msgid "Build your own business card and share with others!"
+msgstr "کارت دیجیتال خود را بسازید و با دیگران به اشتراک بگذارید!"
+
+#: templates/pages/index.html:55 templates/partials/_navbar.html:60
+msgid "Logout"
+msgstr "خروج"
 
 #: templates/pages/public_card.html:161 templates/pages/public_card.html:178
 #: templates/pages/public_card.html:395 templates/pages/public_card.html:407
 msgid "Flip Card"
 msgstr "چرخاندنِ کارت"
-
-#: templates/pages/public_card.html:165
-msgid "Dashboard"
-msgstr "داشبورد"
 
 #: templates/pages/public_card.html:187 templates/pages/public_card.html:396
 #: templates/pages/public_card.html:408
@@ -64,45 +278,15 @@ msgstr "اطلاعات کارت"
 msgid "About This Card & How to Reach Me"
 msgstr "درمورد این کارت و ارتباط با من"
 
-#: templates/pages/public_card.html:193 templates/pages/public_card.html:397
-#: templates/pages/public_card.html:409
-msgid "Name"
-msgstr "نام"
-
 #: templates/pages/public_card.html:198 templates/pages/public_card.html:398
 #: templates/pages/public_card.html:410
 msgid "Views"
 msgstr "بازدیدها"
 
-#: templates/pages/public_card.html:211 templates/pages/public_card.html:399
-#: templates/pages/public_card.html:411
-msgid "Location"
-msgstr "موقعیت"
-
-#: templates/pages/public_card.html:216 templates/pages/public_card.html:400
-#: templates/pages/public_card.html:412
-msgid "Response Time"
-msgstr "تاخیر پاسخگویی"
-
 #: templates/pages/public_card.html:218 templates/pages/public_card.html:400
 #: templates/pages/public_card.html:412
 msgid "Mon – Fri · Business hours"
 msgstr "شنبه - پنجشنبه · وقت اداری"
-
-#: templates/pages/public_card.html:239 templates/pages/public_card.html:401
-#: templates/pages/public_card.html:413
-msgid "Email"
-msgstr "ایمیل"
-
-#: templates/pages/public_card.html:261 templates/pages/public_card.html:401
-#: templates/pages/public_card.html:413
-msgid "Phone"
-msgstr "شماره همراه"
-
-#: templates/pages/public_card.html:285 templates/pages/public_card.html:401
-#: templates/pages/public_card.html:413
-msgid "Website"
-msgstr "وبسایت"
 
 #: templates/pages/public_card.html:310 templates/pages/public_card.html:401
 #: templates/pages/public_card.html:413
@@ -117,10 +301,6 @@ msgstr "ارتباط"
 msgid "Contact Us"
 msgstr "با ما تماس بگیرید"
 
-#: templates/pages/public_card.html:328
-msgid "Full Name"
-msgstr "نام کامل"
-
 #: templates/pages/public_card.html:329
 msgid "Your name"
 msgstr "نام کامل شما"
@@ -128,10 +308,6 @@ msgstr "نام کامل شما"
 #: templates/pages/public_card.html:332
 msgid "Phone Number"
 msgstr "شماره همراه"
-
-#: templates/pages/public_card.html:337 templates/pages/public_card.html:341
-msgid "Message"
-msgstr "پیام"
 
 #: templates/pages/public_card.html:338
 msgid "Tell us about your project…"
@@ -144,6 +320,18 @@ msgstr "ارسال"
 #: templates/pages/public_card.html:399 templates/pages/public_card.html:411
 msgid "Available globally · Remote-first"
 msgstr "دردسترس بطور کلی، دورکاری در اولیت"
+
+#: templates/partials/_alert.html:12
+msgid "Error:"
+msgstr "خطا:"
+
+#: templates/partials/_footer.html:20
+msgid "Present yourself with best stuff"
+msgstr "خود را با بهترین ابزار معرفی کنید"
+
+#: templates/partials/_footer.html:26
+msgid "Design by"
+msgstr "طراحی شده توسطِ "
 
 #~ msgid "Hello"
 #~ msgstr "سلام"
