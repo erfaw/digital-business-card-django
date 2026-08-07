@@ -21,11 +21,14 @@
   <canvas id="bg"></canvas>
 
   <!-- LANG TOGGLE -->
-  <!-- TODO (TARGET) (HIGH) dev translate and dual language feature -->
   <div class="lang-toggle-wrap" onclick="AA.toggleLang()">
+    <form action="{% url 'set_language' %}" method="post" hidden id="changeLanguage">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.path }}">
+    </form>
     <div class="lang-slider" id="langSlider"></div>
-    <button class="lang-btn" id="btnEN">EN</button>
-    <button class="lang-btn active" id="btnFA">فا</button>
+    <button name="language" value="en" form="changeLanguage" class="lang-btn" id="btnEN">EN</button>
+    <button name="language" value="fa" form="changeLanguage" class="lang-btn active" id="btnFA">فا</button>
   </div>
 
   <div class="page">
