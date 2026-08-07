@@ -1230,8 +1230,8 @@ html[dir="rtl"] .cf-label {
 .lang-toggle-wrap {
   direction: ltr;
   position: fixed; 
-  top: 1.5rem;
-  right: 2rem;
+  bottom: 1rem;
+  right: 1rem;
   z-index: 50;
   display: flex;
   align-items: center;
