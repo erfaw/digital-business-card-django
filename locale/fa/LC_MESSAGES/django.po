@@ -78,16 +78,12 @@ msgstr "تایید رمزعبور"
 #: templates/pages/dashboard.html:150 templates/pages/public_card.html:59
 #: templates/pages/public_card.html:115 templates/partials/_footer.html:14
 #: templates/partials/_footer.html:26 templates/partials/_navbar.html:12
-#, fuzzy
-#| msgid "Digital Card"
 msgid "Digital Business Card"
 msgstr "کارت دیجیتال"
 
 #: templates/pages/contacts.html:7
-#, fuzzy
-#| msgid "Contact Us"
 msgid "Contacts"
-msgstr "با ما تماس بگیرید"
+msgstr "پیام&nbsp;ها"
 
 #: templates/pages/contacts.html:16 templates/pages/index.html:23
 msgid "Welcome"
@@ -153,36 +149,26 @@ msgid "Tag Behind Card"
 msgstr "نوشتۀ پشتِ کارت"
 
 #: templates/pages/dashboard.html:74
-#, fuzzy
-#| msgid "Contact Us"
 msgid "Contact Info"
-msgstr "با ما تماس بگیرید"
+msgstr "اطلاعات تماس"
 
 #: templates/pages/dashboard.html:82
-#, fuzzy
-#| msgid "Phone Number"
 msgid "Mobile Number"
 msgstr "شماره همراه"
 
 #: templates/pages/dashboard.html:86
-#, fuzzy
-#| msgid "Website"
 msgid "Website Preview"
-msgstr "وبسایت"
+msgstr "پیش نمایش وبسایت"
 
 #: templates/pages/dashboard.html:90
-#, fuzzy
-#| msgid "Website"
 msgid "Website (URL)"
-msgstr "وبسایت"
+msgstr "آدرس وبسایت"
 
 #: templates/pages/dashboard.html:94
 msgid "Linkedin Preview"
 msgstr "پیش نمایش لینکدین"
 
 #: templates/pages/dashboard.html:98
-#, fuzzy
-#| msgid "LinkedIn"
 msgid "Linkedin (URL)"
 msgstr "لینکدین URL"
 
@@ -199,7 +185,7 @@ msgstr "تاخیر پاسخگویی"
 
 #: templates/pages/dashboard.html:116
 msgid "Click to redirect public card page"
-msgstr "برای هدایت به صفحۀ کارت عمومی کلیک کنید"
+msgstr "برای هدایت به صفحه کارت عمومی کلیک کنید"
 
 #: templates/pages/dashboard.html:119 templates/pages/public_card.html:146
 msgid "QR Code"
@@ -228,8 +214,6 @@ msgid "Website"
 msgstr "وبسایت"
 
 #: templates/pages/dashboard.html:170
-#, fuzzy
-#| msgid "LinkedIn"
 msgid "Linkedin"
 msgstr "لینکدین"
 
@@ -246,10 +230,8 @@ msgid "JSON Export"
 msgstr "خروجی JSON"
 
 #: templates/pages/dashboard.html:186
-#, fuzzy
-#| msgid "QR Code"
 msgid "QR Code Export"
-msgstr "کد QR"
+msgstr "خروجی QR کد"
 
 #: templates/pages/index.html:6 templates/partials/_navbar.html:23
 msgid "Home"
