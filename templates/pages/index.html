@@ -51,6 +51,14 @@
                         </svg>
                     </button>
 
+                    <button onclick="location.href='{% url 'public_card' username=request.user.username %}'" class="cf-submit" type="submit"> 
+                        <span data-i18n="cf_submit">{% trans "Card Page" %}</span>
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M2 8h12M9 3l5 5-5 5" />
+                        </svg>
+                    </button>
+
                     <button onclick="javascript:{document.getElementById('logout').submit()}" class="cf-submit logout-color" type="submit" id="btnLogout"> 
                         <span data-i18n="cf_submit">{% trans "Logout" %}</span>
                     </button>
@@ -58,7 +66,6 @@
                         {% csrf_token %}
                         <input type="hidden">
                     </form>
-                    <!-- TODO make a button to point public_card page of user. -->
                 {% else %}
 
                     <button onclick="location.href='{% url 'register' %}'" class="cf-submit" type="submit"> 
