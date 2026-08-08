@@ -58,7 +58,7 @@
                         {% csrf_token %}
                         <input type="hidden">
                     </form>
-
+                    <!-- TODO make a button to point public_card page of user. -->
                 {% else %}
 
                     <button onclick="location.href='{% url 'register' %}'" class="cf-submit" type="submit"> 
