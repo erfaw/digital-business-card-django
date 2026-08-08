@@ -19,7 +19,10 @@ def login(request):
                 return redirect('index')
             else: 
                 messages.error(request, "Invalid Credentials!", 'danger')
-                return redirect('login')     
+                return redirect('login')
+        else:
+            context = {"form": login_form}
+            return render(request, 'accounts/login.html', context)
     else:
         login_form = LoginForm()
         context = {"form": login_form}
