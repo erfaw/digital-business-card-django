@@ -4,21 +4,26 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from pages.models import BusinessCard
+from .forms import LoginForm
 
 def login(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = auth.authenticate(request, username=username, password=password)
-        if user:
-            auth.login(request, user)
-            messages.success(request, 'You are Logged in')
-            return redirect('index')
-        else: 
-            messages.error(request, "Invalid Credentials!", 'danger')
-            return redirect('login')
-    else: 
-        return render(request, 'accounts/login.html') 
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            username = login_form.cleaned_data["username"]
+            password = login_form.cleaned_data["password"]
+            user = auth.authenticate(request, username=username, password=password)
+            if user:
+                auth.login(request, user)
+                messages.success(request, 'You are Logged in')
+                return redirect('index')
+            else: 
+                messages.error(request, "Invalid Credentials!", 'danger')
+                return redirect('login')     
+    else:
+        login_form = LoginForm()
+        context = {"form": login_form}
+        return render(request, 'accounts/login.html', context) 
 
 def register(request):
     if request.method == "POST": # TODO (HIGH) search for form validations, forms in django, best practices.

@@ -35,14 +35,14 @@
 
                 <div class="cf-field">
                     <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Username" %}</label>
-                    <input class="cf-input" type="text" id="cfName" name="username" data-i18n-ph="cf_name_ph" autocomplete="username" required/>
+                    {{ form.username }}
                 </div>
 
                 <br>
 
                 <div class="cf-field">
                     <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Password" %}</label>
-                    <input class="cf-input" type="password" id="cfName" name="password" data-i18n-ph="cf_name_ph" autocomplete="current-password" required/>
+                    {{ form.password }}
                 </div>
 
                 <br>
