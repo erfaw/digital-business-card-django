@@ -1185,13 +1185,13 @@ html[dir="rtl"] .explain-grid {
     z-index: 2;
 
     white-space: nowrap;
-    padding: 0.75rem 1.3rem;
+    padding: 0.75rem 2.5rem;
 
-    border: none;
+    border: 1px solid var(--dark);
     border-radius: 999px;
 
     background: var(--green);
-    color: white;
+    color: var(--dark);
 
     font-weight: 600;
 
