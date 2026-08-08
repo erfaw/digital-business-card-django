@@ -1055,3 +1055,159 @@ html[dir="rtl"] .explain-grid {
 .views-str {
   font-size: 20px;
 }
+
+
+/* ==========================================================
+  Make New one suggestion box
+========================================================== */
+.make-new-one-box {
+  background: linear-gradient(
+    135deg,
+    var(--white) 20%,
+    var(--green) 80%,
+    rgba(0, 212, 255, 0.06) 100%
+  );
+}
+.make-new-one-box:hover {
+  background: linear-gradient(
+    45deg,
+    var(--green) 0%,
+    var(--white) 60%,
+    rgba(0, 212, 255, 0.06) 100%
+  );
+}
+
+/* ==========================================================
+  GPT testing
+========================================================== */
+.make-card-box {
+    position: relative;
+    overflow: hidden;
+    min-height: 130px;
+    padding: 2rem 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(92, 190, 130, 0.20) 0,
+            rgba(92, 190, 130, 0.08) 18%,
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 10% 100%,
+            rgba(65, 170, 105, 0.12),
+            transparent 38%
+        ),
+        #ffffff;
+
+    border: 1px solid rgba(45, 130, 80, 0.14);
+    border-radius: 24px;
+
+    box-shadow:
+        0 12px 35px rgba(30, 90, 55, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+
+/* Soft green decorative shape */
+.make-card-box::before {
+    content: "";
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -70px;
+    bottom: -110px;
+
+    border-radius: 50%;
+
+    background: rgba(74, 180, 105, 0.10);
+
+    filter: blur(2px);
+}
+
+
+/* Tiny falling red stars */
+.make-card-box::after {
+    content: "✦   ·      ✧     ·   ✦";
+    
+    position: absolute;
+
+    top: 18px;
+    right: 25px;
+
+    font-size: 0.7rem;
+    letter-spacing: 14px;
+
+    color: rgba(210, 65, 65, 0.55);
+
+    transform: rotate(-18deg);
+
+    pointer-events: none;
+}
+
+
+/* Content */
+.make-card-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.make-card-content h3 {
+    margin: 0 0 0.5rem;
+
+    color: #163d29;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.make-card-content p {
+    margin: 0;
+
+    color: #648070;
+
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+
+/* CTA */
+.make-card-btn {
+    position: relative;
+    z-index: 2;
+
+    white-space: nowrap;
+    padding: 0.75rem 1.3rem;
+
+    border: none;
+    border-radius: 999px;
+
+    background: var(--green);
+    color: white;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 7px 18px rgba(47, 158, 91, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.make-card-btn:hover {
+    background: #27894d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 24px rgba(47, 158, 91, 0.28);
+}
