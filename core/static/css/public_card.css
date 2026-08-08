@@ -1083,8 +1083,9 @@ html[dir="rtl"] .explain-grid {
 .make-card-box {
     position: relative;
     overflow: hidden;
-    min-height: 130px;
-    padding: 2rem 2.5rem;
+    min-height: 50px;
+    padding: 0.2rem 1rem;
+    padding-left: 1.5rem;
 
     display: flex;
     align-items: center;
