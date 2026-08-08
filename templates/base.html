@@ -31,6 +31,7 @@
     <canvas id="bg"></canvas>
 
     <!-- LANG TOGGLE -->
+    <!-- TODO (MID) do something to page loads with default english setup -->
     <div class="lang-toggle-wrap" onclick="AA.toggleLang()">
         <form action="{% url 'set_language' %}" method="post" hidden id="changeLanguage">
         {% csrf_token %}
