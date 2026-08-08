@@ -30,18 +30,36 @@
 
             {% include 'partials/_alert.html' %}
 
-            <form method="post" action="{% url 'login' %}" class="register-form">
+            <form method="post" action="{% url 'login' %}" class="register-form" novalidate>
                 {% csrf_token %}
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Username" %}</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Username" %}  
+                        {% if form.username.errors %}
+                            <div class="text-danger">
+                                {% for error in form.username.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
                     {{ form.username }}
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Password" %}</label>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Password" %}
+                        {% if form.password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
                     {{ form.password }}
                 </div>
 
