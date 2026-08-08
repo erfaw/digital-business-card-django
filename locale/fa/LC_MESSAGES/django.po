@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-07 21:49+0000\n"
+"POT-Creation-Date: 2026-08-08 01:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgid "Persian"
 msgstr "فارسی"
 
 #: templates/accounts/login.html:6 templates/accounts/login.html:51
-#: templates/pages/index.html:73 templates/partials/_navbar.html:89
+#: templates/pages/index.html:80 templates/partials/_navbar.html:89
 msgid "Login"
 msgstr "ورود"
 
@@ -48,7 +48,7 @@ msgid "Password"
 msgstr "رمزعبور"
 
 #: templates/accounts/register.html:6 templates/accounts/register.html:72
-#: templates/pages/index.html:65 templates/partials/_navbar.html:77
+#: templates/pages/index.html:72 templates/partials/_navbar.html:77
 msgid "Register"
 msgstr "ثبت نام"
 
@@ -66,7 +66,7 @@ msgstr "نام کامل"
 
 #: templates/accounts/register.html:51 templates/pages/dashboard.html:78
 #: templates/pages/dashboard.html:174 templates/pages/public_card.html:239
-#: templates/pages/public_card.html:401 templates/pages/public_card.html:413
+#: templates/pages/public_card.html:418 templates/pages/public_card.html:430
 msgid "Email"
 msgstr "ایمیل"
 
@@ -94,14 +94,14 @@ msgid "Here are Contact messages submitted for you."
 msgstr "اینجا لیست پیام های ثبت شده برای شما قابل مشاهده است"
 
 #: templates/pages/contacts.html:23 templates/pages/dashboard.html:44
-#: templates/pages/public_card.html:193 templates/pages/public_card.html:397
-#: templates/pages/public_card.html:409
+#: templates/pages/public_card.html:193 templates/pages/public_card.html:414
+#: templates/pages/public_card.html:426
 msgid "Name"
 msgstr "نام"
 
 #: templates/pages/contacts.html:24 templates/pages/dashboard.html:177
-#: templates/pages/public_card.html:261 templates/pages/public_card.html:401
-#: templates/pages/public_card.html:413
+#: templates/pages/public_card.html:261 templates/pages/public_card.html:418
+#: templates/pages/public_card.html:430
 msgid "Phone"
 msgstr "شماره همراه"
 
@@ -168,13 +168,13 @@ msgid "Linkedin (URL)"
 msgstr "لینکدین URL"
 
 #: templates/pages/dashboard.html:112 templates/pages/dashboard.html:187
-#: templates/pages/public_card.html:211 templates/pages/public_card.html:399
-#: templates/pages/public_card.html:411
+#: templates/pages/public_card.html:211 templates/pages/public_card.html:416
+#: templates/pages/public_card.html:428
 msgid "Location"
 msgstr "موقعیت"
 
 #: templates/pages/dashboard.html:117 templates/pages/public_card.html:216
-#: templates/pages/public_card.html:400 templates/pages/public_card.html:412
+#: templates/pages/public_card.html:417 templates/pages/public_card.html:429
 msgid "Response Time"
 msgstr "تاخیر پاسخگویی"
 
@@ -195,7 +195,7 @@ msgid "Insert something please"
 msgstr "لطفا مقدار وارد کنید"
 
 #: templates/pages/dashboard.html:159 templates/pages/public_card.html:109
-#: templates/pages/public_card.html:395 templates/pages/public_card.html:407
+#: templates/pages/public_card.html:412 templates/pages/public_card.html:424
 msgid "flip"
 msgstr "چرخاندن"
 
@@ -204,7 +204,7 @@ msgid "Click to flip card"
 msgstr "برای چرخاندن کارت کلیک کنید"
 
 #: templates/pages/dashboard.html:180 templates/pages/public_card.html:285
-#: templates/pages/public_card.html:401 templates/pages/public_card.html:413
+#: templates/pages/public_card.html:418 templates/pages/public_card.html:430
 msgid "Website"
 msgstr "وبسایت"
 
@@ -241,7 +241,11 @@ msgctxt "navbar"
 msgid "Contacts"
 msgstr "پیام&nbsp;ها"
 
-#: templates/pages/index.html:55 templates/partials/_navbar.html:60
+#: templates/pages/index.html:55
+msgid "Card Page"
+msgstr "نمایش کارت"
+
+#: templates/pages/index.html:63 templates/partials/_navbar.html:60
 msgid "Logout"
 msgstr "خروج"
 
@@ -250,32 +254,32 @@ msgid "Digital Card"
 msgstr "کارت دیجیتال"
 
 #: templates/pages/public_card.html:161 templates/pages/public_card.html:178
-#: templates/pages/public_card.html:395 templates/pages/public_card.html:407
+#: templates/pages/public_card.html:412 templates/pages/public_card.html:424
 msgid "Flip Card"
 msgstr "چرخاندنِ کارت"
 
-#: templates/pages/public_card.html:187 templates/pages/public_card.html:396
-#: templates/pages/public_card.html:408
+#: templates/pages/public_card.html:187 templates/pages/public_card.html:413
+#: templates/pages/public_card.html:425
 msgid "Card Details"
 msgstr "اطلاعات کارت"
 
-#: templates/pages/public_card.html:188 templates/pages/public_card.html:396
-#: templates/pages/public_card.html:408
+#: templates/pages/public_card.html:188 templates/pages/public_card.html:413
+#: templates/pages/public_card.html:425
 msgid "About This Card & How to Reach Me"
 msgstr "درمورد این کارت و ارتباط با من"
 
-#: templates/pages/public_card.html:198 templates/pages/public_card.html:398
-#: templates/pages/public_card.html:410
+#: templates/pages/public_card.html:198 templates/pages/public_card.html:415
+#: templates/pages/public_card.html:427
 msgid "Views"
 msgstr "بازدیدها"
 
-#: templates/pages/public_card.html:218 templates/pages/public_card.html:400
-#: templates/pages/public_card.html:412
+#: templates/pages/public_card.html:218 templates/pages/public_card.html:417
+#: templates/pages/public_card.html:429
 msgid "Mon – Fri · Business hours"
 msgstr "شنبه - پنجشنبه · وقت اداری"
 
-#: templates/pages/public_card.html:310 templates/pages/public_card.html:401
-#: templates/pages/public_card.html:413
+#: templates/pages/public_card.html:310 templates/pages/public_card.html:418
+#: templates/pages/public_card.html:430
 msgid "LinkedIn"
 msgstr "لینکدین"
 
@@ -303,7 +307,19 @@ msgstr "به ما درمورد پروژه تون بگید..."
 msgid "Send"
 msgstr "ارسال"
 
-#: templates/pages/public_card.html:399 templates/pages/public_card.html:411
+#: templates/pages/public_card.html:359
+msgid "Don't have a card yet?"
+msgstr "هنوز کارتِ خودتو نداری؟!"
+
+#: templates/pages/public_card.html:360
+msgid "Create yours effortlessly."
+msgstr "ساختنش آب خوردنه که..."
+
+#: templates/pages/public_card.html:364
+msgid "Make one"
+msgstr "یکی بساز!"
+
+#: templates/pages/public_card.html:416 templates/pages/public_card.html:428
 msgid "Available globally · Remote-first"
 msgstr "دردسترس بطور کلی، دورکاری در اولیت"
 
