@@ -1274,3 +1274,10 @@ html[dir="rtl"] .cf-label {
     width 0.3s;
   pointer-events: none;
 }
+
+/* ==========================================================
+   Card page styles
+========================================================== */
+.card-page-color{
+    background:#065f46;
+}
