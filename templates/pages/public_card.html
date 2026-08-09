@@ -353,19 +353,20 @@
 
 
       <!-- ── DONT CARD YET BOX ── -->
-      <div class="make-card-box">
-      
-        <div class="make-card-content">
-          <h3>{% trans "Don't have a card yet?" %}</h3>
-          <p>&emsp;&emsp;&emsp;&emsp;{% trans "Create yours effortlessly." %}</p>
-        </div>
-      
-        <button class="make-card-btn" onclick="location.href='{% url 'register' %}'">
-          {% trans "Make one" %}
-        </button>
-      
-      </div>
-
+        {% if not user.is_authenticated %}
+          <div class="make-card-box">
+          
+            <div class="make-card-content">
+              <h3>{% trans "Don't have a card yet?" %}</h3>
+              <p>&emsp;&emsp;&emsp;&emsp;{% trans "Create yours effortlessly." %}</p>
+            </div>
+          
+            <button class="make-card-btn" onclick="location.href='{% url 'register' %}'">
+              {% trans "Make one" %}
+            </button>
+          
+          </div>
+        {% endif %}
     </div>
   </div>
 
