@@ -31,36 +31,23 @@ def login(request):
 def register(request):
     if request.method == "POST":
         register_form = RegisterForm(request.POST)
-        if register_form.is_valid():
+        if register_form.is_valid():  # TODO (MID) think about what validations we want, then implement in forms clean()
             full_name= register_form.cleaned_data['full_name']
             username= register_form.cleaned_data['username']
             email= register_form.cleaned_data['email']
-            password= register_form.cleaned_data['password'] # TODO (HIGH) add password validation
-            password2= register_form.cleaned_data['password2']
+            password= register_form.cleaned_data['password'] # Note: validations are inside RegisterForm()
 
-            if password == password2:
-                if User.objects.filter(email=email).exists():
-                    messages.error(request, "This email was taken already!", 'danger')
-                    return redirect('register')
-                else: 
-                    if User.objects.filter(username=username).exists():
-                        messages.error(request, "This username was taken already!", 'danger')
-                        return redirect('register')
-                    else: 
-                        new_user = User.objects.create_user(
-                            username,
-                            email,
-                            password,
-                            first_name= full_name,
-                        )
-                        new_user.save()
-                        messages.success(request, "You are successfully registered! can login now.")
-                        user_bc = BusinessCard.objects.create(user=new_user)
-                        user_bc.save()
-                        return redirect('login')
-            else:
-                messages.error(request, "Passwords doesn't match!", 'danger')
-                return redirect('register')
+            new_user = User.objects.create_user(
+                username,
+                email,
+                password,
+                first_name= full_name,
+            )
+            new_user.save()
+            messages.success(request, "You are successfully registered! can login now.")
+            user_bc = BusinessCard.objects.create(user=new_user)
+            user_bc.save()
+            return redirect('login')
         else:
             context = {"form": register_form}
             return render(request, "accounts/register.html", context)
