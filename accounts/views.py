@@ -31,7 +31,7 @@ def login(request):
 def register(request):
     if request.method == "POST":
         register_form = RegisterForm(request.POST)
-        if register_form.is_valid():  # TODO (MID) think about what validations we want, then implement in forms clean()
+        if register_form.is_valid():
             full_name= register_form.cleaned_data['full_name']
             username= register_form.cleaned_data['username']
             email= register_form.cleaned_data['email']

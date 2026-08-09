@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 
 
-class LoginForm(forms.Form):  # TODO (MID) refactor this with AuthenticationForm
+class LoginForm(forms.Form):
     username = forms.CharField(
         min_length=4,
         max_length=150,
@@ -35,7 +35,7 @@ class LoginForm(forms.Form):  # TODO (MID) refactor this with AuthenticationForm
     )
 
 
-class RegisterForm(forms.Form):  # TODO (MID) refactor this form with built-in for register forms in django.
+class RegisterForm(forms.Form):
     full_name = forms.CharField(
         min_length=3,
         max_length=200,
