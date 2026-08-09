@@ -37,9 +37,7 @@ def public_card(request, username):
         - POST: HttpResponseRedirect
     """
 
-    if (
-        request.method == "POST"
-    ):  # TODO (LOW) make a separate view and endpoint for making contacts.
+    if request.method == "POST":
         user = get_object_or_404(User, username=username)
 
         new_contact = Contact.objects.create(
@@ -88,7 +86,7 @@ def dashboard(request):
 
         user_bc.name = request.POST.get(
             "name"
-        )  # TODO (LOW) try to do it dynamic, with getattr and for loop
+        )
         user_bc.role = request.POST.get("role")
         user_bc.description = request.POST.get("description")
         user_bc.logo_sub = request.POST.get("logo_sub")
