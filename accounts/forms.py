@@ -119,3 +119,10 @@ class RegisterForm(forms.Form):  # TODO (MID) refactor this form with built-in f
         if User.objects.filter(username__iexact=username).exists() or username.lower() == 'admin':
             raise forms.ValidationError(_("This username was taken already!"))
         return username
+
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(_("This email was taken already!"))
+        return email
+    
