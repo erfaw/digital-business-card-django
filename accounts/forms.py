@@ -1,6 +1,8 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
-class LoginForm(forms.Form): # TODO (MID) refactor this with AuthenticationForm
+
+class LoginForm(forms.Form):  # TODO (MID) refactor this with AuthenticationForm
     username = forms.CharField(
         min_length=4,
         max_length=150,
@@ -10,11 +12,11 @@ class LoginForm(forms.Form): # TODO (MID) refactor this with AuthenticationForm
                 "type": "text",
                 "id": "cfName",
                 "name": "username",
-                "data-i18n-ph": "cf_name_ph", 
+                "data-i18n-ph": "cf_name_ph",
                 "autocomplete": "username",
                 "required": True,
             }
-        )
+        ),
     )
     password = forms.CharField(
         min_length=8,
@@ -32,7 +34,7 @@ class LoginForm(forms.Form): # TODO (MID) refactor this with AuthenticationForm
     )
 
 
-class RegisterForm(forms.Form): # TODO (MID) refactor this form with built-in for register forms in django. 
+class RegisterForm(forms.Form):  # TODO (MID) refactor this form with built-in for register forms in django.
     full_name = forms.CharField(
         min_length=3,
         max_length=200,
@@ -42,7 +44,7 @@ class RegisterForm(forms.Form): # TODO (MID) refactor this form with built-in fo
                 "type": "text",
                 "id": "cfName",
                 "name": "full_name",
-                "data-i18n-ph": "cf_name_ph", 
+                "data-i18n-ph": "cf_name_ph",
                 "autocomplete": "name",
                 "required": True,
             }
@@ -66,11 +68,11 @@ class RegisterForm(forms.Form): # TODO (MID) refactor this form with built-in fo
     email = forms.EmailField(
         widget=forms.EmailInput(
             attrs={
-                "class": "cf-input", 
-                "type": "email", 
-                "id": "cfName", 
-                "name": "email", 
-                "data-i18n-ph": "cf_name_ph", 
+                "class": "cf-input",
+                "type": "email",
+                "id": "cfName",
+                "name": "email",
+                "data-i18n-ph": "cf_name_ph",
                 "autocomplete": "email",
                 "required": True,
             }
@@ -80,12 +82,12 @@ class RegisterForm(forms.Form): # TODO (MID) refactor this form with built-in fo
         min_length=8,
         widget=forms.PasswordInput(
             attrs={
-                "class": "cf-input", 
-                "type": "password", 
-                "id": "cfName", 
-                "name": "password", 
-                "data-i18n-ph": "cf_name_ph", 
-                "autocomplete": "new-password", 
+                "class": "cf-input",
+                "type": "password",
+                "id": "cfName",
+                "name": "password",
+                "data-i18n-ph": "cf_name_ph",
+                "autocomplete": "new-password",
                 "required": True,
             }
         ),
@@ -94,13 +96,19 @@ class RegisterForm(forms.Form): # TODO (MID) refactor this form with built-in fo
         min_length=8,
         widget=forms.PasswordInput(
             attrs={
-                "class": "cf-input", 
-                "type": "password", 
-                "id": "cfName", 
-                "name": "password2", 
-                "data-i18n-ph": "cf_name_ph", 
-                "autocomplete": "new-password", 
+                "class": "cf-input",
+                "type": "password",
+                "id": "cfName",
+                "name": "password2",
+                "data-i18n-ph": "cf_name_ph",
+                "autocomplete": "new-password",
                 "required": True,
             }
         ),
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if not cleaned_data.get("password") == cleaned_data.get("password2"):
+            raise forms.ValidationError(_("Passwords doesn't match!"))
+        return cleaned_data

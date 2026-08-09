@@ -33,6 +33,12 @@
             <form method="post" action="{% url 'register' %}" class="register-form" novalidate>
                 {% csrf_token %}
 
+                {% if form.non_field_errors %}
+                    <div class="text-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
                 <div class="cf-field">
                     <label class="cf-label" for="cfName" data-i18n="cf_name_l">
                         {% trans "Full Name" %}
