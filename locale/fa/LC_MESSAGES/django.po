@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 01:57+0000\n"
+"POT-Creation-Date: 2026-08-09 01:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: accounts/forms.py:117
+msgid "Passwords doesn't match!"
+msgstr "رمز عبور ها برابر نیستند!"
+
 #: core/settings/base.py:73
 msgid "English"
 msgstr "انگلیسی"
@@ -26,7 +30,7 @@ msgstr "انگلیسی"
 msgid "Persian"
 msgstr "فارسی"
 
-#: templates/accounts/login.html:6 templates/accounts/login.html:51
+#: templates/accounts/login.html:6 templates/accounts/login.html:69
 #: templates/pages/index.html:80 templates/partials/_navbar.html:89
 msgid "Login"
 msgstr "ورود"
@@ -39,15 +43,15 @@ msgstr "ورود به حساب"
 msgid "Welcome back!"
 msgstr "خوش برگشتید!"
 
-#: templates/accounts/login.html:37 templates/accounts/register.html:44
+#: templates/accounts/login.html:38 templates/accounts/register.html:60
 msgid "Username"
 msgstr "نام کاربری"
 
-#: templates/accounts/login.html:44 templates/accounts/register.html:58
+#: templates/accounts/login.html:54 templates/accounts/register.html:92
 msgid "Password"
 msgstr "رمزعبور"
 
-#: templates/accounts/register.html:6 templates/accounts/register.html:72
+#: templates/accounts/register.html:6 templates/accounts/register.html:123
 #: templates/pages/index.html:72 templates/partials/_navbar.html:77
 msgid "Register"
 msgstr "ثبت نام"
@@ -60,17 +64,17 @@ msgstr "ایجادِ حسابِ جدید"
 msgid "Create your account and start your journey with us."
 msgstr "حساب خود را ایجاد کنید و مسیرتان را با ما شروع کنید."
 
-#: templates/accounts/register.html:37 templates/pages/public_card.html:328
+#: templates/accounts/register.html:44 templates/pages/public_card.html:328
 msgid "Full Name"
 msgstr "نام کامل"
 
-#: templates/accounts/register.html:51 templates/pages/dashboard.html:78
+#: templates/accounts/register.html:76 templates/pages/dashboard.html:78
 #: templates/pages/dashboard.html:174 templates/pages/public_card.html:239
 #: templates/pages/public_card.html:418 templates/pages/public_card.html:430
 msgid "Email"
 msgstr "ایمیل"
 
-#: templates/accounts/register.html:65
+#: templates/accounts/register.html:108
 msgid "Confirm Password"
 msgstr "تایید رمزعبور"
 
