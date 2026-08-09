@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):  # TODO (MID) refactor this with AuthenticationForm
@@ -112,3 +113,9 @@ class RegisterForm(forms.Form):  # TODO (MID) refactor this form with built-in f
         if not cleaned_data.get("password") == cleaned_data.get("password2"):
             raise forms.ValidationError(_("Passwords doesn't match!"))
         return cleaned_data
+
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+        if User.objects.filter(username__iexact=username).exists() or username.lower() == 'admin':
+            raise forms.ValidationError(_("This username was taken already!"))
+        return username
