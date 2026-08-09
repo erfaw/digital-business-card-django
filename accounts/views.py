@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from pages.models import BusinessCard
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 
 def login(request):
     if request.method == "POST":
@@ -29,38 +29,45 @@ def login(request):
         return render(request, 'accounts/login.html', context) 
 
 def register(request):
-    if request.method == "POST": # TODO (HIGH) search for form validations, forms in django, best practices.
-        full_name= request.POST['full_name']
-        username= request.POST['username']
-        email= request.POST['email']
-        password= request.POST['password'] # TODO (HIGH) add password validation
-        password2= request.POST['password2']
+    if request.method == "POST":
+        register_form = RegisterForm(request.POST)
+        if register_form.is_valid():
+            full_name= register_form.cleaned_data['full_name']
+            username= register_form.cleaned_data['username']
+            email= register_form.cleaned_data['email']
+            password= register_form.cleaned_data['password'] # TODO (HIGH) add password validation
+            password2= register_form.cleaned_data['password2']
 
-        if password == password2:
-            if User.objects.filter(email=email).exists():
-                messages.error(request, "This email was taken already!", 'danger')
-                return redirect('register')
-            else: 
-                if User.objects.filter(username=username).exists():
-                    messages.error(request, "This username was taken already!", 'danger')
+            if password == password2:
+                if User.objects.filter(email=email).exists():
+                    messages.error(request, "This email was taken already!", 'danger')
                     return redirect('register')
                 else: 
-                    new_user = User.objects.create_user(
-                        username,
-                        email,
-                        password,
-                        first_name= full_name,
-                    )
-                    new_user.save()
-                    messages.success(request, "You are successfully registered! can login now.")
-                    user_bc = BusinessCard.objects.create(user=new_user)
-                    user_bc.save()
-                    return redirect('login')
+                    if User.objects.filter(username=username).exists():
+                        messages.error(request, "This username was taken already!", 'danger')
+                        return redirect('register')
+                    else: 
+                        new_user = User.objects.create_user(
+                            username,
+                            email,
+                            password,
+                            first_name= full_name,
+                        )
+                        new_user.save()
+                        messages.success(request, "You are successfully registered! can login now.")
+                        user_bc = BusinessCard.objects.create(user=new_user)
+                        user_bc.save()
+                        return redirect('login')
+            else:
+                messages.error(request, "Passwords doesn't match!", 'danger')
+                return redirect('register')
         else:
-            messages.error(request, "Passwords doesn't match!", 'danger')
-            return redirect('register')
-    else: 
-        return render(request, 'accounts/register.html') 
+            context = {"form": register_form}
+            return render(request, "accounts/register.html", context)
+    else:
+        register_form = RegisterForm()
+        context = {"form": register_form}
+        return render(request, "accounts/register.html", context)
 
 @login_required # type: ignore
 def logout(request):

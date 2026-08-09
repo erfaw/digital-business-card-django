@@ -30,40 +30,85 @@
             
             {% include 'partials/_alert.html' %}
 
-            <form method="post" action="{% url 'register' %}" class="register-form">
+            <form method="post" action="{% url 'register' %}" class="register-form" novalidate>
                 {% csrf_token %}
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Full Name" %}</label>
-                    <input class="cf-input" type="text" id="cfName" name="full_name" data-i18n-ph="cf_name_ph"  autocomplete="name" required/>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Full Name" %}
+                        {% if form.full_name.errors %}
+                            <div class="text-danger">
+                                {% for error in form.full_name.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
+                    {{ form.full_name }}
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Username" %}</label>
-                    <input class="cf-input" type="text" id="cfName" name="username" data-i18n-ph="cf_name_ph"  autocomplete="username" required/>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Username" %}
+                        {% if form.username.errors %}
+                            <div class="text-danger">
+                                {% for error in form.username.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
+                    {{ form.username }}
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Email" %}</label>
-                    <input class="cf-input" type="email" id="cfName" name="email" data-i18n-ph="cf_name_ph" autocomplete="email" required/>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Email" %}
+                        {% if form.email.errors %}
+                            <div class="text-danger">
+                                {% for error in form.email.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
+                    {{ form.email }}
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Password" %}</label>
-                    <input class="cf-input" type="password" id="cfName" name="password" data-i18n-ph="cf_name_ph" autocomplete="new-password" required/>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Password" %}
+                        {% if form.password.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
+                    {{ form.password }}
                 </div>
 
                 <br>
 
                 <div class="cf-field">
-                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">{% trans "Confirm Password" %}</label>
-                    <input class="cf-input" type="password" id="cfName" name="password2" data-i18n-ph="cf_name_ph" autocomplete="new-password" required/>
+                    <label class="cf-label" for="cfName" data-i18n="cf_name_l">
+                        {% trans "Confirm Password" %}
+                        {% if form.password2.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password2.errors %}
+                                    &emsp;<small>{{ error }}</small>                            
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </label>
+                    {{ form.password2 }}
                 </div>
 
                 <br>
