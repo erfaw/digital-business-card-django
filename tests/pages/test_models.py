@@ -119,4 +119,11 @@ class TestBusinessCardModel:
         obj.refresh_from_db()
         assert obj.view_count == TRIES
 
-    # TODO (HIGH) make test for user on_delete cascade 
+    def test_user_on_delete_cascade(self, business_card_factory, user_factory):
+        user = user_factory()
+        obj = business_card_factory(user=user)
+        assert user.business_card == obj
+        with pytest.raises(obj.__class__.DoesNotExist):
+            user.delete()
+            obj.refresh_from_db()
+        
