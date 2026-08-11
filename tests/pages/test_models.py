@@ -1,6 +1,8 @@
 import pytest
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
+from django.test import Client
+from django.urls import reverse
 
 
 pytestmark = pytest.mark.django_db
@@ -105,3 +107,16 @@ class TestBusinessCardModel:
         obj = business_card_factory(user=user)
         with pytest.raises(IntegrityError):
             obj2 = business_card_factory(user=user)
+
+    def test_view_count_increase_each_time(self, business_card_factory, user_factory):
+        user = user_factory()
+        obj = business_card_factory(user=user)
+        assert obj.view_count == 0
+
+        TRIES = 3
+        client = Client()
+        for _ in range(TRIES):
+            client.get(f"/u/{obj.user.username}/") 
+        obj.refresh_from_db()
+        assert obj.view_count == TRIES
+        
