@@ -29,7 +29,7 @@ class BusinessCard(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=200)
-    mobile_number = models.CharField(max_length=100)
+    mobile_number = models.CharField(max_length=20)
     message = models.TextField(blank=True)
     contact_date = models.DateTimeField(default=timezone.now, blank=True)
     user = ForeignKey(User, on_delete=models.CASCADE, related_name="contacts")
