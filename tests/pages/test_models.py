@@ -126,4 +126,13 @@ class TestBusinessCardModel:
         with pytest.raises(obj.__class__.DoesNotExist):
             user.delete()
             obj.refresh_from_db()
-        
+
+
+class TestContactModel:
+    def test_name_field_maximum_length(self, contact_factory):
+        MAX_LENGTH = 200
+        obj = contact_factory(
+            name=(MAX_LENGTH+1)*"a"
+        )
+        with pytest.raises(ValidationError):
+            obj.full_clean()
