@@ -136,3 +136,8 @@ class TestContactModel:
         )
         with pytest.raises(ValidationError):
             obj.full_clean()
+
+    def test_dunder_str(self, contact_factory):
+        unit = contact_factory()
+        assert unit.__str__() == unit.name
+
