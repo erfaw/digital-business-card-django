@@ -78,3 +78,8 @@ class TestBusinessCardModel:
         )
         with pytest.raises(ValidationError):
             obj.full_clean()
+
+    def test_linkedin_preview_field_blank_true(self, business_card_factory):
+        obj = business_card_factory()
+        obj.full_clean()
+        assert obj.linkedin_preview == ""
