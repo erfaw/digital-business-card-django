@@ -14,4 +14,5 @@ class BusinessCardFactory(factory.django.DjangoModelFactory):
         model = BusinessCard
 
     name = Sequence(lambda n: f"test{n} test{n}i")
+    email = Sequence(lambda n: f"test_{n}_user@gmail.com")
     user = SubFactory(UserFactory)
