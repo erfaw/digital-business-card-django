@@ -153,3 +153,12 @@ class TestContactModel:
         obj = contact_factory()
         obj.full_clean()
         assert obj.message == ""
+
+    def test_user_field_foreign_key_relation(self, contact_factory, user_factory):
+        user = user_factory()
+        NUM = 5
+        obj = contact_factory.create_batch(
+            NUM,
+            user=user,
+        )
+        assert user.contacts.count() == NUM        
