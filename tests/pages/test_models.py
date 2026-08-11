@@ -25,3 +25,11 @@ class TestBusinessCardModel:
         )
         with pytest.raises(ValidationError):
             obj.full_clean()
+
+    def test_logo_field_maximum_length(self, business_card_factory):
+        MAX_LENGTH = 50
+        obj = business_card_factory(
+            logo_sub=(MAX_LENGTH+1)*'a'
+        )
+        with pytest.raises(ValidationError):
+            obj.full_clean()
