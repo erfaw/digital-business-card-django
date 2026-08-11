@@ -59,3 +59,8 @@ class TestBusinessCardModel:
         obj = business_card_factory()
         obj.full_clean()
         assert obj.website == ""
+
+    def test_website_preview_field_blank_true(self, business_card_factory):
+        obj = business_card_factory()
+        obj.full_clean()
+        assert obj.website_preview == ""
