@@ -72,6 +72,11 @@ class TestBusinessCardModel:
         with pytest.raises(ValidationError):
             obj.full_clean()
 
+    def test_linkedin_field_blank_true(self, business_card_factory):
+        obj = business_card_factory()
+        obj.full_clean()
+        assert obj.linkedin == ""
+
     def test_linkedin_field_url_validation(self, business_card_factory):
         obj = business_card_factory(
             website="not-url-string-123"
