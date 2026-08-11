@@ -1,5 +1,5 @@
 import factory
-from factory.declarations import SubFactory
+from factory.declarations import SubFactory, Sequence
 from pages.models import BusinessCard
 from django.contrib.auth.models import User
 
@@ -13,5 +13,5 @@ class BusinessCardFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = BusinessCard
 
-    name = "test_name"
+    name = Sequence(lambda n: f"test{n} test{n}i")
     user = SubFactory(UserFactory)
