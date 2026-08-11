@@ -41,3 +41,8 @@ class TestBusinessCardModel:
         )
         with pytest.raises(ValidationError):
             obj.full_clean()
+
+    def test_email_field_validation(self, business_card_factory):
+        obj = business_card_factory(email="not-email-string")
+        with pytest.raises(ValidationError):
+            obj.full_clean()
