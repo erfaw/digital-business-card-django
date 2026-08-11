@@ -6,3 +6,8 @@ class TestPagesViews:
         client = Client()
         response = client.get("/")
         assert response.status_code == 200
+
+    def test_index_view_template_name(self):
+        client = Client()
+        response = client.get("/")
+        assert "pages/index.html" in [t.name for t in response.templates]
