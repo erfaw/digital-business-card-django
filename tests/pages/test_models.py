@@ -2,7 +2,6 @@ import pytest
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
 from django.test import Client
-from django.urls import reverse
 
 
 pytestmark = pytest.mark.django_db
