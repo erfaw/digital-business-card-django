@@ -35,3 +35,7 @@ class TestPagesViews:
         response = c.get("/dashboard/")
         assert response.status_code == 302
         assert response.url == "/accounts/login/?next=/dashboard/" # type: ignore
+
+    # TODO (HIGH) make a test for acces in login 
+    # TODO (HIGH) test changing record in post request at dashboard
+    # TODO (HIGH) build test qr and contact view
