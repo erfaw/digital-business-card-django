@@ -93,3 +93,8 @@ class TestBusinessCardModel:
         obj = business_card_factory()
         obj.full_clean()
         assert obj.location == ""
+
+    def test_response_time_field_blank_true(self, business_card_factory):
+        obj = business_card_factory()
+        obj.full_clean()
+        assert obj.response_time == ""
