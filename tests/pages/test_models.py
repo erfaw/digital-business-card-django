@@ -141,3 +141,10 @@ class TestContactModel:
         unit = contact_factory()
         assert unit.__str__() == unit.name
 
+    def test_mobile_number_field_maximum_length(self, contact_factory):
+        MAX_LENGTH = 20
+        obj = contact_factory(
+            mobile_number=(MAX_LENGTH+1)*'1'
+        )
+        with pytest.raises(ValidationError):
+            obj.full_clean()
