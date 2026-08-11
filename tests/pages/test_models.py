@@ -46,3 +46,11 @@ class TestBusinessCardModel:
         obj = business_card_factory(email="not-email-string")
         with pytest.raises(ValidationError):
             obj.full_clean()
+
+    def test_mobile_number_field_maximum_length(self, business_card_factory):
+        MAX_LENGTH = 20
+        obj = business_card_factory(
+            mobile_number=(MAX_LENGTH+1)*'1'
+        )
+        with pytest.raises(ValidationError):
+            obj.full_clean()
