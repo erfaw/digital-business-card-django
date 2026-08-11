@@ -18,4 +18,10 @@ class TestBusinessCardModel:
         with pytest.raises(ValidationError):
             obj.full_clean()
         
-
+    def test_role_field_maximum_length(self, business_card_factory):
+        MAX_LENGTH = 100
+        obj = business_card_factory(
+            role=(MAX_LENGTH+1)*'a'
+        )
+        with pytest.raises(ValidationError):
+            obj.full_clean()
