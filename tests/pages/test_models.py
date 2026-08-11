@@ -1,5 +1,6 @@
 import pytest
 from django.core.exceptions import ValidationError
+from django.db.utils import IntegrityError
 
 
 pytestmark = pytest.mark.django_db
@@ -98,3 +99,9 @@ class TestBusinessCardModel:
         obj = business_card_factory()
         obj.full_clean()
         assert obj.response_time == ""
+
+    def test_user_field_one_to_one_relation(self, business_card_factory, user_factory):
+        user = user_factory()
+        obj = business_card_factory(user=user)
+        with pytest.raises(IntegrityError):
+            obj2 = business_card_factory(user=user)
