@@ -148,3 +148,8 @@ class TestContactModel:
         )
         with pytest.raises(ValidationError):
             obj.full_clean()
+
+    def test_message_field_blank_true(self, contact_factory):
+        obj = contact_factory()
+        obj.full_clean()
+        assert obj.message == ""
