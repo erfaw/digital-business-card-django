@@ -29,3 +29,9 @@ class TestPagesViews:
         assert response.status_code == 302
         response = client.post(f"/u/{user.username}/", params, follow=True)
         assert response.status_code == 200
+
+    def test_dashboard_view_login_required(self):
+        c = Client()
+        response = c.get("/dashboard/")
+        assert response.status_code == 302
+        assert response.url == "/accounts/login/?next=/dashboard/" # type: ignore
