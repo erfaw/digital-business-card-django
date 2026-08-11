@@ -119,4 +119,5 @@ class TestBusinessCardModel:
             client.get(f"/u/{obj.user.username}/") 
         obj.refresh_from_db()
         assert obj.view_count == TRIES
-        
+
+    # TODO (HIGH) make test for user on_delete cascade 
