@@ -162,3 +162,11 @@ class TestContactModel:
             user=user,
         )
         assert user.contacts.count() == NUM        
+
+    def test_user_on_delete_cascade(self, contact_factory, user_factory):
+        user = user_factory()
+        obj = contact_factory(user=user)
+        assert obj.user == user
+        with pytest.raises(obj.__class__.DoesNotExist):
+            user.delete()
+            obj.refresh_from_db()
