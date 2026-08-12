@@ -69,3 +69,9 @@ class TestAccountsForms:
         del td["password"]
         form = RegisterForm(td)
         assert not form.is_valid()
+
+    def test_register_form_password2_required(self):
+        td = self.test_data.copy()
+        del td["password2"]
+        form = RegisterForm(td)
+        assert not form.is_valid()
