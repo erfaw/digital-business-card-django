@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 
 class LoginForm(forms.Form):
@@ -54,6 +55,12 @@ class RegisterForm(forms.Form):
     username = forms.CharField(
         min_length=4,
         max_length=150,
+        validators=[
+            RegexValidator(
+                regex=r"^[a-zA-Z0-9_]+$",
+                message=_("Username can only contain letters, numbers, and underscores.")
+            )
+        ],
         widget=forms.TextInput(
             attrs={
                 "class": "cf-input",
@@ -116,7 +123,7 @@ class RegisterForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        if User.objects.filter(username__iexact=username).exists() or username.lower() == 'admin':
+        if User.objects.filter(username=username).exists() or username.lower() == 'admin':
             raise forms.ValidationError(_("This username was taken already!"))
         return username
 
