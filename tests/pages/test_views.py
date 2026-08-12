@@ -69,5 +69,7 @@ class TestPagesViews:
         response = c.get(reverse("qr", kwargs={"username": "testUsername"}))
         assert response.status_code == 200
 
-    # TODO (HIGH) test changing record in post request at dashboard
-    # TODO (HIGH) build test qr and contact view
+    def test_qr_view_response_content_type(self):
+        c = Client()
+        response = c.get(reverse("qr", kwargs={"username": "testUsername"}))
+        assert response.headers.get("Content-Type") == "image/png"
