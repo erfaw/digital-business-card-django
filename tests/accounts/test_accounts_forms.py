@@ -49,3 +49,9 @@ class TestAccountsForms:
         form = RegisterForm(td)
         with pytest.raises(AssertionError):
             assert form.is_valid()
+
+    def test_register_form_full_name_required(self):
+        td = self.test_data.copy()
+        del td["full_name"]
+        form = RegisterForm(td)
+        assert not form.is_valid()
