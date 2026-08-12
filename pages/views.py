@@ -116,7 +116,7 @@ def qr(request, username):
 
     .. _qrcode: https://pypi.org/project/qrcode/
     """
-
+    # TODO (HIGH) nice to check username first with db, then make url. 
     url_to_card = request.build_absolute_uri(
         reverse("public_card", kwargs={"username": username})
     )
