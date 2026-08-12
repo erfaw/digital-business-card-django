@@ -97,4 +97,10 @@ class TestRegisterForm:
         form = RegisterForm(td)
         assert not form.is_valid()
 
+    def test_username_field_contain_letters_numbers_underscores(self):
+        td = self.test_data.copy()
+        td["username"] = "invalid-username"
+        form = RegisterForm(td)
+        assert not form.is_valid()
+
 # TODO (HIGH) make TestLoginForm just like TestRegisterForm
