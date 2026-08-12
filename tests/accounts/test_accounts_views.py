@@ -6,7 +6,7 @@ pytestmark = pytest.mark.django_db
 
 
 class TestRegisterView:
-    def test_status_code(self):
+    def test_get_request_status_code(self):
         c = Client()
         response = c.get(reverse("register"))
         assert response.status_code == 200
