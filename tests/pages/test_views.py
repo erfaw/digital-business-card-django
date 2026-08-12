@@ -31,11 +31,17 @@ class TestPagesViews:
         response = client.post(f"/u/{user.username}/", params, follow=True)
         assert response.status_code == 200
 
-    def test_dashboard_view_login_required(self):
+    def test_dashboard_view_login_required(self, user_factory):
         c = Client()
         response = c.get("/dashboard/")
         assert response.status_code == 302
         assert response.url == "/accounts/login/?next=/dashboard/" # type: ignore
+
+        user = user_factory(password="12345678")
+        c.force_login(user)
+        response = c.get(reverse("dashboard"), follow=True)
+        assert response.status_code == 200
+        assert response.resolver_match.url_name == "dashboard"
 
     def test_dashboard_view_modify_card_on_post(self, user_factory, business_card_factory):
         user = user_factory(password="12345678")
