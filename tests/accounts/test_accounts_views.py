@@ -52,4 +52,24 @@ class TestLoginView:
         response = c.get(reverse("login"))
         assert response.status_code == 200
 
+    def test_user_login_on_post(self, user_factory):
+        paswrd="1"*8
+        user = user_factory(
+            username="test_username_for_login",
+            password=paswrd
+        )
+
+        c = Client()
+        params = {
+            "username": user.username,
+            "password": paswrd,
+        }
+        response = c.post(
+            reverse("login"), 
+            params,
+        )
+        assert response.status_code == 302
+        assert response.wsgi_request.user.is_authenticated
+        assert response.wsgi_request.user == user
+
     # TODO (HIGH) test for logout
