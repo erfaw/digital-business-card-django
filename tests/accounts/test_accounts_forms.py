@@ -33,3 +33,11 @@ class TestAccountsForms:
         form = RegisterForm(td)
         with pytest.raises(AssertionError):
             assert form.is_valid()
+
+    def test_register_form_username_field_min_length(self):
+        MIN_LEN = 4
+        td = self.test_data
+        td["username"] = "s" * (MIN_LEN - 1)
+        form = RegisterForm(td)
+        with pytest.raises(AssertionError):
+            assert form.is_valid()
