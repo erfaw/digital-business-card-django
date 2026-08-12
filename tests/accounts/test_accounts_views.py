@@ -44,6 +44,12 @@ class TestRegisterView:
             made_user.business_card,
             business_card_class
         ) 
-    # TODO (HIGH) write test for all aspects of register
-    # TODO (HIGH) test for login
+
+
+class TestLoginView:
+    def test_get_request_status_code(self):
+        c = Client()
+        response = c.get(reverse("login"))
+        assert response.status_code == 200
+
     # TODO (HIGH) test for logout
