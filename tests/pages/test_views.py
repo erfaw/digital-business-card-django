@@ -64,5 +64,10 @@ class TestPagesViews:
             if not f.name in ["id", "view_count", "user"]:
                 assert getattr(card, f.name).startswith("modify-test")
 
+    def test_qr_view_status_code(self):
+        c = Client()
+        response = c.get(reverse("qr", kwargs={"username": "testUsername"}))
+        assert response.status_code == 200
+
     # TODO (HIGH) test changing record in post request at dashboard
     # TODO (HIGH) build test qr and contact view
