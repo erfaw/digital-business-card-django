@@ -96,3 +96,5 @@ class TestRegisterForm:
         td["email"] = user.email
         form = RegisterForm(td)
         assert not form.is_valid()
+
+# TODO (HIGH) make TestLoginForm just like TestRegisterForm
