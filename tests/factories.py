@@ -10,6 +10,17 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     username = Sequence(lambda n: f"test-{n}-user")
 
+    @classmethod
+    def _create(cls, model_class, *args, **kwargs):
+        password = kwargs.pop("password", None)
+        user = super()._create(model_class, *args, **kwargs)
+
+        if password is not None:
+            user.set_password(password)
+            user.save(update_fields=["password"])
+
+        return user
+
 
 class BusinessCardFactory(factory.django.DjangoModelFactory):
     class Meta:
