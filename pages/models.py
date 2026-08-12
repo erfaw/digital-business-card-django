@@ -22,6 +22,7 @@ class BusinessCard(models.Model):
     view_count = IntegerField(unique=False, blank=False, default=0)
     # TODO (MID) good to have an avatar field to get an image.
     # TODO (MID) (TARGET) good to have a field for Instagram, Telegram, GitHub, Docker Hub and so on.
+    # TODO (MID) (TARGET) think about a way to dynamically could accept and render links. like have a Link table and a Title table and have a M2M relationship between them to use intermediate TitleLink table for rendering additional fields.
 
     def __str__(self):
         return self.name
