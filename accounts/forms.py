@@ -8,6 +8,12 @@ class LoginForm(forms.Form):
     username = forms.CharField(
         min_length=4,
         max_length=150,
+        validators=[
+            RegexValidator(
+                regex=r"^[a-zA-Z0-9_]+$",
+                message=_("Username can only contain letters, numbers, and underscores.")
+            )
+        ],
         widget=forms.TextInput(
             attrs={
                 "class": "cf-input",
