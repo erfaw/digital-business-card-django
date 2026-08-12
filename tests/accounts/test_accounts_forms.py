@@ -40,7 +40,7 @@ class TestAccountsForms:
         assert not form.is_valid()
 
     def test_register_form_username_field_max_length(self):
-        MAX_LEN = 200
+        MAX_LEN = 150
         td = self.test_data.copy()
         td["username"] = "s" * (MAX_LEN + 1)
         form = RegisterForm(td)
