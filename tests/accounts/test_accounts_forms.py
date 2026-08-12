@@ -75,3 +75,10 @@ class TestAccountsForms:
         del td["password2"]
         form = RegisterForm(td)
         assert not form.is_valid()
+
+    def test_register_form_password_and_password2_being_equal(self):
+        td = self.test_data.copy()
+        td["password"] = "1"*8
+        td["password"] = "1"*9
+        form = RegisterForm(td)
+        assert not form.is_valid()
