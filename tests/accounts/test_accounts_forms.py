@@ -89,3 +89,10 @@ class TestAccountsForms:
         td["username"] = user.username
         form = RegisterForm(td)
         assert not form.is_valid()
+
+    def test_register_form_email_validation(self, user_factory):
+        user = user_factory(email="something@gmail.com")
+        td = self.test_data.copy()
+        td["email"] = user.email
+        form = RegisterForm(td)
+        assert not form.is_valid()
