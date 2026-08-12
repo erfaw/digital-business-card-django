@@ -1,5 +1,5 @@
 import pytest
-from accounts.forms import RegisterForm
+from accounts.forms import RegisterForm, LoginForm
 
 pytestmark = pytest.mark.django_db
 
@@ -103,4 +103,46 @@ class TestRegisterForm:
         form = RegisterForm(td)
         assert not form.is_valid()
 
-# TODO (HIGH) make TestLoginForm just like TestRegisterForm
+
+class TestLoginForm:
+    test_data = {
+        "username": "test_testi",
+        "password": "123456789",
+    }
+
+    def test_form_is_valid(self):
+        td = self.test_data.copy()
+        form = LoginForm(td)
+        assert form.is_valid()
+
+    def test_username_field_min_length(self):
+        MIN_LEN = 4
+        td = self.test_data.copy()
+        td["username"] = "s" * (MIN_LEN - 1)
+        form = LoginForm(td)
+        assert not form.is_valid()
+
+    def test_username_field_max_length(self):
+        MAX_LEN = 150
+        td = self.test_data.copy()
+        td["username"] = "s" * (MAX_LEN + 1)
+        form = LoginForm(td)
+        assert not form.is_valid()
+
+    def test_username_required(self):
+        td = self.test_data.copy()
+        del td["username"]
+        form = LoginForm(td)
+        assert not form.is_valid()
+
+    def test_password_required(self):
+        td = self.test_data.copy()
+        del td["password"]
+        form = LoginForm(td)
+        assert not form.is_valid()
+
+    def test_username_field_contain_letters_numbers_underscores(self):
+        td = self.test_data.copy()
+        td["username"] = "invalid-username"
+        form = LoginForm(td)
+        assert not form.is_valid()
