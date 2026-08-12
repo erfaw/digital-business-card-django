@@ -1,5 +1,6 @@
 import pytest
 from django.test import Client
+from django.urls import reverse
 
 
 pytestmark = pytest.mark.django_db
@@ -36,6 +37,26 @@ class TestPagesViews:
         assert response.status_code == 302
         assert response.url == "/accounts/login/?next=/dashboard/" # type: ignore
 
-    # TODO (HIGH) make a test for acces in login 
+    def test_dashboard_view_modify_card_on_post(self, user_factory, business_card_factory):
+        user = user_factory(password="12345678")
+        card = business_card_factory(user=user)
+
+        c = Client()
+        c.force_login(user)
+        params = {}
+        for f in card._meta.fields:
+            if not f.name in ["id", "view_count", "user"]:
+                field_name = f.name
+                field_value = f"modify-test-{field_name}"
+                params[field_name] = field_value
+
+        response = c.post(reverse("dashboard"), params)
+        assert response.status_code == 302
+
+        card.refresh_from_db()
+        for f in card._meta.fields:
+            if not f.name in ["id", "view_count", "user"]:
+                assert getattr(card, f.name).startswith("modify-test")
+
     # TODO (HIGH) test changing record in post request at dashboard
     # TODO (HIGH) build test qr and contact view
