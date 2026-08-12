@@ -72,4 +72,8 @@ class TestLoginView:
         assert response.wsgi_request.user.is_authenticated
         assert response.wsgi_request.user == user
 
-    # TODO (HIGH) test for logout
+def test_logout_view_login_required(user_factory):
+    c = Client()
+    response = c.post(reverse("logout"))
+    assert response.status_code == 302
+    assert response.url == f"{reverse("login")}?next={reverse("logout")}" # type: ignore
