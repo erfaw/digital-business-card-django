@@ -9,9 +9,9 @@ ALLOWED_HOSTS = ["*"]  # TODO (LOW) (PRODUCT) make sure about domain.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "digital_business_card_django",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
         "HOST": "database",
         "PORT": "5432",
     }
