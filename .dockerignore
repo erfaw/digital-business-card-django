@@ -2,3 +2,9 @@
 __pycache__/
 .git/
 .env
+.vscode/
+.assets/
+.htmlcov/
+static/
+.gitignore
+db.sqlite3
