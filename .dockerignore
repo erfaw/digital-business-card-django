@@ -8,3 +8,13 @@ __pycache__/
 static/
 .gitignore
 db.sqlite3
+*.py[cod]
+.pytest_cache/
+.coverage
+.env.*
+media/
+staticfiles/
+Dockerfile
+Dockerfile.dev
+compose.yaml
+README.md
