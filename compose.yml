@@ -21,6 +21,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
     restart: unless-stopped
-    
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - django-app
+
 volumes:
   postgres_data:
