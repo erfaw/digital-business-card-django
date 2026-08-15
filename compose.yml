@@ -5,6 +5,8 @@ services:
     image: erfaw/digital-business-card-django:v0.20.0
     ports:
       - "8000:8000"
+    env_file:
+      - .env
     restart: unless-stopped
 
   database:
