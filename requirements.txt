@@ -4,6 +4,7 @@ Django==6.0.7
 dotenv==0.9.9
 factory_boy==3.3.3
 Faker==40.36.0
+gunicorn==26.0.0
 inflection==0.5.1
 iniconfig==2.3.0
 packaging==26.3
