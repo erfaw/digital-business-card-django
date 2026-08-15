@@ -4,15 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-]  # TODO (LOW) (PRODUCT) make sure about domain.
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(',')  # TODO (LOW) (PRODUCT) make sure about domain.
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-]
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(',')
 
 DATABASES = {
     "default": {
