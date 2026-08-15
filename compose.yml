@@ -5,6 +5,7 @@ services:
     image: erfaw/digital-business-card-django:v0.20.0
     ports:
       - "8000:8000"
+    restart: unless-stopped
 
   database:
     image: postgres:18
@@ -16,6 +17,7 @@ services:
 
     volumes:
       - postgres_data:/var/lib/postgresql
-      
+    restart: unless-stopped
+    
 volumes:
   postgres_data:
