@@ -2,6 +2,7 @@ services:
 
   django-app:
     build: .
+    image: erfaw/digital-business-card-django:v0.20.0
     ports:
       - "8000:8000"
 
