@@ -9,7 +9,7 @@ services:
     env_file:
       - .env
     volumes:
-      - staticfiles:/app/staticfiles
+      - static:/app/static
     restart: unless-stopped
 
   database:
@@ -30,9 +30,10 @@ services:
       - "8000:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - staticfiles:/staticfiles:ro
+      - static:/static:ro
     depends_on:
       - django-app
 
 volumes:
   postgres_data:
+  static:
