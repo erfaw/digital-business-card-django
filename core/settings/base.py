@@ -5,6 +5,9 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 DEBUG = True
+"""
+With True local.py will be used and otherwise, production.py will be used.
+"""
 
 INSTALLED_APPS = [
     # Built-in apps
