@@ -11,6 +11,10 @@ services:
     volumes:
       - static:/app/static
     restart: unless-stopped
+    # TODO (HIGH) implement depends_on to database \w condition service_healthy
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
 
   database:
     image: postgres:18
@@ -19,6 +23,14 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    # TODO (HIGH) implement service_healthy check
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U myapp -d myapp"]
+    #   interval: 5s
+    #   timeout: 5s
+    #   retries: 5
+    #   start_period: 10s
 
     volumes:
       - postgres_data:/var/lib/postgresql
