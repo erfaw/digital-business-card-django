@@ -20,7 +20,7 @@ class TestRegisterView:
             "username": "test_testi",
             "email": "test@gmail.com",
             "password": "1"*8,
-            "password2": "1"*8,
+            "password2": "1"*8, # TODO (MID) add token to test_user_registration_on_post() and figure out failure.
         }
         response = c.post(
             reverse("register"), 
