@@ -30,6 +30,9 @@ def login(request):
 
 def register(request):
     if request.method == "POST":
+
+        token = request.POST["g-recaptcha-response"]
+
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             full_name= register_form.cleaned_data['full_name']
