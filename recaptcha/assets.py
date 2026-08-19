@@ -3,11 +3,12 @@ from google.cloud import recaptchaenterprise_v1
 from google.cloud.recaptchaenterprise_v1 import Assessment
 from dotenv import load_dotenv
 from configparser import ConfigParser
+from core.settings.base import BASE_DIR
 
 load_dotenv()
 
 recaptcha_config = ConfigParser()
-recaptcha_config.read("config.ini")
+recaptcha_config.read(BASE_DIR / "recaptcha" / "config.ini")
 assert "recaptcha_actions" in recaptcha_config
 
 
