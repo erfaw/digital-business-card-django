@@ -31,7 +31,7 @@ def login(request):
 def register(request):
     if request.method == "POST":
 
-        token = request.POST["g-recaptcha-response"]
+        token = request.POST["g-recaptcha-response"] # TODO (HIGH) with VPN try to configure gcloud ADC to get response from google
 
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
